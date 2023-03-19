@@ -1,0 +1,14 @@
+{
+    "name": "onslip/onslip-360-api",
+    "description": "Onslip 360 PHP SDK",
+    "require": {
+        "php": ">=8.2",
+        "eurolink/hawk": "dev-master"
+    },
+    "autoload": {
+        "classmap": [
+            "Onslip360.php",
+            "API.php"
+        ]
+    }
+}
