@@ -1,9 +1,22 @@
 {
     "name": "onslip/onslip-360-api",
     "description": "Onslip 360 PHP SDK",
+    "keywords": [
+        "onslip",
+        "onslip 360",
+        "pos",
+        "ecr"
+    ],
+    "homepage": "https://onslip.com/",
+    "license": "Apache-2.0",
+    "support": {
+        "email": "api@onslip.com",
+        "source": "https://github.com/Onslip/onslip-360-php-sdk",
+        "docs": "https://developer.onslip360.com"
+    },
     "require": {
         "php": ">=8.2",
-        "eurolink/hawk": "dev-master"
+        "eurolink/hawk": "dev-master@dev"
     },
     "autoload": {
         "classmap": [
