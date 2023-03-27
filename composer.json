@@ -15,12 +15,12 @@
         "docs": "https://developer.onslip360.com"
     },
     "require": {
-        "php": ">=8.2",
-        "eurolink/hawk": "dev-master@dev"
+        "php": ">=8.1"
     },
     "autoload": {
         "classmap": [
             "Onslip360.php",
+            "Hawk.php",
             "API.php"
         ]
     }

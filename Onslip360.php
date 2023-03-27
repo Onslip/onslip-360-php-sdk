@@ -8,6 +8,9 @@ use ErrorException;
 use JsonSerializable;
 use Onslip360\API\DataStream;
 use Onslip360\API\ServerError;
+use Onslip360\Hawk\Client;
+use Onslip360\Hawk\Credentials;
+use Onslip360\Hawk\HeaderOptions;
 use ValueError;
 use stdClass;
 use Throwable;
@@ -36,9 +39,9 @@ function query(string $pattern, string ...$arguments): string {
     $escape = false;
 
     return join('', array_map(function ($c) use (&$arguments, &$escape) {
-        if (!$escape && $c == '\\') {
+        if (!$escape && $c === '\\') {
             $escape = true; return '';
-        } else if (!$escape && $c == '$') {
+        } else if (!$escape && $c === '$') {
             return preg_replace('|([\\\\"=:\\[\\]<>])|', '\\\$1', strval(array_shift($arguments) ?? ''));
         } else {
             $escape = false; return $c;
@@ -50,9 +53,9 @@ function url(string $pattern, string|int ...$arguments): string {
     $escape = false;
 
     return join('', array_map(function ($c) use (&$arguments, &$escape) {
-        if (!$escape && $c == '\\') {
+        if (!$escape && $c === '\\') {
             $escape = true; return '';
-        } else if (!$escape && $c == '$') {
+        } else if (!$escape && $c === '$') {
             return rawurlencode(strval(array_shift($arguments) ?? ''));
         } else {
             $escape = false; return $c;
@@ -78,9 +81,9 @@ abstract class Onslip360Object implements JsonSerializable {
 
     function setExtended(string $name, string|Nil $value): static {
         assert(preg_match('/_[a-z0-9]+-([a-z0-9]|[a-z0-9][-a-z0-9]*[a-z0-9])/', $name),
-               'Extended properties must begin with "_" and be all lower case');
+               'Extended properties must begin with "_" and namespace, and be all lower case');
 
-        if ($value == nil) {
+        if ($value === nil) {
             unset($this->_extended[$name]);
         } else {
             $this->_extended[$name] = $value;
@@ -103,7 +106,7 @@ abstract class Onslip360Object implements JsonSerializable {
         $result = new static(...static::_fromJson($json));
 
         foreach ($json as $name => $value) {
-            if ($name[0] == '_') $result->setExtended($name, $value);
+            if ($name[0] === '_') $result->setExtended($name, $value);
         }
 
         return $result;
@@ -197,17 +200,11 @@ class RequestException extends \Exception {
 
 class CURLRequestHandler implements RequestHandler {
     function __construct(
-        protected string $userAgent = "PHP/" . PHP_VERSION,
         protected float $timeout = 30.0,
         protected float $connectTimeout = 10.0,
     ) {}
 
     function handleRequest(string $method, string $uri, string|null $payload, array $headers): RequestHandlerResponse {
-        $headers = [
-            'user-agent' => $this->userAgent,
-            ...$headers,
-        ];
-
         $ch = curl_init($uri);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT_MS, $this->connectTimeout * 1000);
         curl_setopt($ch, CURLOPT_TIMEOUT_MS,        $this->timeout * 1000);
@@ -234,7 +231,7 @@ class CURLRequestHandler implements RequestHandler {
         $payload = substr($response, $hdrsize);
         $headers = array_merge(...array_map(function ($line) {
             $kv = explode(':', $line, 2);
-            return count($kv) == 2 ? [ strtolower($kv[0]) => trim($kv[1]) ] : [];
+            return count($kv) === 2 ? [ strtolower($kv[0]) => trim($kv[1]) ] : [];
         }, $hdrrows));
 
         [, $status, $message] = explode(' ', array_shift($hdrrows), 3);
@@ -271,6 +268,8 @@ abstract class AbstractAPI {
         private string $key,
     ) {
         $this->bases = [ $base ];
+        $this->headers = [ 'user-agent' => 'PHP/' . PHP_VERSION ];
+        $this->requestHandler = new CURLRequestHandler();
     }
 
     function realm(): string {
@@ -327,9 +326,22 @@ abstract class AbstractAPI {
 
 	function at(\DateTimeInterface|string|int|float|Nil|null $date): static {
         return $this->_extend(isset($date), function (self $that) use ($date) {
-            $that->date = $date == nil ? null : $date;
+            $that->date = $date === nil ? null : $date;
         });
 	}
+
+    function appName(string|Nil|null $name) {
+        if ($name === nil) {
+            $name = 'PHP/' . PHP_VERSION;
+        } else if (isset($name)) {
+            assert(preg_match(':^[-!#$%&\'*+.^_`|~0-9A-Za-z]+(/[-!#$%&\'*+.^_`|~0-9A-Za-z]+)?$:', $name),
+              'Application name must be a valid HTTP product identifier');
+
+            $name = $name . ' PHP/' . PHP_VERSION;
+        }
+
+        return $this->header('user-agent', $name);
+    }
 
     function ifMatch(string|Nil|null $etag): static {
         return $this->header('if-match', $etag);
@@ -341,7 +353,7 @@ abstract class AbstractAPI {
 
     function qp(string $name, string|int|float|bool|Nil|null $value): static {
         return $this->_extend(isset($value), function (self $that) use ($name, $value) {
-            if ($value == nil) {
+            if ($value === nil) {
                 unset($that->qp[$name]);
             } else {
                 $that->qp[$name] = $value;
@@ -353,7 +365,7 @@ abstract class AbstractAPI {
         $name = strtolower($name);
 
         return $this->_extend(isset($value), function (self $that) use ($name, $value) {
-            if ($value == nil) {
+            if ($value === nil) {
                 unset($that->headers[$name]);
             } else {
                 $that->headers[$name] = $value;
@@ -366,7 +378,7 @@ abstract class AbstractAPI {
      */
     function onProgress(ProgressHandler|callable|Nil|null $progress): static {
         return $this->_extend(isset($progress), function (self $that) use ($progress) {
-            $that->progress = $progress == nil ? null : $progress;
+            $that->progress = $progress === nil ? null : $progress;
         });
     }
 
@@ -375,13 +387,13 @@ abstract class AbstractAPI {
      */
     function onResponseMetadata(ResponseMetadataHandler|callable|Nil|null $metadata): static {
         return $this->_extend(isset($metadata), function (self $that) use ($metadata) {
-            $that->metadata = $metadata  == nil ? null : $metadata;
+            $that->metadata = $metadata  === nil ? null : $metadata;
         });
     }
 
     function requestHandler(RequestHandler|Nil|null $requestHandler): static {
         return $this->_extend(isset($requestHandler), function (self $that) use ($requestHandler) {
-            $that->requestHandler = $requestHandler  == nil ? null : $requestHandler;
+            $that->requestHandler = $requestHandler  === nil ? null : $requestHandler;
         });
     }
 
@@ -426,7 +438,7 @@ abstract class AbstractAPI {
         [$headers, $result] = $this->sendRequest($method, $this->_expandURI($path, $qp), $body, $type, $disp);
 
         // Fetch remaining results in batches if server limited the response
-        if ($method == 'GET' && isset($result) && array_is_list($result)) {
+        if ($method === 'GET' && isset($result) && array_is_list($result)) {
             $total     = intval($headers['x-total-count']);
             $offset    = isset($qp['o']) && is_integer($qp['o']) && $qp['o'] >= 0 ? $qp['o'] : 0;
             $count     = isset($qp['c']) && is_integer($qp['c']) && $qp['c'] >= 0 ? $qp['c'] : PHP_INT_MAX;
@@ -437,7 +449,7 @@ abstract class AbstractAPI {
                 $qp['o'] = $offset + count($result);
 
                 if (isset($this->progress)) {
-                    ($this->progress)($total != 0 ? 100.0 * ($total - $itemsLeft) / $total : 100.0, $total - $itemsLeft, $total);
+                    ($this->progress)($total !== 0 ? 100.0 * ($total - $itemsLeft) / $total : 100.0, $total - $itemsLeft, $total);
                 }
 
                 [, $newData] = $this->sendRequest('GET', $this->_expandURI($path, $qp), null, null, null);
@@ -463,14 +475,10 @@ abstract class AbstractAPI {
 
         $headers = [
             'accept'              => 'application/json, */*',
-            'authorization'       => \Eurolink\Hawk\Client::header($uri, $method, [
-                'credentials'     => [
-                    'id'          => $this->id,
-                    'key'         => base64_decode($this->key),
-                    'algorithm'   => 'sha256',
-                ],
-                'payload'         => $body,
-            ])['field'],
+            'authorization'       => Client::header($uri, $method, new HeaderOptions(
+                credentials:         new Credentials($this->id, base64_decode($this->key), 'sha256'),
+                payload:             $body,
+            ))->field,
             'content-type'        => $type,
             'content-disposition' => $disp,
             ...$this->headers
@@ -489,7 +497,7 @@ abstract class AbstractAPI {
 
         $ct = $result->headers['content-type'] ?? null;
 
-        if ($ct == 'application/json' && !isset($result->headers['content-disposition'])) {
+        if ($ct === 'application/json' && !isset($result->headers['content-disposition'])) {
             return [$result->headers, json_decode($result->payload, true, flags: \JSON_THROW_ON_ERROR)];
         } else if (isset($result->headers['content-disposition'])) {
             return [$result->headers, [
@@ -497,7 +505,7 @@ abstract class AbstractAPI {
                 'type' => $ct ?? octetStreamType,
                 'data' => $result->payload,
             ]];
-        } else if (isset($ct) && $result->status != 204 /* No Content */) {
+        } else if (isset($ct) && $result->status !== 204 /* No Content */) {
             throw new RequestException("Unsupported media type: {$ct}", $result, null, null);
         } else {
             return [$result->headers, null];
