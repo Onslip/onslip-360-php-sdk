@@ -27,269 +27,269 @@ SOFTWARE.
 */
 
 class Credentials {
-    function __construct(
-        /** Key ID */
-        public string $id,
-        /** Key value */
-        public string $key,
-        /** Hash algorithm */
-        public string $algorithm,
-    ) {}
+	function __construct(
+		/** Key ID */
+		public string $id,
+		/** Key value */
+		public string $key,
+		/** Hash algorithm */
+		public string $algorithm,
+	) {}
 }
 
 class HeaderOptions {
-    function __construct(
-        /** Credentials */
-        public Credentials $credentials,
-        /** Application specific data sent via the ext attribute */
-        public ?string $ext = null,
-        /** A pre-calculated timestamp */
-        public ?int $timestamp = null,
-        /** A pre-generated nonce */
-        public ?string $nonce = null,
-        /** Time offset to sync with server time (ignored if timestamp provided) */
-        public ?int $localtimeOffsetMsec = null,
-        /** UTF-8 encoded string for body hash generation (ignored if hash provided) */
-        public ?string $payload = null,
-        /** Payload content-type (ignored if hash provided) */
-        public ?string $contentType = null,
-        /** Pre-calculated payload hash */
-        public ?string $hash = null,
-        /** Oz application id */
-        public ?string $app = null,
-        /** Oz delegated-by application id */
-        public ?string $dlg = null,
-    ) {}
+	function __construct(
+		/** Credentials */
+		public Credentials $credentials,
+		/** Application specific data sent via the ext attribute */
+		public ?string $ext = null,
+		/** A pre-calculated timestamp */
+		public ?int $timestamp = null,
+		/** A pre-generated nonce */
+		public ?string $nonce = null,
+		/** Time offset to sync with server time (ignored if timestamp provided) */
+		public ?int $localtimeOffsetMsec = null,
+		/** UTF-8 encoded string for body hash generation (ignored if hash provided) */
+		public ?string $payload = null,
+		/** Payload content-type (ignored if hash provided) */
+		public ?string $contentType = null,
+		/** Pre-calculated payload hash */
+		public ?string $hash = null,
+		/** Oz application id */
+		public ?string $app = null,
+		/** Oz delegated-by application id */
+		public ?string $dlg = null,
+	) {}
 }
 
 class HeaderArtifacts {
-    function __construct(
-        public int $ts,
-        public string $nonce,
-        public string $method,
-        public string $resource,
-        public string $host,
-        public int $port,
-        public ?string $hash,
-        public ?string $ext,
-        public ?string $app,
-        public ?string $dlg,
-    ) {}
+	function __construct(
+		public int $ts,
+		public string $nonce,
+		public string $method,
+		public string $resource,
+		public string $host,
+		public int $port,
+		public ?string $hash,
+		public ?string $ext,
+		public ?string $app,
+		public ?string $dlg,
+	) {}
 }
 
 class HeaderResult {
-    function __construct(
-        public HeaderArtifacts $artifacts,
-        public string $field,
-    ) {}
+	function __construct(
+		public HeaderArtifacts $artifacts,
+		public string $field,
+	) {}
 }
 
 class AuthenticateOptions {
-    function __construct(
-        /** optional payload received */
-        public ?string $payload = null,
-        /** specifies if a Server-Authorization header is required. Defaults to 'false' */
-        public ?bool   $required = null,
-    ) {}
+	function __construct(
+		/** optional payload received */
+		public ?string $payload = null,
+		/** specifies if a Server-Authorization header is required. Defaults to 'false' */
+		public ?bool   $required = null,
+	) {}
 }
 
 class Client
 {
-    /**
-     * Generate an Authorization header for a given request
-     */
-    public static function header(string $uri, string $method, HeaderOptions $options): HeaderResult
-    {
-        // set application time.
-        $timestamp = $options->timestamp ?? self::getTimeNowSec($options->localtimeOffsetMsec);
+	/**
+	 * Generate an Authorization header for a given request
+	 */
+	public static function header(string $uri, string $method, HeaderOptions $options): HeaderResult
+	{
+		// set application time.
+		$timestamp = $options->timestamp ?? self::getTimeNowSec($options->localtimeOffsetMsec);
 
-        // parse uri.
-        @['scheme' => $scheme, 'host' => $host, 'port' => $port, 'path' => $path, 'query' => $query ] = parse_url($uri);
-        $port = $port ?? (strtolower($scheme) === 'http' ? 80 : 443);
-        $path = ($path ?? '/') . ($query ? '?' . $query : ''); // Maintain trailing '?'
+		// parse uri.
+		@['scheme' => $scheme, 'host' => $host, 'port' => $port, 'path' => $path, 'query' => $query ] = parse_url($uri);
+		$port = $port ?? (strtolower($scheme) === 'http' ? 80 : 443);
+		$path = ($path ?? '/') . ($query ? '?' . $query : ''); // Maintain trailing '?'
 
-        // calculate signature.
-        $artifacts = new HeaderArtifacts(
-            ts:       $timestamp,
-            nonce:    $options->nonce ?? base64_encode(random_bytes(9)),
-            method:   $method,
-            resource: $path,
-            host:     $host,
-            port:     $port,
-            hash:     $options->hash,
-            ext:      $options->ext,
-            app:      $options->app,
-            dlg:      $options->dlg,
-        );
+		// calculate signature.
+		$artifacts = new HeaderArtifacts(
+			ts:       $timestamp,
+			nonce:    $options->nonce ?? base64_encode(random_bytes(9)),
+			method:   $method,
+			resource: $path,
+			host:     $host,
+			port:     $port,
+			hash:     $options->hash,
+			ext:      $options->ext,
+			app:      $options->app,
+			dlg:      $options->dlg,
+		);
 
-        // calculate payload hash.
-        if (!$artifacts->hash && $options->payload) {
-            $artifacts->hash = self::getPayloadHash($options->payload, $options->credentials->algorithm, $options->contentType);
-        }
+		// calculate payload hash.
+		if (!$artifacts->hash && $options->payload) {
+			$artifacts->hash = self::getPayloadHash($options->payload, $options->credentials->algorithm, $options->contentType);
+		}
 
-        // calculate the hmac signature used for the authorization header.
-        $mac = self::getArtifactsMac('header', $options->credentials, $artifacts);
+		// calculate the hmac signature used for the authorization header.
+		$mac = self::getArtifactsMac('header', $options->credentials, $artifacts);
 
-        // construct header.
-        $has_ext = $artifacts->ext !== null && $artifacts->ext !== '';
+		// construct header.
+		$has_ext = $artifacts->ext !== null && $artifacts->ext !== '';
 
-        $header = 'Hawk id="' . $options->credentials->id . '"'
-            . ', ts="' . $artifacts->ts . '"'
-            . ', nonce="' . $artifacts->nonce . '"'
-            . ($artifacts->hash ? ', hash="' . $artifacts->hash . '"' : '')
-            . ($has_ext ? ', ext="' . self::getEscapeHeaderAttribute($artifacts->ext) . '"' : '')
-            . ', mac="' . $mac . '"';
+		$header = 'Hawk id="' . $options->credentials->id . '"'
+			. ', ts="' . $artifacts->ts . '"'
+			. ', nonce="' . $artifacts->nonce . '"'
+			. ($artifacts->hash ? ', hash="' . $artifacts->hash . '"' : '')
+			. ($has_ext ? ', ext="' . self::getEscapeHeaderAttribute($artifacts->ext) . '"' : '')
+			. ', mac="' . $mac . '"';
 
-        if ($artifacts->app) {
-            $header .= ', app="' . $artifacts->app . '"'
-                . ($artifacts->dlg ? ', dlg="' . $artifacts->dlg . '"' : '');
-        }
+		if ($artifacts->app) {
+			$header .= ', app="' . $artifacts->app . '"'
+				. ($artifacts->dlg ? ', dlg="' . $artifacts->dlg . '"' : '');
+		}
 
-        return new HeaderResult($artifacts, $header);
-    }
+		return new HeaderResult($artifacts, $header);
+	}
 
-    /**
-     * Validate Server Response
-     */
-    public static function authenticate(array $headers, Credentials $credentials, HeaderArtifacts $artifacts, AuthenticateOptions $options)
-    {
-        // parse HTTP WWW-Authenticate header.
-        if (isset($headers['www-authenticate'])) {
-            @[ 'ts' => $ts, 'tsm' => $tsm ] = self::getParsedAuthorizationHeader($headers['www-authenticate'], ['ts', 'tsm', 'error']);
+	/**
+	 * Validate Server Response
+	 */
+	public static function authenticate(array $headers, Credentials $credentials, HeaderArtifacts $artifacts, AuthenticateOptions $options)
+	{
+		// parse HTTP WWW-Authenticate header.
+		if (isset($headers['www-authenticate'])) {
+			@[ 'ts' => $ts, 'tsm' => $tsm ] = self::getParsedAuthorizationHeader($headers['www-authenticate'], ['ts', 'tsm', 'error']);
 
-            // validate server timestamp.
-            if ($ts && $tsm !== self::getTimestampHash($ts, $credentials)) {
-                throw new \ErrorException('Invalid server timestamp hash');
-            }
-        }
+			// validate server timestamp.
+			if ($ts && $tsm !== self::getTimestampHash($ts, $credentials)) {
+				throw new \ErrorException('Invalid server timestamp hash');
+			}
+		}
 
-        // parse HTTP Server-Authorization header.
-        if (isset($headers['server-authorization'])) {
-            @[ 'mac' => $mac, 'ext' => $ext, 'hash' => $hash ] = self::getParsedAuthorizationHeader($headers['server-authorization'], ['mac', 'ext', 'hash']);
+		// parse HTTP Server-Authorization header.
+		if (isset($headers['server-authorization'])) {
+			@[ 'mac' => $mac, 'ext' => $ext, 'hash' => $hash ] = self::getParsedAuthorizationHeader($headers['server-authorization'], ['mac', 'ext', 'hash']);
 
-            $artifacts->ext  = $ext;
-            $artifacts->hash = $hash;
+			$artifacts->ext  = $ext;
+			$artifacts->hash = $hash;
 
-            if ($mac !== self::getArtifactsMac('response', $credentials, $artifacts)) {
-                throw new \ErrorException('Bad response mac');
-            }
+			if ($mac !== self::getArtifactsMac('response', $credentials, $artifacts)) {
+				throw new \ErrorException('Bad response mac');
+			}
 
-            if ($options->payload) {
-                if (!$hash) {
-                    throw new \ErrorException('Missing response hash attribute');
-                } else if ($hash !== self::getPayloadHash($options->payload, $credentials->algorithm, $headers['content-type'] ?? null)) {
-                    throw new \ErrorException('Bad response payload mac');
-                }
-            }
-        } else if ($options->required) {
-            throw new \ErrorException('Missing Server-Authorization header');
-        }
-    }
+			if ($options->payload) {
+				if (!$hash) {
+					throw new \ErrorException('Missing response hash attribute');
+				} else if ($hash !== self::getPayloadHash($options->payload, $credentials->algorithm, $headers['content-type'] ?? null)) {
+					throw new \ErrorException('Bad response payload mac');
+				}
+			}
+		} else if ($options->required) {
+			throw new \ErrorException('Missing Server-Authorization header');
+		}
+	}
 
-    private static function getPayloadHash(string $payload, string $algorithm, ?string $contentType): string {
-        $normalized = 'hawk.1.payload' . "\n"
-             . self::getParsedContentType($contentType) . "\n"
-             . $payload . "\n";
+	private static function getPayloadHash(string $payload, string $algorithm, ?string $contentType): string {
+		$normalized = 'hawk.1.payload' . "\n"
+			 . self::getParsedContentType($contentType) . "\n"
+			 . $payload . "\n";
 
-        return self::getBase64Hash($algorithm, $normalized);
-    }
+		return self::getBase64Hash($algorithm, $normalized);
+	}
 
-    private static function getArtifactsMac(string $type, Credentials $credentials, HeaderArtifacts $artifacts): string {
-        $normalized = 'hawk.1.' . $type . "\n"
-             . $artifacts->ts . "\n"
-             . $artifacts->nonce . "\n"
-             . strtoupper($artifacts->method) . "\n"
-             . $artifacts->resource . "\n"
-             . strtolower($artifacts->host) . "\n"
-             . $artifacts->port . "\n"
-             . ($artifacts->hash ?? '') . "\n";
+	private static function getArtifactsMac(string $type, Credentials $credentials, HeaderArtifacts $artifacts): string {
+		$normalized = 'hawk.1.' . $type . "\n"
+			 . $artifacts->ts . "\n"
+			 . $artifacts->nonce . "\n"
+			 . strtoupper($artifacts->method) . "\n"
+			 . $artifacts->resource . "\n"
+			 . strtolower($artifacts->host) . "\n"
+			 . $artifacts->port . "\n"
+			 . ($artifacts->hash ?? '') . "\n";
 
-        if ($artifacts->ext) {
-            $ext = $artifacts->ext;
-            $ext = str_replace( "\\", "\\\\", $ext );
-            $ext = str_replace( "\n", "\\n", $ext );
-            $normalized .= $ext;
-        }
+		if ($artifacts->ext) {
+			$ext = $artifacts->ext;
+			$ext = str_replace( "\\", "\\\\", $ext );
+			$ext = str_replace( "\n", "\\n", $ext );
+			$normalized .= $ext;
+		}
 
-        $normalized .= "\n";
+		$normalized .= "\n";
 
-        // Web Authorization Protocol (OZ).
-        if ($artifacts->app) {
-            $normalized .= $artifacts->app . "\n"  // OZ 'Application ID'.
-                // Optional 'Delegated By'. Requires 'Application ID'.
-                . ($artifacts->dlg ?? '') . "\n";
-        }
+		// Web Authorization Protocol (OZ).
+		if ($artifacts->app) {
+			$normalized .= $artifacts->app . "\n"  // OZ 'Application ID'.
+				// Optional 'Delegated By'. Requires 'Application ID'.
+				. ($artifacts->dlg ?? '') . "\n";
+		}
 
-        return self::getBase64Hash($credentials->algorithm, $normalized, $credentials->key);
-    }
+		return self::getBase64Hash($credentials->algorithm, $normalized, $credentials->key);
+	}
 
-    private static function getTimestampHash(string $ts, Credentials $credentials) {
-        return self::getBase64Hash($credentials->algorithm, 'hawk.1.ts' . "\n" . $ts . "\n", $credentials->key);
-    }
+	private static function getTimestampHash(string $ts, Credentials $credentials) {
+		return self::getBase64Hash($credentials->algorithm, 'hawk.1.ts' . "\n" . $ts . "\n", $credentials->key);
+	}
 
-    private static function getBase64Hash(string $algorithm, string $normalized, ?string $key = null): string {
-        if ($key) {
-            return base64_encode(hash_hmac($algorithm, $normalized, $key, binary: true));
-        } else {
-            return base64_encode(hash($algorithm, $normalized, binary: true));
-        }
-    }
+	private static function getBase64Hash(string $algorithm, string $normalized, ?string $key = null): string {
+		if ($key) {
+			return base64_encode(hash_hmac($algorithm, $normalized, $key, binary: true));
+		} else {
+			return base64_encode(hash($algorithm, $normalized, binary: true));
+		}
+	}
 
-    private static function getTimeNowSec(int|null $msOffset): int {
-        return intval(floor(round(microtime(as_float: true) * 1000) + ($msOffset ?? 0)) / 1000);
-    }
+	private static function getTimeNowSec(int|null $msOffset): int {
+		return intval(floor(round(microtime(as_float: true) * 1000) + ($msOffset ?? 0)) / 1000);
+	}
 
-    private static function getEscapeHeaderAttribute(string $attribute): string {
-        // escape quotes and slash.
-        return preg_replace(['/\\\\/', '/\"/'], ['\\\\', '\\"'], $attribute);
-    }
+	private static function getEscapeHeaderAttribute(string $attribute): string {
+		// escape quotes and slash.
+		return preg_replace(['/\\\\/', '/\"/'], ['\\\\', '\\"'], $attribute);
+	}
 
-    private static function getParsedContentType(?string $header): string {
-        return strtolower(explode(';', $header ?? '')[0]);
-    }
+	private static function getParsedContentType(?string $header): string {
+		return strtolower(explode(';', $header ?? '')[0]);
+	}
 
-    private static $authHeaderRegex = '/^(\w+)(?:\s+(.*))?$/';
-    private static $attributePartsRegex = '/(\w+)="([^"\x5c]*)"\s*(?:,\s*|$)/U';
-    public static $attributeRegex = '/^[\040\w\!#\$%&\x27\(\)\*\+,\-\.\/\:;<\=>\?@\x5b\x5d\^`\{\|\}~]+$/';
+	private static $authHeaderRegex = '/^(\w+)(?:\s+(.*))?$/';
+	private static $attributePartsRegex = '/(\w+)="([^"\x5c]*)"\s*(?:,\s*|$)/U';
+	private static $attributeRegex = '/^[\040\w\!#\$%&\x27\(\)\*\+,\-\.\/\:;<\=>\?@\x5b\x5d\^`\{\|\}~]+$/';
 
-    private static function getParsedAuthorizationHeader(string $header, array $keys): array|null {
-        // split scheme from rest of string.
-        preg_match(self::$authHeaderRegex, $header, $headerParts);
-        @[/* ignored */, $scheme, $attributesStr] = $headerParts;
+	private static function getParsedAuthorizationHeader(string $header, array $keys): array|null {
+		// split scheme from rest of string.
+		preg_match(self::$authHeaderRegex, $header, $headerParts);
+		@[/* ignored */, $scheme, $attributesStr] = $headerParts;
 
-        if (!$scheme || $attributesStr || strtolower($scheme) !== 'hawk') {
-            throw new \ErrorException('Invalid Hawk header syntax');
-        }
+		if (!$scheme || !$attributesStr || strtolower($scheme) !== 'hawk') {
+			throw new \ErrorException('Invalid Hawk header syntax');
+		}
 
-        $attributes = [];
+		$attributes = [];
 
-        $callback = function ($matches) use (&$keys, &$attributes) {
-            @[/* ignored */, $key, $val] = $matches;
+		$callback = function ($matches) use (&$keys, &$attributes) {
+			@[/* ignored */, $key, $val] = $matches;
 
-            // check valid attribute names.
-            if (! in_array($key, $keys)) {
-                throw new \ErrorException('Unknown attribute: ' . $key);
-            }
+			// check valid attribute names.
+			if (! in_array($key, $keys)) {
+				throw new \ErrorException('Unknown attribute: ' . $key);
+			}
 
-            // check allowed attribute value characters:
-            if (! preg_match(self::$attributeRegex, $val)) {
-                throw new \ErrorException('Bad attribute value: ' . $key);
-            }
+			// check allowed attribute value characters:
+			if (! preg_match(self::$attributeRegex, $val)) {
+				throw new \ErrorException('Bad attribute value: ' . $key);
+			}
 
-            // check for duplicate attributes.
-            if (isset($attributes[$key])) {
-                throw new \ErrorException('Duplicate attribute: ' . $key);
-            }
+			// check for duplicate attributes.
+			if (isset($attributes[$key])) {
+				throw new \ErrorException('Duplicate attribute: ' . $key);
+			}
 
-            $attributes[$key] = $val;
+			$attributes[$key] = $val;
 
-            return '';
-        };
+			return '';
+		};
 
-        if (trim(preg_replace_callback(self::$attributePartsRegex, $callback, $attributesStr)) !== '') {
-            throw new \ErrorException('Bad header format');
-        }
+		if (trim(preg_replace_callback(self::$attributePartsRegex, $callback, $attributesStr)) !== '') {
+			throw new \ErrorException('Bad header format');
+		}
 
-        return $attributes;
-    }
+		return $attributes;
+	}
 }

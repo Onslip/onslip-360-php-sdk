@@ -743,8 +743,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['name'], static::e(AccessToken\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['external'] ?? null, $json['id'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['name'], static::e(AccessToken\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['external'] ?? null, $j['id'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -770,8 +770,8 @@ namespace Onslip360\API {
 			public AccessToken\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, $json['deleted'] ?? null, $json['external'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, static::e(AccessToken\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['deleted'] ?? null, $j['external'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, static::e(AccessToken\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -803,8 +803,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['created'], $json['id'], $json['name'], static::e(AccessToken\Type::from(...), $json['type']), $json['updated'], $json['user'], $json['deleted'] ?? null, $json['external'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['created'], $j['id'], $j['name'], static::e(AccessToken\Type::from(...), $j['type']), $j['updated'], $j['user'], $j['deleted'] ?? null, $j['external'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -817,8 +817,8 @@ namespace Onslip360\API {
 			public string $cert,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cert'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cert'] ];
 		}
 
 		protected function _toJson(): array {
@@ -831,8 +831,8 @@ namespace Onslip360\API {
 			public string|null $cert = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cert'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cert'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -858,8 +858,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'], $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'], $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -880,8 +880,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['deleted'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['deleted'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -907,8 +907,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'], $json['created'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'], $j['created'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -930,8 +930,8 @@ namespace Onslip360\API {
 			public int|null $rounding = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['gratuities'] ?? null, $json['journal-series'] ?? null, $json['mismatches'] ?? null, PaymentMethodAccount::a($json['payment-methods'] ?? null), ProductGroupAccount::a($json['product-groups'] ?? null), $json['rounding'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['gratuities'] ?? null, $j['journal-series'] ?? null, $j['mismatches'] ?? null, PaymentMethodAccount::a($j['payment-methods'] ?? null), ProductGroupAccount::a($j['product-groups'] ?? null), $j['rounding'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -953,8 +953,8 @@ namespace Onslip360\API {
 			public int|null|Nil $rounding = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['gratuities'] ?? null, $json['journal-series'] ?? null, $json['mismatches'] ?? null, Partial_PaymentMethodAccount::a($json['payment-methods'] ?? null), Partial_ProductGroupAccount::a($json['product-groups'] ?? null), $json['rounding'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['gratuities'] ?? null, $j['journal-series'] ?? null, $j['mismatches'] ?? null, Partial_PaymentMethodAccount::a($j['payment-methods'] ?? null), Partial_ProductGroupAccount::a($j['product-groups'] ?? null), $j['rounding'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -968,8 +968,8 @@ namespace Onslip360\API {
 			public float $amount,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'], $json['amount'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'], $j['amount'] ];
 		}
 
 		protected function _toJson(): array {
@@ -983,8 +983,8 @@ namespace Onslip360\API {
 			public float|null $amount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['amount'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1003,8 +1003,8 @@ namespace Onslip360\API {
 			public string|null $triggerTime = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ TriggerAction::o($json['trigger-action']), static::e(TriggerEvent\Status::from(...), $json['trigger-status']), $json['user-alias'], $json['trigger'] ?? null, $json['trigger-etag'] ?? null, $json['trigger-event'] ?? null, $json['trigger-time'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ TriggerAction::o($j['trigger-action']), static::e(TriggerEvent\Status::from(...), $j['trigger-status']), $j['user-alias'], $j['trigger'] ?? null, $j['trigger-etag'] ?? null, $j['trigger-event'] ?? null, $j['trigger-time'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1023,8 +1023,8 @@ namespace Onslip360\API {
 			public string|null $userAlias = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['trigger'] ?? null, Partial_TriggerAction::o($json['trigger-action'] ?? null), $json['trigger-etag'] ?? null, $json['trigger-event'] ?? null, static::e(TriggerEvent\Status::from(...), $json['trigger-status'] ?? null), $json['trigger-time'] ?? null, $json['user-alias'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['trigger'] ?? null, Partial_TriggerAction::o($j['trigger-action'] ?? null), $j['trigger-etag'] ?? null, $j['trigger-event'] ?? null, static::e(TriggerEvent\Status::from(...), $j['trigger-status'] ?? null), $j['trigger-time'] ?? null, $j['user-alias'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1037,8 +1037,8 @@ namespace Onslip360\API {
 			public string $userKey,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['user-key'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['user-key'] ];
 		}
 
 		protected function _toJson(): array {
@@ -1051,8 +1051,8 @@ namespace Onslip360\API {
 			public string|null $userKey = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['user-key'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['user-key'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1072,8 +1072,8 @@ namespace Onslip360\API {
 			public array|null $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(Batch\Type::from(...), $json['type']), Payment::a($json['amounts'] ?? null), $json['cash-amount'] ?? null, VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(Batch\Type::from(...), $j['type']), Payment::a($j['amounts'] ?? null), $j['cash-amount'] ?? null, VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1093,8 +1093,8 @@ namespace Onslip360\API {
 			public array|null|Nil $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_Payment::a($json['amounts'] ?? null), $json['cash-amount'] ?? null, static::e(Batch\Type::from(...), $json['type'] ?? null), Partial_VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_Payment::a($j['amounts'] ?? null), $j['cash-amount'] ?? null, static::e(Batch\Type::from(...), $j['type'] ?? null), Partial_VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1124,8 +1124,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['parent'], $json['product'], $json['rank'], $json['type'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['theme'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['parent'], $j['product'], $j['rank'], $j['type'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['theme'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1150,8 +1150,8 @@ namespace Onslip360\API {
 			public string|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['parent'] ?? null, $json['product'] ?? null, $json['rank'] ?? null, $json['tags'] ?? null, $json['theme'] ?? null, $json['type'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['parent'] ?? null, $j['product'] ?? null, $j['rank'] ?? null, $j['tags'] ?? null, $j['theme'] ?? null, $j['type'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1181,8 +1181,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['parent'], $json['product'], $json['rank'], $json['type'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['theme'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['parent'], $j['product'], $j['rank'], $j['type'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['theme'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1213,8 +1213,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ButtonMapItem::a($json['buttons']), $json['height'], $json['name'], static::e(ButtonMap\Type::from(...), $json['type']), $json['width'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $json['theme'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ ButtonMapItem::a($j['buttons']), $j['height'], $j['name'], static::e(ButtonMap\Type::from(...), $j['type']), $j['width'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $j['theme'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1240,8 +1240,8 @@ namespace Onslip360\API {
 			public int|null $width = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_ButtonMapItem::a($json['buttons'] ?? null), $json['deleted'] ?? null, $json['height'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $json['theme'] ?? null), static::e(ButtonMap\Type::from(...), $json['type'] ?? null), $json['width'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_ButtonMapItem::a($j['buttons'] ?? null), $j['deleted'] ?? null, $j['height'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $j['theme'] ?? null), static::e(ButtonMap\Type::from(...), $j['type'] ?? null), $j['width'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1272,8 +1272,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ButtonMapItem::a($json['buttons']), $json['created'], $json['height'], $json['id'], $json['name'], static::e(ButtonMap\Type::from(...), $json['type']), $json['updated'], $json['width'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $json['theme'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ ButtonMapItem::a($j['buttons']), $j['created'], $j['height'], $j['id'], $j['name'], static::e(ButtonMap\Type::from(...), $j['type']), $j['updated'], $j['width'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, static::e(ButtonMap\Theme::from(...), $j['theme'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1296,8 +1296,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ButtonMapItem\Action::from(...), $json['action']), $json['x'], $json['y'], $json['amount'] ?? null, $json['button-map'] ?? null, $json['discount-rate'] ?? null, static::e(ButtonMapItem\DiscountType::from(...), $json['discount-type'] ?? null), $json['name'] ?? null, $json['product'] ?? null, $json['theme'] ?? null, $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ButtonMapItem\Action::from(...), $j['action']), $j['x'], $j['y'], $j['amount'] ?? null, $j['button-map'] ?? null, $j['discount-rate'] ?? null, static::e(ButtonMapItem\DiscountType::from(...), $j['discount-type'] ?? null), $j['name'] ?? null, $j['product'] ?? null, $j['theme'] ?? null, $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1320,8 +1320,8 @@ namespace Onslip360\API {
 			public int|null $y = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ButtonMapItem\Action::from(...), $json['action'] ?? null), $json['amount'] ?? null, $json['button-map'] ?? null, $json['discount-rate'] ?? null, static::e(ButtonMapItem\DiscountType::from(...), $json['discount-type'] ?? null), $json['name'] ?? null, $json['product'] ?? null, $json['theme'] ?? null, $json['uri'] ?? null, $json['x'] ?? null, $json['y'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ButtonMapItem\Action::from(...), $j['action'] ?? null), $j['amount'] ?? null, $j['button-map'] ?? null, $j['discount-rate'] ?? null, static::e(ButtonMapItem\DiscountType::from(...), $j['discount-type'] ?? null), $j['name'] ?? null, $j['product'] ?? null, $j['theme'] ?? null, $j['uri'] ?? null, $j['x'] ?? null, $j['y'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1334,8 +1334,8 @@ namespace Onslip360\API {
 			public string $csr,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['csr'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['csr'] ];
 		}
 
 		protected function _toJson(): array {
@@ -1348,8 +1348,8 @@ namespace Onslip360\API {
 			public string|null $csr = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['csr'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['csr'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1366,8 +1366,8 @@ namespace Onslip360\API {
 			public string $ou,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['c'], $json['cn'], KeySpecification::o($json['key']), $json['o'], $json['ou'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['c'], $j['cn'], KeySpecification::o($j['key']), $j['o'], $j['ou'] ];
 		}
 
 		protected function _toJson(): array {
@@ -1384,8 +1384,8 @@ namespace Onslip360\API {
 			public string|null $ou = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['c'] ?? null, $json['cn'] ?? null, Partial_KeySpecification::o($json['key'] ?? null), $json['o'] ?? null, $json['ou'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['c'] ?? null, $j['cn'] ?? null, Partial_KeySpecification::o($j['key'] ?? null), $j['o'] ?? null, $j['ou'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1425,8 +1425,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], CampaignRules::a($json['rules']), static::e(Campaign\Type::from(...), $json['type']), $json['active-labels'] ?? null, $json['amount'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['discount-rate'] ?? null, $json['end-date'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['locations'] ?? null, $json['package-price'] ?? null, $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], CampaignRules::a($j['rules']), static::e(Campaign\Type::from(...), $j['type']), $j['active-labels'] ?? null, $j['amount'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['discount-rate'] ?? null, $j['end-date'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['locations'] ?? null, $j['package-price'] ?? null, $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1461,8 +1461,8 @@ namespace Onslip360\API {
 			public Campaign\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['active-labels'] ?? null, $json['amount'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['discount-rate'] ?? null, $json['end-date'] ?? null, $json['labels'] ?? null, $json['locations'] ?? null, $json['name'] ?? null, $json['package-price'] ?? null, Partial_CampaignRules::a($json['rules'] ?? null), $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, static::e(Campaign\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['active-labels'] ?? null, $j['amount'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['discount-rate'] ?? null, $j['end-date'] ?? null, $j['labels'] ?? null, $j['locations'] ?? null, $j['name'] ?? null, $j['package-price'] ?? null, Partial_CampaignRules::a($j['rules'] ?? null), $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, static::e(Campaign\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1502,8 +1502,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], CampaignRules::a($json['rules']), static::e(Campaign\Type::from(...), $json['type']), $json['updated'], $json['active-labels'] ?? null, $json['amount'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['discount-rate'] ?? null, $json['end-date'] ?? null, $json['labels'] ?? null, $json['locations'] ?? null, $json['package-price'] ?? null, $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], CampaignRules::a($j['rules']), static::e(Campaign\Type::from(...), $j['type']), $j['updated'], $j['active-labels'] ?? null, $j['amount'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['discount-rate'] ?? null, $j['end-date'] ?? null, $j['labels'] ?? null, $j['locations'] ?? null, $j['package-price'] ?? null, $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1522,8 +1522,8 @@ namespace Onslip360\API {
 			public array|null $labels = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['products'], $json['quantity'], $json['labels'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['products'], $j['quantity'], $j['labels'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1542,8 +1542,8 @@ namespace Onslip360\API {
 			public float|null $quantity = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['labels'] ?? null, $json['products'] ?? null, $json['quantity'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['labels'] ?? null, $j['products'] ?? null, $j['quantity'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1583,8 +1583,8 @@ namespace Onslip360\API {
 			public string|null $transmissionId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['acquirers-ref-no'], $json['bank-agent-name'], $json['batch-id'], $json['contact-support'], $json['customer-copy'], $json['end-date'], $json['merchant-copy'], $json['start-date'], $json['terminal-id'], $json['transaction-date'], $json['transaction-id'], TransactionSummary::o($json['transaction-summary']), TransactionSummaryGroup::a($json['transaction-summary-groups']), static::e(CardMetadata\TransactionType::from(...), $json['transaction-type']), TransactionSummary::o($json['acquirers-transaction-summary'] ?? null), $json['device'] ?? null, $json['merchant-id'] ?? null, $json['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $json['status'] ?? null), $json['status-code'] ?? null, $json['status-message'] ?? null, $json['terminal-name'] ?? null, $json['transaction-reference'] ?? null, $json['transaction-result'] ?? null, $json['transmission-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['contact-support'], $j['customer-copy'], $j['end-date'], $j['merchant-copy'], $j['start-date'], $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], TransactionSummary::o($j['transaction-summary']), TransactionSummaryGroup::a($j['transaction-summary-groups']), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['device'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1624,8 +1624,8 @@ namespace Onslip360\API {
 			public string|null|Nil $transmissionId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['acquirers-ref-no'] ?? null, Partial_TransactionSummary::o($json['acquirers-transaction-summary'] ?? null), $json['bank-agent-name'] ?? null, $json['batch-id'] ?? null, $json['contact-support'] ?? null, $json['customer-copy'] ?? null, $json['device'] ?? null, $json['end-date'] ?? null, $json['merchant-copy'] ?? null, $json['merchant-id'] ?? null, $json['request-id'] ?? null, $json['start-date'] ?? null, static::e(CardMetadata\Status::from(...), $json['status'] ?? null), $json['status-code'] ?? null, $json['status-message'] ?? null, $json['terminal-id'] ?? null, $json['terminal-name'] ?? null, $json['transaction-date'] ?? null, $json['transaction-id'] ?? null, $json['transaction-reference'] ?? null, $json['transaction-result'] ?? null, Partial_TransactionSummary::o($json['transaction-summary'] ?? null), Partial_TransactionSummaryGroup::a($json['transaction-summary-groups'] ?? null), static::e(CardMetadata\TransactionType::from(...), $json['transaction-type'] ?? null), $json['transmission-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['acquirers-ref-no'] ?? null, Partial_TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, $j['contact-support'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, $j['end-date'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, $j['start-date'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, Partial_TransactionSummary::o($j['transaction-summary'] ?? null), Partial_TransactionSummaryGroup::a($j['transaction-summary-groups'] ?? null), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1687,8 +1687,8 @@ namespace Onslip360\API {
 			public float|null $vatAmount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['acquirers-ref-no'], $json['bank-agent-name'], $json['batch-id'], $json['card-holder-signature'], $json['cashier-signature'], $json['contact-support'], $json['customer-copy'], static::e(CardReceiptMetadata\EntryMode::from(...), $json['entry-mode']), $json['merchant-copy'], static::e(CardMetadata\Status::from(...), $json['status']), $json['terminal-id'], $json['transaction-date'], $json['transaction-id'], static::e(CardMetadata\TransactionType::from(...), $json['transaction-type']), static::e(CardReceiptMetadata\VerificationMethod::from(...), $json['verification-method']), $json['ac'] ?? null, $json['aid'] ?? null, $json['auth-approval-code'] ?? null, $json['auth-channel'] ?? null, $json['auth-responder'] ?? null, $json['auth-response-code'] ?? null, $json['auth-summary'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $json['card-account'] ?? null), $json['card-app'] ?? null, $json['card-cna'] ?? null, $json['card-holder-id'] ?? null, $json['cb-amount'] ?? null, $json['contactless-kernel-id'] ?? null, $json['currency-code'] ?? null, $json['device'] ?? null, $json['extra-amount'] ?? null, $json['financial-institution'] ?? null, $json['ksn'] ?? null, $json['merchant-id'] ?? null, $json['org-number'] ?? null, $json['pan'] ?? null, $json['payment-code'] ?? null, $json['psn'] ?? null, $json['receipt-lines'] ?? null, $json['request-id'] ?? null, $json['status-code'] ?? null, $json['status-message'] ?? null, $json['terminal-name'] ?? null, $json['transaction-reference'] ?? null, $json['transaction-result'] ?? null, $json['transmission-id'] ?? null, $json['tsi'] ?? null, $json['tvr'] ?? null, $json['tx-amount'] ?? null, $json['vat-amount'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['card-holder-signature'], $j['cashier-signature'], $j['contact-support'], $j['customer-copy'], static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode']), $j['merchant-copy'], static::e(CardMetadata\Status::from(...), $j['status']), $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method']), $j['ac'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['cb-amount'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['device'] ?? null, $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1750,8 +1750,8 @@ namespace Onslip360\API {
 			public CardReceiptMetadata\VerificationMethod|null $verificationMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['ac'] ?? null, $json['acquirers-ref-no'] ?? null, $json['aid'] ?? null, $json['auth-approval-code'] ?? null, $json['auth-channel'] ?? null, $json['auth-responder'] ?? null, $json['auth-response-code'] ?? null, $json['auth-summary'] ?? null, $json['bank-agent-name'] ?? null, $json['batch-id'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $json['card-account'] ?? null), $json['card-app'] ?? null, $json['card-cna'] ?? null, $json['card-holder-id'] ?? null, $json['card-holder-signature'] ?? null, $json['cashier-signature'] ?? null, $json['cb-amount'] ?? null, $json['contact-support'] ?? null, $json['contactless-kernel-id'] ?? null, $json['currency-code'] ?? null, $json['customer-copy'] ?? null, $json['device'] ?? null, static::e(CardReceiptMetadata\EntryMode::from(...), $json['entry-mode'] ?? null), $json['extra-amount'] ?? null, $json['financial-institution'] ?? null, $json['ksn'] ?? null, $json['merchant-copy'] ?? null, $json['merchant-id'] ?? null, $json['org-number'] ?? null, $json['pan'] ?? null, $json['payment-code'] ?? null, $json['psn'] ?? null, $json['receipt-lines'] ?? null, $json['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $json['status'] ?? null), $json['status-code'] ?? null, $json['status-message'] ?? null, $json['terminal-id'] ?? null, $json['terminal-name'] ?? null, $json['transaction-date'] ?? null, $json['transaction-id'] ?? null, $json['transaction-reference'] ?? null, $json['transaction-result'] ?? null, static::e(CardMetadata\TransactionType::from(...), $json['transaction-type'] ?? null), $json['transmission-id'] ?? null, $json['tsi'] ?? null, $json['tvr'] ?? null, $json['tx-amount'] ?? null, $json['vat-amount'] ?? null, static::e(CardReceiptMetadata\VerificationMethod::from(...), $json['verification-method'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['ac'] ?? null, $j['acquirers-ref-no'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['card-holder-signature'] ?? null, $j['cashier-signature'] ?? null, $j['cb-amount'] ?? null, $j['contact-support'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode'] ?? null), $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null, static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1767,8 +1767,8 @@ namespace Onslip360\API {
 			public CardReceiptMetadata|null $cardReceipt = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['id'], static::e(CardTransaction\Type::from(...), $json['type']), CardBatchSummaryMetadata::o($json['card-batch-summary'] ?? null), CardReceiptMetadata::o($json['card-receipt'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['id'], static::e(CardTransaction\Type::from(...), $j['type']), CardBatchSummaryMetadata::o($j['card-batch-summary'] ?? null), CardReceiptMetadata::o($j['card-receipt'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1784,8 +1784,8 @@ namespace Onslip360\API {
 			public CardTransaction\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_CardBatchSummaryMetadata::o($json['card-batch-summary'] ?? null), Partial_CardReceiptMetadata::o($json['card-receipt'] ?? null), $json['id'] ?? null, static::e(CardTransaction\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_CardBatchSummaryMetadata::o($j['card-batch-summary'] ?? null), Partial_CardReceiptMetadata::o($j['card-receipt'] ?? null), $j['id'] ?? null, static::e(CardTransaction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1798,8 +1798,8 @@ namespace Onslip360\API {
 			public CashDrawer\Type $type,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CashDrawer\Type::from(...), $json['type']) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CashDrawer\Type::from(...), $j['type']) ];
 		}
 
 		protected function _toJson(): array {
@@ -1812,8 +1812,8 @@ namespace Onslip360\API {
 			public CashDrawer\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CashDrawer\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CashDrawer\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1842,8 +1842,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['expires'] ?? null, $json['id'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, $json['pkcs-12-store'] ?? null, $json['tags'] ?? null, static::e(Cert\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['expires'] ?? null, $j['id'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, $j['pkcs-12-store'] ?? null, $j['tags'] ?? null, static::e(Cert\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1867,8 +1867,8 @@ namespace Onslip360\API {
 			public Cert\Type|null|Nil $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['expires'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['pkcs-12-store'] ?? null, $json['tags'] ?? null, static::e(Cert\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['expires'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['pkcs-12-store'] ?? null, $j['tags'] ?? null, static::e(Cert\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1897,8 +1897,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['expires'] ?? null, $json['key'] ?? null, $json['labels'] ?? null, $json['pkcs-12-store'] ?? null, $json['tags'] ?? null, static::e(Cert\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['expires'] ?? null, $j['key'] ?? null, $j['labels'] ?? null, $j['pkcs-12-store'] ?? null, $j['tags'] ?? null, static::e(Cert\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1925,8 +1925,8 @@ namespace Onslip360\API {
 			public Stored_User|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Company::o($json['company']), MerchantParams::o($json['merchant-params']), static::e(Permission::from(...), $json['permissions']), ServiceEndpoint::a($json['service-endpoints']), SystemParams::o($json['system-params']), Stored_CompanyConfig::o($json['company-config'] ?? null), Stored_Location::o($json['location'] ?? null), $json['p2p-key'] ?? null, $json['p2p-realm'] ?? null, Stored_Till::o($json['till'] ?? null), Stored_User::o($json['user'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Company::o($j['company']), MerchantParams::o($j['merchant-params']), static::e(Permission::from(...), $j['permissions']), ServiceEndpoint::a($j['service-endpoints']), SystemParams::o($j['system-params']), Stored_CompanyConfig::o($j['company-config'] ?? null), Stored_Location::o($j['location'] ?? null), $j['p2p-key'] ?? null, $j['p2p-realm'] ?? null, Stored_Till::o($j['till'] ?? null), Stored_User::o($j['user'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1953,8 +1953,8 @@ namespace Onslip360\API {
 			public Partial_User|null|Nil $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_Company::o($json['company'] ?? null), Partial_CompanyConfig::o($json['company-config'] ?? null), Partial_Location::o($json['location'] ?? null), Partial_MerchantParams::o($json['merchant-params'] ?? null), $json['p2p-key'] ?? null, $json['p2p-realm'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), Partial_ServiceEndpoint::a($json['service-endpoints'] ?? null), Partial_SystemParams::o($json['system-params'] ?? null), Partial_Till::o($json['till'] ?? null), Partial_User::o($json['user'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_Company::o($j['company'] ?? null), Partial_CompanyConfig::o($j['company-config'] ?? null), Partial_Location::o($j['location'] ?? null), Partial_MerchantParams::o($j['merchant-params'] ?? null), $j['p2p-key'] ?? null, $j['p2p-realm'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), Partial_ServiceEndpoint::a($j['service-endpoints'] ?? null), Partial_SystemParams::o($j['system-params'] ?? null), Partial_Till::o($j['till'] ?? null), Partial_User::o($j['user'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -1970,8 +1970,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password'], static::e(CloudControlUnit\Type::from(...), $json['type']), $json['username'], $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password'], static::e(CloudControlUnit\Type::from(...), $j['type']), $j['username'], $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -1987,8 +1987,8 @@ namespace Onslip360\API {
 			public string|null $username = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password'] ?? null, static::e(CloudControlUnit\Type::from(...), $json['type'] ?? null), $json['uri'] ?? null, $json['username'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password'] ?? null, static::e(CloudControlUnit\Type::from(...), $j['type'] ?? null), $j['uri'] ?? null, $j['username'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2006,8 +2006,8 @@ namespace Onslip360\API {
 			public string $type,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['firmware'], $json['id'], $json['installed-licenses'], $json['main-status'], $json['storage-status'], $json['type'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['firmware'], $j['id'], $j['installed-licenses'], $j['main-status'], $j['storage-status'], $j['type'] ];
 		}
 
 		protected function _toJson(): array {
@@ -2025,8 +2025,8 @@ namespace Onslip360\API {
 			public string|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['firmware'] ?? null, $json['id'] ?? null, $json['installed-licenses'] ?? null, $json['main-status'] ?? null, $json['storage-status'] ?? null, $json['type'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['firmware'] ?? null, $j['id'] ?? null, $j['installed-licenses'] ?? null, $j['main-status'] ?? null, $j['storage-status'] ?? null, $j['type'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2043,8 +2043,8 @@ namespace Onslip360\API {
 			public array|null $args = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['args'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['args'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2061,8 +2061,8 @@ namespace Onslip360\API {
 			public string|null $name = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['args'] ?? null, $json['name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['args'] ?? null, $j['name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2103,8 +2103,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['alias'], $json['name'], $json['org-number'], $json['phone-number'], static::e(Company\Category::from(...), $json['business-category'] ?? null), $json['created'] ?? null, $json['currency'] ?? null, $json['deleted'] ?? null, $json['derivation-base-key'] ?? null, $json['email'] ?? null, CompanyFeature::o($json['feature'] ?? null), $json['id'] ?? null, $json['locale'] ?? null, static::e(Company\RegistrationType::from(...), $json['registration-type'] ?? null), $json['reseller'] ?? null, ResellerParams::o($json['reseller-params'] ?? null), $json['secondary-locale'] ?? null, $json['tags'] ?? null, $json['terminated'] ?? null, $json['time-zone'] ?? null, static::e(Company\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['alias'], $j['name'], $j['org-number'], $j['phone-number'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['created'] ?? null, $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['id'] ?? null, $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2140,8 +2140,8 @@ namespace Onslip360\API {
 			public string|null|Nil $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'] ?? null, $json['alias'] ?? null, static::e(Company\Category::from(...), $json['business-category'] ?? null), $json['currency'] ?? null, $json['deleted'] ?? null, $json['derivation-base-key'] ?? null, $json['email'] ?? null, Partial_CompanyFeature::o($json['feature'] ?? null), $json['locale'] ?? null, $json['name'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $json['registration-type'] ?? null), $json['reseller'] ?? null, Partial_ResellerParams::o($json['reseller-params'] ?? null), $json['secondary-locale'] ?? null, $json['tags'] ?? null, $json['terminated'] ?? null, $json['time-zone'] ?? null, static::e(Company\Type::from(...), $json['type'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'] ?? null, $j['alias'] ?? null, static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, Partial_CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, $j['name'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, Partial_ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2182,8 +2182,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['alias'], $json['created'], $json['id'], $json['name'], $json['org-number'], $json['phone-number'], $json['updated'], static::e(Company\Category::from(...), $json['business-category'] ?? null), $json['currency'] ?? null, $json['deleted'] ?? null, $json['derivation-base-key'] ?? null, $json['email'] ?? null, CompanyFeature::o($json['feature'] ?? null), $json['locale'] ?? null, static::e(Company\RegistrationType::from(...), $json['registration-type'] ?? null), $json['reseller'] ?? null, ResellerParams::o($json['reseller-params'] ?? null), $json['secondary-locale'] ?? null, $json['tags'] ?? null, $json['terminated'] ?? null, $json['time-zone'] ?? null, static::e(Company\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['alias'], $j['created'], $j['id'], $j['name'], $j['org-number'], $j['phone-number'], $j['updated'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2209,8 +2209,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ AccountConfig::o($json['account-config'] ?? null), $json['created'] ?? null, $json['deleted'] ?? null, $json['gratuity-handling'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ AccountConfig::o($j['account-config'] ?? null), $j['created'] ?? null, $j['deleted'] ?? null, $j['gratuity-handling'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2231,8 +2231,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_AccountConfig::o($json['account-config'] ?? null), $json['deleted'] ?? null, $json['gratuity-handling'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_AccountConfig::o($j['account-config'] ?? null), $j['deleted'] ?? null, $j['gratuity-handling'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2258,8 +2258,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], AccountConfig::o($json['account-config'] ?? null), $json['deleted'] ?? null, $json['gratuity-handling'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], AccountConfig::o($j['account-config'] ?? null), $j['deleted'] ?? null, $j['gratuity-handling'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2276,8 +2276,8 @@ namespace Onslip360\API {
 			public float|null $vivaWalletFeeRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CompanyFeature\Flag::from(...), $json['flags']), $json['viva-wallet-fee-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CompanyFeature\Flag::from(...), $j['flags']), $j['viva-wallet-fee-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2294,8 +2294,8 @@ namespace Onslip360\API {
 			public float|null|Nil $vivaWalletFeeRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CompanyFeature\Flag::from(...), $json['flags'] ?? null), $json['viva-wallet-fee-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CompanyFeature\Flag::from(...), $j['flags'] ?? null), $j['viva-wallet-fee-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2310,8 +2310,8 @@ namespace Onslip360\API {
 			public UserRegistrationInfo $user,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ CompanyRegistrationInfo::o($json['company']), TillRegistrationInfo::o($json['till']), UserRegistrationInfo::o($json['user']) ];
+		protected static function _fromJson(array $j): array {
+			return [ CompanyRegistrationInfo::o($j['company']), TillRegistrationInfo::o($j['till']), UserRegistrationInfo::o($j['user']) ];
 		}
 
 		protected function _toJson(): array {
@@ -2326,8 +2326,8 @@ namespace Onslip360\API {
 			public Partial_UserRegistrationInfo|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_CompanyRegistrationInfo::o($json['company'] ?? null), Partial_TillRegistrationInfo::o($json['till'] ?? null), Partial_UserRegistrationInfo::o($json['user'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_CompanyRegistrationInfo::o($j['company'] ?? null), Partial_TillRegistrationInfo::o($j['till'] ?? null), Partial_UserRegistrationInfo::o($j['user'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -2351,8 +2351,8 @@ namespace Onslip360\API {
 			public string|null $timeZone = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['city'], $json['name'], $json['org-number'], $json['phone-number'], $json['street'], $json['zip-code'], static::e(Company\Category::from(...), $json['business-category'] ?? null), $json['currency'] ?? null, $json['locale'] ?? null, static::e(Company\RegistrationType::from(...), $json['registration-type'] ?? null), $json['time-zone'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['city'], $j['name'], $j['org-number'], $j['phone-number'], $j['street'], $j['zip-code'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['time-zone'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2376,8 +2376,8 @@ namespace Onslip360\API {
 			public string|null $zipCode = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, static::e(Company\Category::from(...), $json['business-category'] ?? null), $json['city'] ?? null, $json['currency'] ?? null, $json['locale'] ?? null, $json['name'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $json['registration-type'] ?? null), $json['street'] ?? null, $json['time-zone'] ?? null, $json['zip-code'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['city'] ?? null, $j['currency'] ?? null, $j['locale'] ?? null, $j['name'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['street'] ?? null, $j['time-zone'] ?? null, $j['zip-code'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2405,8 +2405,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], CompanyFeature::o($json['feature']), TillSummary::a($json['till-summaries']), static::e(Company\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['reseller'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], CompanyFeature::o($j['feature']), TillSummary::a($j['till-summaries']), static::e(Company\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['reseller'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2429,8 +2429,8 @@ namespace Onslip360\API {
 			public Company\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, $json['deleted'] ?? null, Partial_CompanyFeature::o($json['feature'] ?? null), $json['reseller'] ?? null, $json['tags'] ?? null, Partial_TillSummary::a($json['till-summaries'] ?? null), static::e(Company\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['deleted'] ?? null, Partial_CompanyFeature::o($j['feature'] ?? null), $j['reseller'] ?? null, $j['tags'] ?? null, Partial_TillSummary::a($j['till-summaries'] ?? null), static::e(Company\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -2458,8 +2458,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['created'], CompanyFeature::o($json['feature']), $json['id'], TillSummary::a($json['till-summaries']), static::e(Company\Type::from(...), $json['type']), $json['updated'], $json['deleted'] ?? null, $json['reseller'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['created'], CompanyFeature::o($j['feature']), $j['id'], TillSummary::a($j['till-summaries']), static::e(Company\Type::from(...), $j['type']), $j['updated'], $j['deleted'] ?? null, $j['reseller'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2476,8 +2476,8 @@ namespace Onslip360\API {
 			public float|null $couponValue = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['credit-limit'], $json['product'], $json['quantity'], $json['balance'] ?? null, $json['coupon-value'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['credit-limit'], $j['product'], $j['quantity'], $j['balance'] ?? null, $j['coupon-value'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2493,8 +2493,8 @@ namespace Onslip360\API {
 			public float|null $quantity = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['coupon-value'] ?? null, $json['credit-limit'] ?? null, $json['product'] ?? null, $json['quantity'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['coupon-value'] ?? null, $j['credit-limit'] ?? null, $j['product'] ?? null, $j['quantity'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2517,8 +2517,8 @@ namespace Onslip360\API {
 			public float|null $quantity = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['transaction-date'], $json['transaction-id'], $json['voucher'], $json['balance'] ?? null, $json['coupon-value'] ?? null, $json['expires'] ?? null, $json['identifiers'] ?? null, $json['quantity'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['transaction-date'], $j['transaction-id'], $j['voucher'], $j['balance'] ?? null, $j['coupon-value'] ?? null, $j['expires'] ?? null, $j['identifiers'] ?? null, $j['quantity'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2541,8 +2541,8 @@ namespace Onslip360\API {
 			public int|null $voucher = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['balance'] ?? null, $json['coupon-value'] ?? null, $json['expires'] ?? null, $json['identifiers'] ?? null, $json['quantity'] ?? null, $json['transaction-date'] ?? null, $json['transaction-id'] ?? null, $json['voucher'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['balance'] ?? null, $j['coupon-value'] ?? null, $j['expires'] ?? null, $j['identifiers'] ?? null, $j['quantity'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['voucher'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2557,8 +2557,8 @@ namespace Onslip360\API {
 			public string|null $currencySymbol = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['currency-code'], $json['exchange-rate'], $json['currency-symbol'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['currency-code'], $j['exchange-rate'], $j['currency-symbol'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2573,8 +2573,8 @@ namespace Onslip360\API {
 			public float|null $exchangeRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['currency-code'] ?? null, $json['currency-symbol'] ?? null, $json['exchange-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['currency-code'] ?? null, $j['currency-symbol'] ?? null, $j['exchange-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2613,8 +2613,8 @@ namespace Onslip360\API {
 			public string|null $zipCode = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['city'] ?? null, $json['client-references'] ?? null, $json['comment'] ?? null, $json['country'] ?? null, $json['created'] ?? null, $json['customer-number'] ?? null, $json['deleted'] ?? null, $json['email'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, $json['reference-name'] ?? null, $json['street-address'] ?? null, $json['subscription'] ?? null, $json['tags'] ?? null, static::e(Customer\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['zip-code'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['city'] ?? null, $j['client-references'] ?? null, $j['comment'] ?? null, $j['country'] ?? null, $j['created'] ?? null, $j['customer-number'] ?? null, $j['deleted'] ?? null, $j['email'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, $j['reference-name'] ?? null, $j['street-address'] ?? null, $j['subscription'] ?? null, $j['tags'] ?? null, static::e(Customer\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['zip-code'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2648,8 +2648,8 @@ namespace Onslip360\API {
 			public string|null|Nil $zipCode = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['city'] ?? null, $json['client-references'] ?? null, $json['comment'] ?? null, $json['country'] ?? null, $json['customer-number'] ?? null, $json['deleted'] ?? null, $json['email'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, $json['reference-name'] ?? null, $json['street-address'] ?? null, $json['subscription'] ?? null, $json['tags'] ?? null, static::e(Customer\Type::from(...), $json['type'] ?? null), $json['zip-code'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['city'] ?? null, $j['client-references'] ?? null, $j['comment'] ?? null, $j['country'] ?? null, $j['customer-number'] ?? null, $j['deleted'] ?? null, $j['email'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, $j['reference-name'] ?? null, $j['street-address'] ?? null, $j['subscription'] ?? null, $j['tags'] ?? null, static::e(Customer\Type::from(...), $j['type'] ?? null), $j['zip-code'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2688,8 +2688,8 @@ namespace Onslip360\API {
 			public string|null $zipCode = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], $json['city'] ?? null, $json['client-references'] ?? null, $json['comment'] ?? null, $json['country'] ?? null, $json['customer-number'] ?? null, $json['deleted'] ?? null, $json['email'] ?? null, $json['labels'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, $json['reference-name'] ?? null, $json['street-address'] ?? null, $json['subscription'] ?? null, $json['tags'] ?? null, static::e(Customer\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['zip-code'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], $j['city'] ?? null, $j['client-references'] ?? null, $j['comment'] ?? null, $j['country'] ?? null, $j['customer-number'] ?? null, $j['deleted'] ?? null, $j['email'] ?? null, $j['labels'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, $j['reference-name'] ?? null, $j['street-address'] ?? null, $j['subscription'] ?? null, $j['tags'] ?? null, static::e(Customer\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['zip-code'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2704,8 +2704,8 @@ namespace Onslip360\API {
 			public int|null $till = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['message'], static::e(CustomerFeedbackParams\Mood::from(...), $json['mood']), $json['till'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['message'], static::e(CustomerFeedbackParams\Mood::from(...), $j['mood']), $j['till'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2720,8 +2720,8 @@ namespace Onslip360\API {
 			public int|null|Nil $till = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['message'] ?? null, static::e(CustomerFeedbackParams\Mood::from(...), $json['mood'] ?? null), $json['till'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['message'] ?? null, static::e(CustomerFeedbackParams\Mood::from(...), $j['mood'] ?? null), $j['till'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2734,8 +2734,8 @@ namespace Onslip360\API {
 			public bool|null $subscription = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['subscription'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['subscription'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2748,8 +2748,8 @@ namespace Onslip360\API {
 			public bool|null|Nil $subscription = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['subscription'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['subscription'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2782,8 +2782,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['message'], $json['name'], static::e(DMCampaign\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, DMCampaignRecipient::a($json['recipients'] ?? null), $json['sender'] ?? null, static::e(DMCampaign\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, $json['trigger-event'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['message'], $j['name'], static::e(DMCampaign\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, DMCampaignRecipient::a($j['recipients'] ?? null), $j['sender'] ?? null, static::e(DMCampaign\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['trigger-event'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2811,8 +2811,8 @@ namespace Onslip360\API {
 			public int|null|Nil $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['message'] ?? null, $json['name'] ?? null, Partial_DMCampaignRecipient::a($json['recipients'] ?? null), $json['sender'] ?? null, static::e(DMCampaign\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, $json['trigger-event'] ?? null, static::e(DMCampaign\Type::from(...), $json['type'] ?? null), $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['message'] ?? null, $j['name'] ?? null, Partial_DMCampaignRecipient::a($j['recipients'] ?? null), $j['sender'] ?? null, static::e(DMCampaign\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['trigger-event'] ?? null, static::e(DMCampaign\Type::from(...), $j['type'] ?? null), $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2845,8 +2845,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['message'], $json['name'], static::e(DMCampaign\Type::from(...), $json['type']), $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, DMCampaignRecipient::a($json['recipients'] ?? null), $json['sender'] ?? null, static::e(DMCampaign\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, $json['trigger-event'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['message'], $j['name'], static::e(DMCampaign\Type::from(...), $j['type']), $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, DMCampaignRecipient::a($j['recipients'] ?? null), $j['sender'] ?? null, static::e(DMCampaign\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['trigger-event'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2859,8 +2859,8 @@ namespace Onslip360\API {
 			public DMCampaign $dmCampaign,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ DMCampaign::o($json['dm-campaign']) ];
+		protected static function _fromJson(array $j): array {
+			return [ DMCampaign::o($j['dm-campaign']) ];
 		}
 
 		protected function _toJson(): array {
@@ -2873,8 +2873,8 @@ namespace Onslip360\API {
 			public Partial_DMCampaign|null $dmCampaign = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_DMCampaign::o($json['dm-campaign'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_DMCampaign::o($j['dm-campaign'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -2889,8 +2889,8 @@ namespace Onslip360\API {
 			public DMCampaignRecipient\Status|null $status = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['customer'], $json['recipient-uri'], static::e(DMCampaignRecipient\Status::from(...), $json['status'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['customer'], $j['recipient-uri'], static::e(DMCampaignRecipient\Status::from(...), $j['status'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -2905,8 +2905,8 @@ namespace Onslip360\API {
 			public DMCampaignRecipient\Status|null|Nil $status = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['customer'] ?? null, $json['recipient-uri'] ?? null, static::e(DMCampaignRecipient\Status::from(...), $json['status'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['customer'] ?? null, $j['recipient-uri'] ?? null, static::e(DMCampaignRecipient\Status::from(...), $j['status'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -2920,8 +2920,8 @@ namespace Onslip360\API {
 			public string $password,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['key-id'], $json['password'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['key-id'], $j['password'] ];
 		}
 
 		protected function _toJson(): array {
@@ -2935,8 +2935,8 @@ namespace Onslip360\API {
 			public string|null $password = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['key-id'] ?? null, $json['password'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['key-id'] ?? null, $j['password'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2960,8 +2960,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -2980,8 +2980,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3005,8 +3005,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3021,8 +3021,8 @@ namespace Onslip360\API {
 			public string $resource,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectOperation\Operation::from(...), $json['operation']), DataObject::o($json['payload']), $json['resource'] ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectOperation\Operation::from(...), $j['operation']), DataObject::o($j['payload']), $j['resource'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3037,8 +3037,8 @@ namespace Onslip360\API {
 			public string|null $resource = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectOperation\Operation::from(...), $json['operation'] ?? null), Partial_DataObject::o($json['payload'] ?? null), $json['resource'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectOperation\Operation::from(...), $j['operation'] ?? null), Partial_DataObject::o($j['payload'] ?? null), $j['resource'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3065,8 +3065,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectReport\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, DataObjectRevision::a($json['revisions'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectReport\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, DataObjectRevision::a($j['revisions'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3088,8 +3088,8 @@ namespace Onslip360\API {
 			public DataObjectReport\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, Partial_DataObjectRevision::a($json['revisions'] ?? null), $json['tags'] ?? null, static::e(DataObjectReport\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, Partial_DataObjectRevision::a($j['revisions'] ?? null), $j['tags'] ?? null, static::e(DataObjectReport\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3116,8 +3116,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], static::e(DataObjectReport\Type::from(...), $json['type']), $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, DataObjectRevision::a($json['revisions'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], static::e(DataObjectReport\Type::from(...), $j['type']), $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, DataObjectRevision::a($j['revisions'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3133,8 +3133,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['updated'], $json['deleted'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['updated'], $j['deleted'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3150,8 +3150,8 @@ namespace Onslip360\API {
 			public int|null|Nil $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3167,8 +3167,8 @@ namespace Onslip360\API {
 			public string|null $name = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['data'], $json['size'], $json['type'], $json['name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['data'], $j['size'], $j['type'], $j['name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3218,8 +3218,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['cashier'], $json['cashier-name'], $json['client'], $json['client-name'], $json['company-name'], $json['date'], $json['org-number'], Receipt::o($json['receipt']), $json['recipient-uri'], $json['company'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['created'] ?? null, $json['currency'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, $json['id'] ?? null, $json['is-copy'] ?? null, $json['locale'] ?? null, $json['location'] ?? null, $json['phone-number'] ?? null, $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, static::e(DigitalReceipt\Status::from(...), $json['status'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, $json['tags'] ?? null, $json['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['cashier'], $j['cashier-name'], $j['client'], $j['client-name'], $j['company-name'], $j['date'], $j['org-number'], Receipt::o($j['receipt']), $j['recipient-uri'], $j['company'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['created'] ?? null, $j['currency'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, $j['id'] ?? null, $j['is-copy'] ?? null, $j['locale'] ?? null, $j['location'] ?? null, $j['phone-number'] ?? null, $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, static::e(DigitalReceipt\Status::from(...), $j['status'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, $j['tags'] ?? null, $j['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3264,8 +3264,8 @@ namespace Onslip360\API {
 			public string|null|Nil $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'] ?? null, $json['cashier'] ?? null, $json['cashier-name'] ?? null, $json['client'] ?? null, $json['client-name'] ?? null, $json['company'] ?? null, $json['company-name'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['currency'] ?? null, $json['date'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, $json['is-copy'] ?? null, $json['locale'] ?? null, $json['location'] ?? null, $json['org-number'] ?? null, $json['phone-number'] ?? null, Partial_Receipt::o($json['receipt'] ?? null), $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, $json['recipient-uri'] ?? null, static::e(DigitalReceipt\Status::from(...), $json['status'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, $json['tags'] ?? null, $json['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $json['type'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'] ?? null, $j['cashier'] ?? null, $j['cashier-name'] ?? null, $j['client'] ?? null, $j['client-name'] ?? null, $j['company'] ?? null, $j['company-name'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['currency'] ?? null, $j['date'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, $j['is-copy'] ?? null, $j['locale'] ?? null, $j['location'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, Partial_Receipt::o($j['receipt'] ?? null), $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, $j['recipient-uri'] ?? null, static::e(DigitalReceipt\Status::from(...), $j['status'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, $j['tags'] ?? null, $j['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3315,8 +3315,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['cashier-name'], $json['client-name'], $json['company-name'], $json['created'], $json['date'], $json['id'], $json['org-number'], Receipt::o($json['receipt']), $json['recipient-uri'], $json['updated'], $json['cashier'] ?? null, $json['client'] ?? null, $json['company'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['currency'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, $json['is-copy'] ?? null, $json['locale'] ?? null, $json['location'] ?? null, $json['phone-number'] ?? null, $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, static::e(DigitalReceipt\Status::from(...), $json['status'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, $json['tags'] ?? null, $json['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['cashier-name'], $j['client-name'], $j['company-name'], $j['created'], $j['date'], $j['id'], $j['org-number'], Receipt::o($j['receipt']), $j['recipient-uri'], $j['updated'], $j['cashier'] ?? null, $j['client'] ?? null, $j['company'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['currency'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, $j['is-copy'] ?? null, $j['locale'] ?? null, $j['location'] ?? null, $j['phone-number'] ?? null, $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, static::e(DigitalReceipt\Status::from(...), $j['status'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, $j['tags'] ?? null, $j['timezone-offset'] ?? null, static::e(DigitalReceipt\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3331,8 +3331,8 @@ namespace Onslip360\API {
 			public int $recipient,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['receipt'], $json['receipt-uri'], $json['recipient'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['receipt'], $j['receipt-uri'], $j['recipient'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3347,8 +3347,8 @@ namespace Onslip360\API {
 			public int|null $recipient = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['receipt'] ?? null, $json['receipt-uri'] ?? null, $json['recipient'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['receipt'] ?? null, $j['receipt-uri'] ?? null, $j['recipient'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3373,8 +3373,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['key'], $json['uid'], $json['uri'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['key'], $j['uid'], $j['uri'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3394,8 +3394,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['key'] ?? null, $json['tags'] ?? null, $json['uid'] ?? null, $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['key'] ?? null, $j['tags'] ?? null, $j['uid'] ?? null, $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3420,8 +3420,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['uid'], $json['updated'], $json['uri'], $json['deleted'] ?? null, $json['key'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['uid'], $j['updated'], $j['uri'], $j['deleted'] ?? null, $j['key'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3435,8 +3435,8 @@ namespace Onslip360\API {
 			public string $name,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'], $json['name'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'], $j['name'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3450,8 +3450,8 @@ namespace Onslip360\API {
 			public string|null $name = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3464,8 +3464,8 @@ namespace Onslip360\API {
 			public ERPAction\Type $type,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ERPAction\Type::from(...), $json['type']) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ERPAction\Type::from(...), $j['type']) ];
 		}
 
 		protected function _toJson(): array {
@@ -3478,8 +3478,8 @@ namespace Onslip360\API {
 			public ERPAction\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ERPAction\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ERPAction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3498,8 +3498,8 @@ namespace Onslip360\API {
 			public ZoinedActivation|null $zoined = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ERPAction\Type::from(...), $json['type']), BLActivation::o($json['bl'] ?? null), FortnoxActivation::o($json['fortnox'] ?? null), PersonalkollenActivation::o($json['personalkollen'] ?? null), PlandayActivation::o($json['planday'] ?? null), VismaActivation::o($json['visma'] ?? null), ZoinedActivation::o($json['zoined'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ERPAction\Type::from(...), $j['type']), BLActivation::o($j['bl'] ?? null), FortnoxActivation::o($j['fortnox'] ?? null), PersonalkollenActivation::o($j['personalkollen'] ?? null), PlandayActivation::o($j['planday'] ?? null), VismaActivation::o($j['visma'] ?? null), ZoinedActivation::o($j['zoined'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3518,8 +3518,8 @@ namespace Onslip360\API {
 			public Partial_ZoinedActivation|null|Nil $zoined = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_BLActivation::o($json['bl'] ?? null), Partial_FortnoxActivation::o($json['fortnox'] ?? null), Partial_PersonalkollenActivation::o($json['personalkollen'] ?? null), Partial_PlandayActivation::o($json['planday'] ?? null), static::e(ERPAction\Type::from(...), $json['type'] ?? null), Partial_VismaActivation::o($json['visma'] ?? null), Partial_ZoinedActivation::o($json['zoined'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_BLActivation::o($j['bl'] ?? null), Partial_FortnoxActivation::o($j['fortnox'] ?? null), Partial_PersonalkollenActivation::o($j['personalkollen'] ?? null), Partial_PlandayActivation::o($j['planday'] ?? null), static::e(ERPAction\Type::from(...), $j['type'] ?? null), Partial_VismaActivation::o($j['visma'] ?? null), Partial_ZoinedActivation::o($j['zoined'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3532,8 +3532,8 @@ namespace Onslip360\API {
 			public string $payload,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payload'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payload'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3546,8 +3546,8 @@ namespace Onslip360\API {
 			public string|null $payload = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payload'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payload'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3580,8 +3580,8 @@ namespace Onslip360\API {
 			public float|null $totalSalesVatAmount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['change'], $json['id'], Item::a($json['items']), $json['original-receipt-id'], Payment::a($json['payments']), $json['rounding'], $json['total-amount'], $json['total-vat-amount'], static::e(Receipt\Type::from(...), $json['type']), VATSummary::a($json['vat-summaries']), Customer::o($json['customer'] ?? null), $json['order'] ?? null, $json['reference'] ?? null, $json['tab'] ?? null, $json['total-sales-amount'] ?? null, $json['total-sales-vat-amount'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['change'], $j['id'], Item::a($j['items']), $j['original-receipt-id'], Payment::a($j['payments']), $j['rounding'], $j['total-amount'], $j['total-vat-amount'], static::e(Receipt\Type::from(...), $j['type']), VATSummary::a($j['vat-summaries']), Customer::o($j['customer'] ?? null), $j['order'] ?? null, $j['reference'] ?? null, $j['tab'] ?? null, $j['total-sales-amount'] ?? null, $j['total-sales-vat-amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3614,8 +3614,8 @@ namespace Onslip360\API {
 			public array|null $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['change'] ?? null, Partial_Customer::o($json['customer'] ?? null), $json['id'] ?? null, Partial_Item::a($json['items'] ?? null), $json['order'] ?? null, $json['original-receipt-id'] ?? null, Partial_Payment::a($json['payments'] ?? null), $json['reference'] ?? null, $json['rounding'] ?? null, $json['tab'] ?? null, $json['total-amount'] ?? null, $json['total-sales-amount'] ?? null, $json['total-sales-vat-amount'] ?? null, $json['total-vat-amount'] ?? null, static::e(Receipt\Type::from(...), $json['type'] ?? null), Partial_VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['change'] ?? null, Partial_Customer::o($j['customer'] ?? null), $j['id'] ?? null, Partial_Item::a($j['items'] ?? null), $j['order'] ?? null, $j['original-receipt-id'] ?? null, Partial_Payment::a($j['payments'] ?? null), $j['reference'] ?? null, $j['rounding'] ?? null, $j['tab'] ?? null, $j['total-amount'] ?? null, $j['total-sales-amount'] ?? null, $j['total-sales-vat-amount'] ?? null, $j['total-vat-amount'] ?? null, static::e(Receipt\Type::from(...), $j['type'] ?? null), Partial_VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3640,8 +3640,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ QueryTrigger::a($json['queries']), static::e(EventStream\State::from(...), $json['state']), $json['client'] ?? null, $json['created'] ?? null, $json['id'] ?? null, $json['location'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ QueryTrigger::a($j['queries']), static::e(EventStream\State::from(...), $j['state']), $j['client'] ?? null, $j['created'] ?? null, $j['id'] ?? null, $j['location'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3663,8 +3663,8 @@ namespace Onslip360\API {
 			public int|null|Nil $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['client'] ?? null, $json['location'] ?? null, Partial_QueryTrigger::a($json['queries'] ?? null), static::e(EventStream\State::from(...), $json['state'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['client'] ?? null, $j['location'] ?? null, Partial_QueryTrigger::a($j['queries'] ?? null), static::e(EventStream\State::from(...), $j['state'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3689,8 +3689,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], QueryTrigger::a($json['queries']), static::e(EventStream\State::from(...), $json['state']), $json['updated'], $json['client'] ?? null, $json['location'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], QueryTrigger::a($j['queries']), static::e(EventStream\State::from(...), $j['state']), $j['updated'], $j['client'] ?? null, $j['location'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3706,8 +3706,8 @@ namespace Onslip360\API {
 			public string $name,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['blob'], $json['content-type'], $json['length'], $json['name'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['blob'], $j['content-type'], $j['length'], $j['name'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3723,8 +3723,8 @@ namespace Onslip360\API {
 			public string|null $name = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['blob'] ?? null, $json['content-type'] ?? null, $json['length'] ?? null, $json['name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['blob'] ?? null, $j['content-type'] ?? null, $j['length'] ?? null, $j['name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3741,8 +3741,8 @@ namespace Onslip360\API {
 			public string|null $description = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ File::a($json['files']), $json['description'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ File::a($j['files']), $j['description'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3759,8 +3759,8 @@ namespace Onslip360\API {
 			public array|null $files = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['description'] ?? null, Partial_File::a($json['files'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['description'] ?? null, Partial_File::a($j['files'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3774,8 +3774,8 @@ namespace Onslip360\API {
 			public string $redirectUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['api-code'], $json['redirect-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['api-code'], $j['redirect-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3789,8 +3789,8 @@ namespace Onslip360\API {
 			public string|null $redirectUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['api-code'] ?? null, $json['redirect-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['api-code'] ?? null, $j['redirect-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3806,8 +3806,8 @@ namespace Onslip360\API {
 			public string $userName,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['count'], $json['user'], $json['user-name'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['count'], $j['user'], $j['user-name'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3823,8 +3823,8 @@ namespace Onslip360\API {
 			public string|null $userName = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['count'] ?? null, $json['user'] ?? null, $json['user-name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['count'] ?? null, $j['user'] ?? null, $j['user-name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3841,8 +3841,8 @@ namespace Onslip360\API {
 			public int $paymentMethodId,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token-id'], $json['access-token-key'], $json['api-uri'], $json['location'], $json['payment-method-id'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token-id'], $j['access-token-key'], $j['api-uri'], $j['location'], $j['payment-method-id'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3859,8 +3859,8 @@ namespace Onslip360\API {
 			public int|null $paymentMethodId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token-id'] ?? null, $json['access-token-key'] ?? null, $json['api-uri'] ?? null, $json['location'] ?? null, $json['payment-method-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token-id'] ?? null, $j['access-token-key'] ?? null, $j['api-uri'] ?? null, $j['location'] ?? null, $j['payment-method-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3873,8 +3873,8 @@ namespace Onslip360\API {
 			public DataObjectReport\Type $type,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectReport\Type::from(...), $json['type']) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectReport\Type::from(...), $j['type']) ];
 		}
 
 		protected function _toJson(): array {
@@ -3887,8 +3887,8 @@ namespace Onslip360\API {
 			public DataObjectReport\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectReport\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectReport\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -3904,8 +3904,8 @@ namespace Onslip360\API {
 			public string $keyId,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['content-type'], $json['data'], $json['hmac'], $json['key-id'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['content-type'], $j['data'], $j['hmac'], $j['key-id'] ];
 		}
 
 		protected function _toJson(): array {
@@ -3921,8 +3921,8 @@ namespace Onslip360\API {
 			public string|null $keyId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['content-type'] ?? null, $json['data'] ?? null, $json['hmac'] ?? null, $json['key-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['content-type'] ?? null, $j['data'] ?? null, $j['hmac'] ?? null, $j['key-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3950,8 +3950,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ InventoryAdjustmentItem::a($json['items']), $json['location'], static::e(InventoryAdjustment\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ InventoryAdjustmentItem::a($j['items']), $j['location'], static::e(InventoryAdjustment\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -3974,8 +3974,8 @@ namespace Onslip360\API {
 			public InventoryAdjustment\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, Partial_InventoryAdjustmentItem::a($json['items'] ?? null), $json['labels'] ?? null, $json['location'] ?? null, $json['tags'] ?? null, static::e(InventoryAdjustment\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, Partial_InventoryAdjustmentItem::a($j['items'] ?? null), $j['labels'] ?? null, $j['location'] ?? null, $j['tags'] ?? null, static::e(InventoryAdjustment\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -4003,8 +4003,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], InventoryAdjustmentItem::a($json['items']), $json['location'], static::e(InventoryAdjustment\Type::from(...), $json['type']), $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], InventoryAdjustmentItem::a($j['items']), $j['location'], static::e(InventoryAdjustment\Type::from(...), $j['type']), $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4020,8 +4020,8 @@ namespace Onslip360\API {
 			public float|null $purchasePrice = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['product'], $json['product-name'], $json['quantity-adjustment'], $json['purchase-price'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['product'], $j['product-name'], $j['quantity-adjustment'], $j['purchase-price'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4037,8 +4037,8 @@ namespace Onslip360\API {
 			public float|null $quantityAdjustment = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['product'] ?? null, $json['product-name'] ?? null, $json['purchase-price'] ?? null, $json['quantity-adjustment'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['product'] ?? null, $j['product-name'] ?? null, $j['purchase-price'] ?? null, $j['quantity-adjustment'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4081,8 +4081,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['product-name'], $json['quantity'], static::e(ProductGroup\Type::from(...), $json['type']), $json['campaign'] ?? null, $json['comment'] ?? null, $json['description'] ?? null, $json['description-t9n'] ?? null, $json['discount-rate'] ?? null, Item::o($json['last-kitchen-ticket-item'] ?? null), Metadata::o($json['metadata'] ?? null), $json['modifier'] ?? null, ItemModifier::a($json['modifiers'] ?? null), $json['price'] ?? null, $json['product'] ?? null, $json['product-group'] ?? null, $json['product-name-t9n'] ?? null, $json['purchase-price'] ?? null, $json['stock-location'] ?? null, Item::a($json['sub-items'] ?? null), $json['tickets'] ?? null, $json['undiscountable'] ?? null, $json['unit'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['product-name'], $j['quantity'], static::e(ProductGroup\Type::from(...), $j['type']), $j['campaign'] ?? null, $j['comment'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['discount-rate'] ?? null, Item::o($j['last-kitchen-ticket-item'] ?? null), Metadata::o($j['metadata'] ?? null), $j['modifier'] ?? null, ItemModifier::a($j['modifiers'] ?? null), $j['price'] ?? null, $j['product'] ?? null, $j['product-group'] ?? null, $j['product-name-t9n'] ?? null, $j['purchase-price'] ?? null, $j['stock-location'] ?? null, Item::a($j['sub-items'] ?? null), $j['tickets'] ?? null, $j['undiscountable'] ?? null, $j['unit'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4125,8 +4125,8 @@ namespace Onslip360\API {
 			public float|null|Nil $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['campaign'] ?? null, $json['comment'] ?? null, $json['description'] ?? null, $json['description-t9n'] ?? null, $json['discount-rate'] ?? null, Partial_Item::o($json['last-kitchen-ticket-item'] ?? null), Partial_Metadata::o($json['metadata'] ?? null), $json['modifier'] ?? null, Partial_ItemModifier::a($json['modifiers'] ?? null), $json['price'] ?? null, $json['product'] ?? null, $json['product-group'] ?? null, $json['product-name'] ?? null, $json['product-name-t9n'] ?? null, $json['purchase-price'] ?? null, $json['quantity'] ?? null, $json['stock-location'] ?? null, Partial_Item::a($json['sub-items'] ?? null), $json['tickets'] ?? null, static::e(ProductGroup\Type::from(...), $json['type'] ?? null), $json['undiscountable'] ?? null, $json['unit'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['campaign'] ?? null, $j['comment'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['discount-rate'] ?? null, Partial_Item::o($j['last-kitchen-ticket-item'] ?? null), Partial_Metadata::o($j['metadata'] ?? null), $j['modifier'] ?? null, Partial_ItemModifier::a($j['modifiers'] ?? null), $j['price'] ?? null, $j['product'] ?? null, $j['product-group'] ?? null, $j['product-name'] ?? null, $j['product-name-t9n'] ?? null, $j['purchase-price'] ?? null, $j['quantity'] ?? null, $j['stock-location'] ?? null, Partial_Item::a($j['sub-items'] ?? null), $j['tickets'] ?? null, static::e(ProductGroup\Type::from(...), $j['type'] ?? null), $j['undiscountable'] ?? null, $j['unit'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4144,8 +4144,8 @@ namespace Onslip360\API {
 			public array $values,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['modifier'], $json['name'], $json['values'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['modifier'], $j['name'], $j['values'] ];
 		}
 
 		protected function _toJson(): array {
@@ -4163,8 +4163,8 @@ namespace Onslip360\API {
 			public array|null $values = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['modifier'] ?? null, $json['name'] ?? null, $json['values'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['modifier'] ?? null, $j['name'] ?? null, $j['values'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4178,8 +4178,8 @@ namespace Onslip360\API {
 			public int|null $bits = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(KeySpecification\Algorithm::from(...), $json['algorithm'] ?? null), $json['bits'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(KeySpecification\Algorithm::from(...), $j['algorithm'] ?? null), $j['bits'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4193,8 +4193,8 @@ namespace Onslip360\API {
 			public int|null|Nil $bits = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(KeySpecification\Algorithm::from(...), $json['algorithm'] ?? null), $json['bits'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(KeySpecification\Algorithm::from(...), $j['algorithm'] ?? null), $j['bits'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4220,8 +4220,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['label-category'], $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['label-category'], $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4242,8 +4242,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['label-category'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['label-category'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4269,8 +4269,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['label-category'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['label-category'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4297,8 +4297,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['resources'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['resources'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4320,8 +4320,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['resources'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['resources'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4348,8 +4348,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['resources'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['resources'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4388,8 +4388,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], AccountConfig::o($json['account-config'] ?? null), $json['address'] ?? null, $json['company-name'] ?? null, LocationConfig::o($json['config'] ?? null), $json['created'] ?? null, File::o($json['customer-screen-logo'] ?? null), $json['deleted'] ?? null, $json['email'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['phone-number'] ?? null, $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, File::o($json['receipt-logo'] ?? null), $json['receipt-logo-gray'] ?? null, $json['receipt-logo-mono'] ?? null, $json['tags'] ?? null, TakeOutConfig::o($json['take-out-config'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], AccountConfig::o($j['account-config'] ?? null), $j['address'] ?? null, $j['company-name'] ?? null, LocationConfig::o($j['config'] ?? null), $j['created'] ?? null, File::o($j['customer-screen-logo'] ?? null), $j['deleted'] ?? null, $j['email'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['phone-number'] ?? null, $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, File::o($j['receipt-logo'] ?? null), $j['receipt-logo-gray'] ?? null, $j['receipt-logo-mono'] ?? null, $j['tags'] ?? null, TakeOutConfig::o($j['take-out-config'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4423,8 +4423,8 @@ namespace Onslip360\API {
 			public string|null|Nil $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_AccountConfig::o($json['account-config'] ?? null), $json['address'] ?? null, $json['company-name'] ?? null, Partial_LocationConfig::o($json['config'] ?? null), Partial_File::o($json['customer-screen-logo'] ?? null), $json['deleted'] ?? null, $json['email'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['phone-number'] ?? null, $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, Partial_File::o($json['receipt-logo'] ?? null), $json['receipt-logo-gray'] ?? null, $json['receipt-logo-mono'] ?? null, $json['tags'] ?? null, Partial_TakeOutConfig::o($json['take-out-config'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_AccountConfig::o($j['account-config'] ?? null), $j['address'] ?? null, $j['company-name'] ?? null, Partial_LocationConfig::o($j['config'] ?? null), Partial_File::o($j['customer-screen-logo'] ?? null), $j['deleted'] ?? null, $j['email'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['phone-number'] ?? null, $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, Partial_File::o($j['receipt-logo'] ?? null), $j['receipt-logo-gray'] ?? null, $j['receipt-logo-mono'] ?? null, $j['tags'] ?? null, Partial_TakeOutConfig::o($j['take-out-config'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4463,8 +4463,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], AccountConfig::o($json['account-config'] ?? null), $json['address'] ?? null, $json['company-name'] ?? null, LocationConfig::o($json['config'] ?? null), File::o($json['customer-screen-logo'] ?? null), $json['deleted'] ?? null, $json['email'] ?? null, $json['labels'] ?? null, $json['phone-number'] ?? null, $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, File::o($json['receipt-logo'] ?? null), $json['receipt-logo-gray'] ?? null, $json['receipt-logo-mono'] ?? null, $json['tags'] ?? null, TakeOutConfig::o($json['take-out-config'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], AccountConfig::o($j['account-config'] ?? null), $j['address'] ?? null, $j['company-name'] ?? null, LocationConfig::o($j['config'] ?? null), File::o($j['customer-screen-logo'] ?? null), $j['deleted'] ?? null, $j['email'] ?? null, $j['labels'] ?? null, $j['phone-number'] ?? null, $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, File::o($j['receipt-logo'] ?? null), $j['receipt-logo-gray'] ?? null, $j['receipt-logo-mono'] ?? null, $j['tags'] ?? null, TakeOutConfig::o($j['take-out-config'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4483,8 +4483,8 @@ namespace Onslip360\API {
 			public bool|null $registerCustomer = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['auto-close-batch-schedules'] ?? null, $json['button-map'] ?? null, $json['customer-screen-registration'] ?? null, $json['register-customer'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['auto-close-batch-schedules'] ?? null, $j['button-map'] ?? null, $j['customer-screen-registration'] ?? null, $j['register-customer'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4503,8 +4503,8 @@ namespace Onslip360\API {
 			public bool|null|Nil $registerCustomer = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['auto-close-batch-schedules'] ?? null, $json['button-map'] ?? null, $json['customer-screen-registration'] ?? null, $json['register-customer'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['auto-close-batch-schedules'] ?? null, $j['button-map'] ?? null, $j['customer-screen-registration'] ?? null, $j['register-customer'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4528,8 +4528,8 @@ namespace Onslip360\API {
 			public DataObjectOperation|null $dataObject = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ActiveTrigger::a($json['active-triggers']), $json['retry-count'], static::e(MQRecord\Type::from(...), $json['type']), $json['action-trigger-event'] ?? null, $json['action-user-id'] ?? null, $json['active-event-streams'] ?? null, $json['company-alias'] ?? null, DataObjectOperation::o($json['data-object'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ ActiveTrigger::a($j['active-triggers']), $j['retry-count'], static::e(MQRecord\Type::from(...), $j['type']), $j['action-trigger-event'] ?? null, $j['action-user-id'] ?? null, $j['active-event-streams'] ?? null, $j['company-alias'] ?? null, DataObjectOperation::o($j['data-object'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -4553,8 +4553,8 @@ namespace Onslip360\API {
 			public MQRecord\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['action-trigger-event'] ?? null, $json['action-user-id'] ?? null, $json['active-event-streams'] ?? null, Partial_ActiveTrigger::a($json['active-triggers'] ?? null), $json['company-alias'] ?? null, Partial_DataObjectOperation::o($json['data-object'] ?? null), $json['retry-count'] ?? null, static::e(MQRecord\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['action-trigger-event'] ?? null, $j['action-user-id'] ?? null, $j['active-event-streams'] ?? null, Partial_ActiveTrigger::a($j['active-triggers'] ?? null), $j['company-alias'] ?? null, Partial_DataObjectOperation::o($j['data-object'] ?? null), $j['retry-count'] ?? null, static::e(MQRecord\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -4578,8 +4578,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['json-mq-records'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['json-mq-records'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4598,8 +4598,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['json-mq-records'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['json-mq-records'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4623,8 +4623,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['json-mq-records'], $json['updated'], $json['deleted'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['json-mq-records'], $j['updated'], $j['deleted'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4648,8 +4648,8 @@ namespace Onslip360\API {
 			public string|null $generalInfo = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['reseller-name'], $json['sales-email'], $json['sales-phone'], $json['support-email'], $json['support-phone'], $json['terms-and-conditions-uri'], $json['vat-rates'], $json['web'], $json['general-info'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['reseller-name'], $j['sales-email'], $j['sales-phone'], $j['support-email'], $j['support-phone'], $j['terms-and-conditions-uri'], $j['vat-rates'], $j['web'], $j['general-info'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4673,8 +4673,8 @@ namespace Onslip360\API {
 			public string|null $web = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['general-info'] ?? null, $json['reseller-name'] ?? null, $json['sales-email'] ?? null, $json['sales-phone'] ?? null, $json['support-email'] ?? null, $json['support-phone'] ?? null, $json['terms-and-conditions-uri'] ?? null, $json['vat-rates'] ?? null, $json['web'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['general-info'] ?? null, $j['reseller-name'] ?? null, $j['sales-email'] ?? null, $j['sales-phone'] ?? null, $j['support-email'] ?? null, $j['support-phone'] ?? null, $j['terms-and-conditions-uri'] ?? null, $j['vat-rates'] ?? null, $j['web'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4703,8 +4703,8 @@ namespace Onslip360\API {
 			public string|null $resellerAlias = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CompanyFeature\Flag::from(...), $json['available-features']), static::e(CompanyFeature\Flag::from(...), $json['required-features']), $json['reseller-name'], $json['sales-email'], $json['sales-phone'], $json['support-email'], $json['support-phone'], $json['terms-and-conditions-uri'], $json['vat-rates'], $json['web'], $json['general-info'] ?? null, $json['reseller-alias'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CompanyFeature\Flag::from(...), $j['available-features']), static::e(CompanyFeature\Flag::from(...), $j['required-features']), $j['reseller-name'], $j['sales-email'], $j['sales-phone'], $j['support-email'], $j['support-phone'], $j['terms-and-conditions-uri'], $j['vat-rates'], $j['web'], $j['general-info'] ?? null, $j['reseller-alias'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4733,8 +4733,8 @@ namespace Onslip360\API {
 			public string|null $web = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(CompanyFeature\Flag::from(...), $json['available-features'] ?? null), $json['general-info'] ?? null, static::e(CompanyFeature\Flag::from(...), $json['required-features'] ?? null), $json['reseller-alias'] ?? null, $json['reseller-name'] ?? null, $json['sales-email'] ?? null, $json['sales-phone'] ?? null, $json['support-email'] ?? null, $json['support-phone'] ?? null, $json['terms-and-conditions-uri'] ?? null, $json['vat-rates'] ?? null, $json['web'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(CompanyFeature\Flag::from(...), $j['available-features'] ?? null), $j['general-info'] ?? null, static::e(CompanyFeature\Flag::from(...), $j['required-features'] ?? null), $j['reseller-alias'] ?? null, $j['reseller-name'] ?? null, $j['sales-email'] ?? null, $j['sales-phone'] ?? null, $j['support-email'] ?? null, $j['support-phone'] ?? null, $j['terms-and-conditions-uri'] ?? null, $j['vat-rates'] ?? null, $j['web'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4757,8 +4757,8 @@ namespace Onslip360\API {
 			public SwishTransactionMetadata|null $swishTransaction = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(Metadata\Type::from(...), $json['type']), CardReceiptMetadata::o($json['card-receipt'] ?? null), CouponVoucherMetadata::o($json['coupon-voucher'] ?? null), CurrencyMetadata::o($json['currency'] ?? null), $json['labels'] ?? null, PaymentVoucherMetadata::o($json['payment-voucher'] ?? null), PrePaidMetadata::o($json['pre-paid'] ?? null), SwishTransactionMetadata::o($json['swish-transaction'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(Metadata\Type::from(...), $j['type']), CardReceiptMetadata::o($j['card-receipt'] ?? null), CouponVoucherMetadata::o($j['coupon-voucher'] ?? null), CurrencyMetadata::o($j['currency'] ?? null), $j['labels'] ?? null, PaymentVoucherMetadata::o($j['payment-voucher'] ?? null), PrePaidMetadata::o($j['pre-paid'] ?? null), SwishTransactionMetadata::o($j['swish-transaction'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -4781,8 +4781,8 @@ namespace Onslip360\API {
 			public Metadata\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_CardReceiptMetadata::o($json['card-receipt'] ?? null), Partial_CouponVoucherMetadata::o($json['coupon-voucher'] ?? null), Partial_CurrencyMetadata::o($json['currency'] ?? null), $json['labels'] ?? null, Partial_PaymentVoucherMetadata::o($json['payment-voucher'] ?? null), Partial_PrePaidMetadata::o($json['pre-paid'] ?? null), Partial_SwishTransactionMetadata::o($json['swish-transaction'] ?? null), static::e(Metadata\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_CardReceiptMetadata::o($j['card-receipt'] ?? null), Partial_CouponVoucherMetadata::o($j['coupon-voucher'] ?? null), Partial_CurrencyMetadata::o($j['currency'] ?? null), $j['labels'] ?? null, Partial_PaymentVoucherMetadata::o($j['payment-voucher'] ?? null), Partial_PrePaidMetadata::o($j['pre-paid'] ?? null), Partial_SwishTransactionMetadata::o($j['swish-transaction'] ?? null), static::e(Metadata\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -4796,8 +4796,8 @@ namespace Onslip360\API {
 			public string $pin,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password'], $json['pin'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password'], $j['pin'] ];
 		}
 
 		protected function _toJson(): array {
@@ -4811,8 +4811,8 @@ namespace Onslip360\API {
 			public string|null $pin = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password'] ?? null, $json['pin'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password'] ?? null, $j['pin'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4859,8 +4859,8 @@ namespace Onslip360\API {
 			public array|null $users = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['location'], $json['name'], static::e(Order\State::from(...), $json['state']), $json['auth-code'] ?? null, $json['client-reference'] ?? null, $json['created'] ?? null, $json['customers'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['end-date'] ?? null, $json['id'] ?? null, Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['order-reference'] ?? null, $json['owner'] ?? null, Payment::a($json['payments'] ?? null), $json['resources'] ?? null, $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, static::e(Order\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['users'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['location'], $j['name'], static::e(Order\State::from(...), $j['state']), $j['auth-code'] ?? null, $j['client-reference'] ?? null, $j['created'] ?? null, $j['customers'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['end-date'] ?? null, $j['id'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['order-reference'] ?? null, $j['owner'] ?? null, Payment::a($j['payments'] ?? null), $j['resources'] ?? null, $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, static::e(Order\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['users'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4902,8 +4902,8 @@ namespace Onslip360\API {
 			public array|null|Nil $users = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['auth-code'] ?? null, $json['client-reference'] ?? null, $json['customers'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['end-date'] ?? null, Partial_Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, $json['order-reference'] ?? null, $json['owner'] ?? null, Partial_Payment::a($json['payments'] ?? null), $json['resources'] ?? null, $json['schedules'] ?? null, $json['start-date'] ?? null, static::e(Order\State::from(...), $json['state'] ?? null), $json['tags'] ?? null, static::e(Order\Type::from(...), $json['type'] ?? null), $json['users'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['auth-code'] ?? null, $j['client-reference'] ?? null, $j['customers'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['end-date'] ?? null, Partial_Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, $j['order-reference'] ?? null, $j['owner'] ?? null, Partial_Payment::a($j['payments'] ?? null), $j['resources'] ?? null, $j['schedules'] ?? null, $j['start-date'] ?? null, static::e(Order\State::from(...), $j['state'] ?? null), $j['tags'] ?? null, static::e(Order\Type::from(...), $j['type'] ?? null), $j['users'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4950,8 +4950,8 @@ namespace Onslip360\API {
 			public array|null $users = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['location'], $json['name'], static::e(Order\State::from(...), $json['state']), $json['updated'], $json['auth-code'] ?? null, $json['client-reference'] ?? null, $json['customers'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['end-date'] ?? null, Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['order-reference'] ?? null, $json['owner'] ?? null, Payment::a($json['payments'] ?? null), $json['resources'] ?? null, $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, static::e(Order\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['users'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['location'], $j['name'], static::e(Order\State::from(...), $j['state']), $j['updated'], $j['auth-code'] ?? null, $j['client-reference'] ?? null, $j['customers'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['end-date'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['order-reference'] ?? null, $j['owner'] ?? null, Payment::a($j['payments'] ?? null), $j['resources'] ?? null, $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, static::e(Order\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['users'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4971,8 +4971,8 @@ namespace Onslip360\API {
 			public string|null $deliveryDate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['id'], Item::a($json['items']), $json['name'], static::e(OrderTicket\Type::from(...), $json['type']), $json['delivery-date'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['id'], Item::a($j['items']), $j['name'], static::e(OrderTicket\Type::from(...), $j['type']), $j['delivery-date'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -4992,8 +4992,8 @@ namespace Onslip360\API {
 			public OrderTicket\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['delivery-date'] ?? null, $json['id'] ?? null, Partial_Item::a($json['items'] ?? null), $json['name'] ?? null, static::e(OrderTicket\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['delivery-date'] ?? null, $j['id'] ?? null, Partial_Item::a($j['items'] ?? null), $j['name'] ?? null, static::e(OrderTicket\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5008,8 +5008,8 @@ namespace Onslip360\API {
 			public bool $privKeyExists,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cert-exists'], $json['cert-expires'], $json['priv-key-exists'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cert-exists'], $j['cert-expires'], $j['priv-key-exists'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5024,8 +5024,8 @@ namespace Onslip360\API {
 			public bool|null $privKeyExists = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cert-exists'] ?? null, $json['cert-expires'] ?? null, $json['priv-key-exists'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cert-exists'] ?? null, $j['cert-expires'] ?? null, $j['priv-key-exists'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5038,8 +5038,8 @@ namespace Onslip360\API {
 			public int $passwordResetChallenge,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password-reset-challenge'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password-reset-challenge'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5052,8 +5052,8 @@ namespace Onslip360\API {
 			public int|null $passwordResetChallenge = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['password-reset-challenge'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['password-reset-challenge'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5067,8 +5067,8 @@ namespace Onslip360\API {
 			public int|null $passwordReset = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['challenge'], $json['password-reset'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['challenge'], $j['password-reset'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5082,8 +5082,8 @@ namespace Onslip360\API {
 			public int|null|Nil $passwordReset = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['challenge'] ?? null, $json['password-reset'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['challenge'] ?? null, $j['password-reset'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5096,8 +5096,8 @@ namespace Onslip360\API {
 			public string $challengeUrl,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['challenge-url'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['challenge-url'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5110,8 +5110,8 @@ namespace Onslip360\API {
 			public string|null $challengeUrl = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['challenge-url'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['challenge-url'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5126,8 +5126,8 @@ namespace Onslip360\API {
 			public string|null $locale = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company'], $json['user'], $json['locale'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company'], $j['user'], $j['locale'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5142,8 +5142,8 @@ namespace Onslip360\API {
 			public string|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company'] ?? null, $json['locale'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company'] ?? null, $j['locale'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5164,8 +5164,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], static::e(PaymentMethod\Type::from(...), $json['method']), $json['foreign-amount'] ?? null, $json['gratuity'] ?? null, Metadata::o($json['metadata'] ?? null), $json['name'] ?? null, $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], static::e(PaymentMethod\Type::from(...), $j['method']), $j['foreign-amount'] ?? null, $j['gratuity'] ?? null, Metadata::o($j['metadata'] ?? null), $j['name'] ?? null, $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5186,8 +5186,8 @@ namespace Onslip360\API {
 			public float|null|Nil $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['foreign-amount'] ?? null, $json['gratuity'] ?? null, Partial_Metadata::o($json['metadata'] ?? null), static::e(PaymentMethod\Type::from(...), $json['method'] ?? null), $json['name'] ?? null, $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['foreign-amount'] ?? null, $j['gratuity'] ?? null, Partial_Metadata::o($j['metadata'] ?? null), static::e(PaymentMethod\Type::from(...), $j['method'] ?? null), $j['name'] ?? null, $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5203,8 +5203,8 @@ namespace Onslip360\API {
 			public CardMetadata\Status|null $status = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], TransactionSummary::o($json['transaction-summary']), TransactionSummary::o($json['acquirers-transaction-summary'] ?? null), static::e(CardMetadata\Status::from(...), $json['status'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], TransactionSummary::o($j['transaction-summary']), TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), static::e(CardMetadata\Status::from(...), $j['status'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5220,8 +5220,8 @@ namespace Onslip360\API {
 			public Partial_TransactionSummary|null $transactionSummary = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_TransactionSummary::o($json['acquirers-transaction-summary'] ?? null), $json['name'] ?? null, static::e(CardMetadata\Status::from(...), $json['status'] ?? null), Partial_TransactionSummary::o($json['transaction-summary'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['name'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), Partial_TransactionSummary::o($j['transaction-summary'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5259,8 +5259,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], static::e(PaymentMethod\Type::from(...), $json['type']), $json['virtual'], $json['access-token'] ?? null, $json['access-token-user'] ?? null, $json['account'] ?? null, $json['clearing-account'] ?? null, $json['created'] ?? null, $json['currency-code'] ?? null, $json['currency-symbol'] ?? null, $json['deleted'] ?? null, $json['exchange-rate'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['register-customer'] ?? null, $json['rounding-multiple'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['vat-account'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], static::e(PaymentMethod\Type::from(...), $j['type']), $j['virtual'], $j['access-token'] ?? null, $j['access-token-user'] ?? null, $j['account'] ?? null, $j['clearing-account'] ?? null, $j['created'] ?? null, $j['currency-code'] ?? null, $j['currency-symbol'] ?? null, $j['deleted'] ?? null, $j['exchange-rate'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['register-customer'] ?? null, $j['rounding-multiple'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5293,8 +5293,8 @@ namespace Onslip360\API {
 			public bool|null $virtual = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token'] ?? null, $json['access-token-user'] ?? null, $json['account'] ?? null, $json['clearing-account'] ?? null, $json['currency-code'] ?? null, $json['currency-symbol'] ?? null, $json['deleted'] ?? null, $json['exchange-rate'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['register-customer'] ?? null, $json['rounding-multiple'] ?? null, $json['tags'] ?? null, static::e(PaymentMethod\Type::from(...), $json['type'] ?? null), $json['vat-account'] ?? null, $json['vat-rate'] ?? null, $json['virtual'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token'] ?? null, $j['access-token-user'] ?? null, $j['account'] ?? null, $j['clearing-account'] ?? null, $j['currency-code'] ?? null, $j['currency-symbol'] ?? null, $j['deleted'] ?? null, $j['exchange-rate'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['register-customer'] ?? null, $j['rounding-multiple'] ?? null, $j['tags'] ?? null, static::e(PaymentMethod\Type::from(...), $j['type'] ?? null), $j['vat-account'] ?? null, $j['vat-rate'] ?? null, $j['virtual'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5332,8 +5332,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], static::e(PaymentMethod\Type::from(...), $json['type']), $json['updated'], $json['virtual'], $json['access-token'] ?? null, $json['access-token-user'] ?? null, $json['account'] ?? null, $json['clearing-account'] ?? null, $json['currency-code'] ?? null, $json['currency-symbol'] ?? null, $json['deleted'] ?? null, $json['exchange-rate'] ?? null, $json['labels'] ?? null, $json['register-customer'] ?? null, $json['rounding-multiple'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['vat-account'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], static::e(PaymentMethod\Type::from(...), $j['type']), $j['updated'], $j['virtual'], $j['access-token'] ?? null, $j['access-token-user'] ?? null, $j['account'] ?? null, $j['clearing-account'] ?? null, $j['currency-code'] ?? null, $j['currency-symbol'] ?? null, $j['deleted'] ?? null, $j['exchange-rate'] ?? null, $j['labels'] ?? null, $j['register-customer'] ?? null, $j['rounding-multiple'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5350,8 +5350,8 @@ namespace Onslip360\API {
 			public int|null $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(PaymentMethod\Type::from(...), $json['method']), $json['account'] ?? null, $json['clearing-account'] ?? null, $json['payment-method'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(PaymentMethod\Type::from(...), $j['method']), $j['account'] ?? null, $j['clearing-account'] ?? null, $j['payment-method'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5368,8 +5368,8 @@ namespace Onslip360\API {
 			public int|null|Nil $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['clearing-account'] ?? null, static::e(PaymentMethod\Type::from(...), $json['method'] ?? null), $json['payment-method'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['clearing-account'] ?? null, static::e(PaymentMethod\Type::from(...), $j['method'] ?? null), $j['payment-method'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5388,8 +5388,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['count'], static::e(PaymentMethod\Type::from(...), $json['method']), $json['foreign-amount'] ?? null, $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['count'], static::e(PaymentMethod\Type::from(...), $j['method']), $j['foreign-amount'] ?? null, $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5408,8 +5408,8 @@ namespace Onslip360\API {
 			public float|null|Nil $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['count'] ?? null, $json['foreign-amount'] ?? null, static::e(PaymentMethod\Type::from(...), $json['method'] ?? null), $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['count'] ?? null, $j['foreign-amount'] ?? null, static::e(PaymentMethod\Type::from(...), $j['method'] ?? null), $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5428,8 +5428,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['count'], static::e(PaymentMethod\Type::from(...), $json['method']), $json['foreign-amount'] ?? null, $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['count'], static::e(PaymentMethod\Type::from(...), $j['method']), $j['foreign-amount'] ?? null, $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5448,8 +5448,8 @@ namespace Onslip360\API {
 			public float|null|Nil $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['count'] ?? null, $json['foreign-amount'] ?? null, static::e(PaymentMethod\Type::from(...), $json['method'] ?? null), $json['payment-method'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['count'] ?? null, $j['foreign-amount'] ?? null, static::e(PaymentMethod\Type::from(...), $j['method'] ?? null), $j['payment-method'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5464,8 +5464,8 @@ namespace Onslip360\API {
 			public int $paymentMethod,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['balance'], $json['credit-limit'], $json['payment-method'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['balance'], $j['credit-limit'], $j['payment-method'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5480,8 +5480,8 @@ namespace Onslip360\API {
 			public int|null $paymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['balance'] ?? null, $json['credit-limit'] ?? null, $json['payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['balance'] ?? null, $j['credit-limit'] ?? null, $j['payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5502,8 +5502,8 @@ namespace Onslip360\API {
 			public array|null $identifiers = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['transaction-date'], $json['transaction-id'], $json['voucher'], $json['balance'] ?? null, $json['expires'] ?? null, $json['identifiers'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['transaction-date'], $j['transaction-id'], $j['voucher'], $j['balance'] ?? null, $j['expires'] ?? null, $j['identifiers'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5524,8 +5524,8 @@ namespace Onslip360\API {
 			public int|null $voucher = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['balance'] ?? null, $json['expires'] ?? null, $json['identifiers'] ?? null, $json['transaction-date'] ?? null, $json['transaction-id'] ?? null, $json['voucher'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['balance'] ?? null, $j['expires'] ?? null, $j['identifiers'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['voucher'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5555,8 +5555,8 @@ namespace Onslip360\API {
 			public VirtualDevice|null $virtualDevice = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'] ?? null, $json['deleted'] ?? null, $json['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['function'] ?? null), $json['id'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, $json['service-id'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, VirtualDevice::o($json['virtual-device'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'] ?? null, $j['deleted'] ?? null, $j['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['function'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, $j['service-id'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VirtualDevice::o($j['virtual-device'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5581,8 +5581,8 @@ namespace Onslip360\API {
 			public Partial_VirtualDevice|null|Nil $virtualDevice = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['function'] ?? null), $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, $json['service-id'] ?? null, $json['tags'] ?? null, Partial_VirtualDevice::o($json['virtual-device'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['function'] ?? null), $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, $j['service-id'] ?? null, $j['tags'] ?? null, Partial_VirtualDevice::o($j['virtual-device'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5612,8 +5612,8 @@ namespace Onslip360\API {
 			public VirtualDevice|null $virtualDevice = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], $json['deleted'] ?? null, $json['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['function'] ?? null), $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, $json['service-id'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, VirtualDevice::o($json['virtual-device'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], $j['deleted'] ?? null, $j['device-id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['function'] ?? null), $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, $j['service-id'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VirtualDevice::o($j['virtual-device'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5637,8 +5637,8 @@ namespace Onslip360\API {
 			public string|null $address = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['device-id'], $json['device-model'], $json['device-name'], $json['device-type'], $json['device-version'], $json['exclusive'], $json['name'], PeripheralServiceBinding::a($json['service-bindings']), $json['address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['device-id'], $j['device-model'], $j['device-name'], $j['device-type'], $j['device-version'], $j['exclusive'], $j['name'], PeripheralServiceBinding::a($j['service-bindings']), $j['address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5662,8 +5662,8 @@ namespace Onslip360\API {
 			public array|null $serviceBindings = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'] ?? null, $json['device-id'] ?? null, $json['device-model'] ?? null, $json['device-name'] ?? null, $json['device-type'] ?? null, $json['device-version'] ?? null, $json['exclusive'] ?? null, $json['name'] ?? null, Partial_PeripheralServiceBinding::a($json['service-bindings'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'] ?? null, $j['device-id'] ?? null, $j['device-model'] ?? null, $j['device-name'] ?? null, $j['device-type'] ?? null, $j['device-version'] ?? null, $j['exclusive'] ?? null, $j['name'] ?? null, Partial_PeripheralServiceBinding::a($j['service-bindings'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -5684,8 +5684,8 @@ namespace Onslip360\API {
 			public string|null $serviceHint = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(Peripheral\PeripheralFunction::from(...), $json['functions']), $json['name'], $json['service-id'], $json['service-name'], $json['service-type'], $json['service-hint'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(Peripheral\PeripheralFunction::from(...), $j['functions']), $j['name'], $j['service-id'], $j['service-name'], $j['service-type'], $j['service-hint'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5706,8 +5706,8 @@ namespace Onslip360\API {
 			public string|null $serviceType = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(Peripheral\PeripheralFunction::from(...), $json['functions'] ?? null), $json['name'] ?? null, $json['service-hint'] ?? null, $json['service-id'] ?? null, $json['service-name'] ?? null, $json['service-type'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(Peripheral\PeripheralFunction::from(...), $j['functions'] ?? null), $j['name'] ?? null, $j['service-hint'] ?? null, $j['service-id'] ?? null, $j['service-name'] ?? null, $j['service-type'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5720,8 +5720,8 @@ namespace Onslip360\API {
 			public string $exportSalesSecret,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['export-sales-secret'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['export-sales-secret'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5734,8 +5734,8 @@ namespace Onslip360\API {
 			public string|null $exportSalesSecret = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['export-sales-secret'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['export-sales-secret'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5748,8 +5748,8 @@ namespace Onslip360\API {
 			public string $pin,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['pin'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['pin'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5762,8 +5762,8 @@ namespace Onslip360\API {
 			public string|null $pin = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['pin'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['pin'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5777,8 +5777,8 @@ namespace Onslip360\API {
 			public string $redirectUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['authorization-code'], $json['redirect-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['authorization-code'], $j['redirect-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5792,8 +5792,8 @@ namespace Onslip360\API {
 			public string|null $redirectUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['authorization-code'] ?? null, $json['redirect-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['authorization-code'] ?? null, $j['redirect-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5806,8 +5806,8 @@ namespace Onslip360\API {
 			public string $paymentReference,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payment-reference'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payment-reference'] ];
 		}
 
 		protected function _toJson(): array {
@@ -5820,8 +5820,8 @@ namespace Onslip360\API {
 			public string|null $paymentReference = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payment-reference'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payment-reference'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5848,8 +5848,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['key'], $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['key'], $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5871,8 +5871,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, $json['deleted'] ?? null, $json['key'] ?? null, $json['name'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['deleted'] ?? null, $j['key'] ?? null, $j['name'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5899,8 +5899,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['created'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['key'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['created'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['key'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5951,8 +5951,8 @@ namespace Onslip360\API {
 			public int|null $voucherPaymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['product-group'], $json['alert'] ?? null, $json['brand'] ?? null, $json['created'] ?? null, $json['default-quantity'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['description-t9n'] ?? null, $json['ean'] ?? null, $json['expiration'] ?? null, $json['html-description'] ?? null, $json['html-description-t9n'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['model-number'] ?? null, $json['modifiers'] ?? null, $json['name-t9n'] ?? null, $json['plu'] ?? null, $json['price'] ?? null, $json['purchase-price'] ?? null, $json['sku'] ?? null, $json['tags'] ?? null, static::e(Product\Type::from(...), $json['type'] ?? null), $json['unit'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['voucher-coupon-product'] ?? null, $json['voucher-coupon-quantity'] ?? null, $json['voucher-payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['product-group'], $j['alert'] ?? null, $j['brand'] ?? null, $j['created'] ?? null, $j['default-quantity'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['ean'] ?? null, $j['expiration'] ?? null, $j['html-description'] ?? null, $j['html-description-t9n'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['model-number'] ?? null, $j['modifiers'] ?? null, $j['name-t9n'] ?? null, $j['plu'] ?? null, $j['price'] ?? null, $j['purchase-price'] ?? null, $j['sku'] ?? null, $j['tags'] ?? null, static::e(Product\Type::from(...), $j['type'] ?? null), $j['unit'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['voucher-coupon-product'] ?? null, $j['voucher-coupon-quantity'] ?? null, $j['voucher-payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -5998,8 +5998,8 @@ namespace Onslip360\API {
 			public int|null|Nil $voucherPaymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alert'] ?? null, $json['brand'] ?? null, $json['default-quantity'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['description-t9n'] ?? null, $json['ean'] ?? null, $json['expiration'] ?? null, $json['html-description'] ?? null, $json['html-description-t9n'] ?? null, $json['labels'] ?? null, $json['model-number'] ?? null, $json['modifiers'] ?? null, $json['name'] ?? null, $json['name-t9n'] ?? null, $json['plu'] ?? null, $json['price'] ?? null, $json['product-group'] ?? null, $json['purchase-price'] ?? null, $json['sku'] ?? null, $json['tags'] ?? null, static::e(Product\Type::from(...), $json['type'] ?? null), $json['unit'] ?? null, $json['voucher-coupon-product'] ?? null, $json['voucher-coupon-quantity'] ?? null, $json['voucher-payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alert'] ?? null, $j['brand'] ?? null, $j['default-quantity'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['ean'] ?? null, $j['expiration'] ?? null, $j['html-description'] ?? null, $j['html-description-t9n'] ?? null, $j['labels'] ?? null, $j['model-number'] ?? null, $j['modifiers'] ?? null, $j['name'] ?? null, $j['name-t9n'] ?? null, $j['plu'] ?? null, $j['price'] ?? null, $j['product-group'] ?? null, $j['purchase-price'] ?? null, $j['sku'] ?? null, $j['tags'] ?? null, static::e(Product\Type::from(...), $j['type'] ?? null), $j['unit'] ?? null, $j['voucher-coupon-product'] ?? null, $j['voucher-coupon-quantity'] ?? null, $j['voucher-payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6050,8 +6050,8 @@ namespace Onslip360\API {
 			public int|null $voucherPaymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['product-group'], $json['updated'], $json['alert'] ?? null, $json['brand'] ?? null, $json['default-quantity'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['description-t9n'] ?? null, $json['ean'] ?? null, $json['expiration'] ?? null, $json['html-description'] ?? null, $json['html-description-t9n'] ?? null, $json['labels'] ?? null, $json['model-number'] ?? null, $json['modifiers'] ?? null, $json['name-t9n'] ?? null, $json['plu'] ?? null, $json['price'] ?? null, $json['purchase-price'] ?? null, $json['sku'] ?? null, $json['tags'] ?? null, static::e(Product\Type::from(...), $json['type'] ?? null), $json['unit'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['voucher-coupon-product'] ?? null, $json['voucher-coupon-quantity'] ?? null, $json['voucher-payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['product-group'], $j['updated'], $j['alert'] ?? null, $j['brand'] ?? null, $j['default-quantity'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['ean'] ?? null, $j['expiration'] ?? null, $j['html-description'] ?? null, $j['html-description-t9n'] ?? null, $j['labels'] ?? null, $j['model-number'] ?? null, $j['modifiers'] ?? null, $j['name-t9n'] ?? null, $j['plu'] ?? null, $j['price'] ?? null, $j['purchase-price'] ?? null, $j['sku'] ?? null, $j['tags'] ?? null, static::e(Product\Type::from(...), $j['type'] ?? null), $j['unit'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['voucher-coupon-product'] ?? null, $j['voucher-coupon-quantity'] ?? null, $j['voucher-payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6066,8 +6066,8 @@ namespace Onslip360\API {
 			public Stored_ProductGroup|null $productGroup = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(ProductEntry\Type::from(...), $json['type']), Stored_Product::o($json['product'] ?? null), Stored_ProductGroup::o($json['product-group'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(ProductEntry\Type::from(...), $j['type']), Stored_Product::o($j['product'] ?? null), Stored_ProductGroup::o($j['product-group'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6082,8 +6082,8 @@ namespace Onslip360\API {
 			public ProductEntry\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_Product::o($json['product'] ?? null), Partial_ProductGroup::o($json['product-group'] ?? null), static::e(ProductEntry\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_Product::o($j['product'] ?? null), Partial_ProductGroup::o($j['product-group'] ?? null), static::e(ProductEntry\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6118,8 +6118,8 @@ namespace Onslip360\API {
 			public int|null $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], static::e(ProductGroup\Type::from(...), $json['type']), $json['vat-rate'], $json['account'] ?? null, $json['alert'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['discount-account'] ?? null, $json['id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['kitchen-printer'] ?? null), $json['labels'] ?? null, $json['modifiers'] ?? null, $json['tags'] ?? null, $json['undiscountable'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, $j['id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6149,8 +6149,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['alert'] ?? null, $json['deleted'] ?? null, $json['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['kitchen-printer'] ?? null), $json['labels'] ?? null, $json['modifiers'] ?? null, $json['name'] ?? null, $json['tags'] ?? null, static::e(ProductGroup\Type::from(...), $json['type'] ?? null), $json['undiscountable'] ?? null, $json['vat-account'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['name'] ?? null, $j['tags'] ?? null, static::e(ProductGroup\Type::from(...), $j['type'] ?? null), $j['undiscountable'] ?? null, $j['vat-account'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6185,8 +6185,8 @@ namespace Onslip360\API {
 			public int|null $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], static::e(ProductGroup\Type::from(...), $json['type']), $json['updated'], $json['vat-rate'], $json['account'] ?? null, $json['alert'] ?? null, $json['deleted'] ?? null, $json['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $json['kitchen-printer'] ?? null), $json['labels'] ?? null, $json['modifiers'] ?? null, $json['tags'] ?? null, $json['undiscountable'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['updated'], $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6202,8 +6202,8 @@ namespace Onslip360\API {
 			public int|null $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['product-group'], $json['account'] ?? null, $json['discount-account'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['product-group'], $j['account'] ?? null, $j['discount-account'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6219,8 +6219,8 @@ namespace Onslip360\API {
 			public int|null|Nil $vatAccount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['account'] ?? null, $json['discount-account'] ?? null, $json['product-group'] ?? null, $json['vat-account'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['account'] ?? null, $j['discount-account'] ?? null, $j['product-group'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6235,8 +6235,8 @@ namespace Onslip360\API {
 			public string $productGroupName,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['product-group'], $json['product-group-name'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['product-group'], $j['product-group-name'] ];
 		}
 
 		protected function _toJson(): array {
@@ -6251,8 +6251,8 @@ namespace Onslip360\API {
 			public string|null $productGroupName = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['product-group'] ?? null, $json['product-group-name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['product-group'] ?? null, $j['product-group-name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6284,8 +6284,8 @@ namespace Onslip360\API {
 			public array|null $values = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['automatic'], $json['name'], static::e(ProductModifier\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['products'] ?? null, $json['required'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['values'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['automatic'], $j['name'], static::e(ProductModifier\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['products'] ?? null, $j['required'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['values'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6312,8 +6312,8 @@ namespace Onslip360\API {
 			public array|null|Nil $values = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['automatic'] ?? null, $json['deleted'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['products'] ?? null, $json['required'] ?? null, $json['tags'] ?? null, static::e(ProductModifier\Type::from(...), $json['type'] ?? null), $json['values'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['automatic'] ?? null, $j['deleted'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['products'] ?? null, $j['required'] ?? null, $j['tags'] ?? null, static::e(ProductModifier\Type::from(...), $j['type'] ?? null), $j['values'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6345,8 +6345,8 @@ namespace Onslip360\API {
 			public array|null $values = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['automatic'], $json['created'], $json['id'], $json['name'], static::e(ProductModifier\Type::from(...), $json['type']), $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['products'] ?? null, $json['required'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['values'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['automatic'], $j['created'], $j['id'], $j['name'], static::e(ProductModifier\Type::from(...), $j['type']), $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['products'] ?? null, $j['required'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['values'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6364,8 +6364,8 @@ namespace Onslip360\API {
 			public array|null $operations = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['query'], $json['resource'], static::e(DataObjectOperation\Operation::from(...), $json['operations'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['query'], $j['resource'], static::e(DataObjectOperation\Operation::from(...), $j['operations'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6383,8 +6383,8 @@ namespace Onslip360\API {
 			public string|null $resource = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(DataObjectOperation\Operation::from(...), $json['operations'] ?? null), $json['query'] ?? null, $json['resource'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(DataObjectOperation\Operation::from(...), $j['operations'] ?? null), $j['query'] ?? null, $j['resource'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6416,8 +6416,8 @@ namespace Onslip360\API {
 			public float|null $totalSalesVatAmount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['change'], $json['id'], Item::a($json['items']), Payment::a($json['payments']), $json['rounding'], $json['total-amount'], $json['total-vat-amount'], static::e(Receipt\Type::from(...), $json['type']), VATSummary::a($json['vat-summaries']), Customer::o($json['customer'] ?? null), $json['order'] ?? null, $json['reference'] ?? null, $json['tab'] ?? null, $json['total-sales-amount'] ?? null, $json['total-sales-vat-amount'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['change'], $j['id'], Item::a($j['items']), Payment::a($j['payments']), $j['rounding'], $j['total-amount'], $j['total-vat-amount'], static::e(Receipt\Type::from(...), $j['type']), VATSummary::a($j['vat-summaries']), Customer::o($j['customer'] ?? null), $j['order'] ?? null, $j['reference'] ?? null, $j['tab'] ?? null, $j['total-sales-amount'] ?? null, $j['total-sales-vat-amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6449,8 +6449,8 @@ namespace Onslip360\API {
 			public array|null $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['change'] ?? null, Partial_Customer::o($json['customer'] ?? null), $json['id'] ?? null, Partial_Item::a($json['items'] ?? null), $json['order'] ?? null, Partial_Payment::a($json['payments'] ?? null), $json['reference'] ?? null, $json['rounding'] ?? null, $json['tab'] ?? null, $json['total-amount'] ?? null, $json['total-sales-amount'] ?? null, $json['total-sales-vat-amount'] ?? null, $json['total-vat-amount'] ?? null, static::e(Receipt\Type::from(...), $json['type'] ?? null), Partial_VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['change'] ?? null, Partial_Customer::o($j['customer'] ?? null), $j['id'] ?? null, Partial_Item::a($j['items'] ?? null), $j['order'] ?? null, Partial_Payment::a($j['payments'] ?? null), $j['reference'] ?? null, $j['rounding'] ?? null, $j['tab'] ?? null, $j['total-amount'] ?? null, $j['total-sales-amount'] ?? null, $j['total-sales-vat-amount'] ?? null, $j['total-vat-amount'] ?? null, static::e(Receipt\Type::from(...), $j['type'] ?? null), Partial_VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6514,8 +6514,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['batch-id'], $json['cashier'], $json['cashier-name'], $json['company-name'], $json['copies'], $json['date'], $json['org-number'], $json['training'], static::e(Record\Type::from(...), $json['type']), AccountingEntry::a($json['accounting'] ?? null), Batch::o($json['batch'] ?? null), CardTransaction::o($json['card-transaction'] ?? null), CashDrawer::o($json['cash-drawer'] ?? null), $json['client'] ?? null, $json['client-name'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['copy-from'] ?? null, $json['copy-of'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, EntertainmentBill::o($json['entertainment-bill'] ?? null), $json['id'] ?? null, InvalidPayload::o($json['invalid-payload'] ?? null), $json['labels'] ?? null, OrderTicket::o($json['order-ticket'] ?? null), $json['phone-number'] ?? null, ProductEntry::o($json['product'] ?? null), $json['queued'] ?? null, Receipt::o($json['receipt'] ?? null), $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, $json['recipient-uri'] ?? null, Report::o($json['report'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, Tab::o($json['tab'] ?? null), $json['tags'] ?? null, $json['timezone-offset'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, UsageEntry::o($json['usage'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['batch-id'], $j['cashier'], $j['cashier-name'], $j['company-name'], $j['copies'], $j['date'], $j['org-number'], $j['training'], static::e(Record\Type::from(...), $j['type']), AccountingEntry::a($j['accounting'] ?? null), Batch::o($j['batch'] ?? null), CardTransaction::o($j['card-transaction'] ?? null), CashDrawer::o($j['cash-drawer'] ?? null), $j['client'] ?? null, $j['client-name'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['copy-from'] ?? null, $j['copy-of'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, EntertainmentBill::o($j['entertainment-bill'] ?? null), $j['id'] ?? null, InvalidPayload::o($j['invalid-payload'] ?? null), $j['labels'] ?? null, OrderTicket::o($j['order-ticket'] ?? null), $j['phone-number'] ?? null, ProductEntry::o($j['product'] ?? null), $j['queued'] ?? null, Receipt::o($j['receipt'] ?? null), $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, $j['recipient-uri'] ?? null, Report::o($j['report'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, Tab::o($j['tab'] ?? null), $j['tags'] ?? null, $j['timezone-offset'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, UsageEntry::o($j['usage'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6573,8 +6573,8 @@ namespace Onslip360\API {
 			public string|null|Nil $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_AccountingEntry::a($json['accounting'] ?? null), $json['address'] ?? null, Partial_Batch::o($json['batch'] ?? null), $json['batch-id'] ?? null, Partial_CardTransaction::o($json['card-transaction'] ?? null), Partial_CashDrawer::o($json['cash-drawer'] ?? null), $json['cashier'] ?? null, $json['cashier-name'] ?? null, $json['client-name'] ?? null, $json['company-name'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['copies'] ?? null, $json['copy-from'] ?? null, $json['copy-of'] ?? null, $json['date'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, Partial_EntertainmentBill::o($json['entertainment-bill'] ?? null), Partial_InvalidPayload::o($json['invalid-payload'] ?? null), $json['labels'] ?? null, Partial_OrderTicket::o($json['order-ticket'] ?? null), $json['org-number'] ?? null, $json['phone-number'] ?? null, Partial_ProductEntry::o($json['product'] ?? null), $json['queued'] ?? null, Partial_Receipt::o($json['receipt'] ?? null), $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, $json['recipient-uri'] ?? null, Partial_Report::o($json['report'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, Partial_Tab::o($json['tab'] ?? null), $json['tags'] ?? null, $json['timezone-offset'] ?? null, $json['training'] ?? null, static::e(Record\Type::from(...), $json['type'] ?? null), Partial_UsageEntry::o($json['usage'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_AccountingEntry::a($j['accounting'] ?? null), $j['address'] ?? null, Partial_Batch::o($j['batch'] ?? null), $j['batch-id'] ?? null, Partial_CardTransaction::o($j['card-transaction'] ?? null), Partial_CashDrawer::o($j['cash-drawer'] ?? null), $j['cashier'] ?? null, $j['cashier-name'] ?? null, $j['client-name'] ?? null, $j['company-name'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['copies'] ?? null, $j['copy-from'] ?? null, $j['copy-of'] ?? null, $j['date'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, Partial_EntertainmentBill::o($j['entertainment-bill'] ?? null), Partial_InvalidPayload::o($j['invalid-payload'] ?? null), $j['labels'] ?? null, Partial_OrderTicket::o($j['order-ticket'] ?? null), $j['org-number'] ?? null, $j['phone-number'] ?? null, Partial_ProductEntry::o($j['product'] ?? null), $j['queued'] ?? null, Partial_Receipt::o($j['receipt'] ?? null), $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, $j['recipient-uri'] ?? null, Partial_Report::o($j['report'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, Partial_Tab::o($j['tab'] ?? null), $j['tags'] ?? null, $j['timezone-offset'] ?? null, $j['training'] ?? null, static::e(Record\Type::from(...), $j['type'] ?? null), Partial_UsageEntry::o($j['usage'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6638,8 +6638,8 @@ namespace Onslip360\API {
 			public string|null $webAddress = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['batch-id'], $json['cashier'], $json['cashier-name'], $json['client'], $json['company-name'], $json['copies'], $json['created'], $json['date'], $json['id'], $json['org-number'], $json['training'], static::e(Record\Type::from(...), $json['type']), $json['updated'], AccountingEntry::a($json['accounting'] ?? null), Batch::o($json['batch'] ?? null), CardTransaction::o($json['card-transaction'] ?? null), CashDrawer::o($json['cash-drawer'] ?? null), $json['client-name'] ?? null, $json['control-code'] ?? null, $json['control-unit-id'] ?? null, $json['copy-from'] ?? null, $json['copy-of'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['email'] ?? null, EntertainmentBill::o($json['entertainment-bill'] ?? null), InvalidPayload::o($json['invalid-payload'] ?? null), $json['labels'] ?? null, OrderTicket::o($json['order-ticket'] ?? null), $json['phone-number'] ?? null, ProductEntry::o($json['product'] ?? null), $json['queued'] ?? null, Receipt::o($json['receipt'] ?? null), $json['receipt-footer'] ?? null, $json['receipt-header'] ?? null, $json['recipient-uri'] ?? null, Report::o($json['report'] ?? null), $json['store-address'] ?? null, $json['store-name'] ?? null, Tab::o($json['tab'] ?? null), $json['tags'] ?? null, $json['timezone-offset'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, UsageEntry::o($json['usage'] ?? null), $json['web-address'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['batch-id'], $j['cashier'], $j['cashier-name'], $j['client'], $j['company-name'], $j['copies'], $j['created'], $j['date'], $j['id'], $j['org-number'], $j['training'], static::e(Record\Type::from(...), $j['type']), $j['updated'], AccountingEntry::a($j['accounting'] ?? null), Batch::o($j['batch'] ?? null), CardTransaction::o($j['card-transaction'] ?? null), CashDrawer::o($j['cash-drawer'] ?? null), $j['client-name'] ?? null, $j['control-code'] ?? null, $j['control-unit-id'] ?? null, $j['copy-from'] ?? null, $j['copy-of'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['email'] ?? null, EntertainmentBill::o($j['entertainment-bill'] ?? null), InvalidPayload::o($j['invalid-payload'] ?? null), $j['labels'] ?? null, OrderTicket::o($j['order-ticket'] ?? null), $j['phone-number'] ?? null, ProductEntry::o($j['product'] ?? null), $j['queued'] ?? null, Receipt::o($j['receipt'] ?? null), $j['receipt-footer'] ?? null, $j['receipt-header'] ?? null, $j['recipient-uri'] ?? null, Report::o($j['report'] ?? null), $j['store-address'] ?? null, $j['store-name'] ?? null, Tab::o($j['tab'] ?? null), $j['tags'] ?? null, $j['timezone-offset'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, UsageEntry::o($j['usage'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6704,8 +6704,8 @@ namespace Onslip360\API {
 			public array|null $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cash-drawer-openings'], Summary::o($json['discounts']), Summary::o($json['goods']), Summary::o($json['grand-total-amount']), Summary::o($json['grand-total-returns']), Summary::o($json['grand-total-sales']), $json['id'], Summary::o($json['losses']), Summary::o($json['receipt-copies']), Summary::o($json['return-receipts']), Summary::o($json['sales-receipts']), Summary::o($json['services']), $json['total-sales-amount'], Summary::o($json['training-receipts']), static::e(Report\Type::from(...), $json['type']), Summary::o($json['cash-deposits'] ?? null), Summary::o($json['cash-withdrawals'] ?? null), Summary::o($json['credit-returns'] ?? null), Summary::o($json['credit-sales'] ?? null), $json['end-date'] ?? null, GratuitySummary::a($json['gratuity-summaries'] ?? null), $json['incoming-cash-amount'] ?? null, Payment::a($json['incoming-petty-cash'] ?? null), Summary::o($json['liabilities'] ?? null), Summary::o($json['open-tabs'] ?? null), $json['outgoing-cash-amount'] ?? null, Payment::a($json['outgoing-petty-cash'] ?? null), PaymentBatchSummary::a($json['payment-batch-summaries'] ?? null), PaymentSaleSummary::a($json['payment-sale-summaries'] ?? null), Payment::a($json['payments'] ?? null), PaymentSummary::a($json['petty-cash-deposits'] ?? null), Payment::a($json['petty-cash-mismatch'] ?? null), PaymentSummary::a($json['petty-cash-withdrawals'] ?? null), ProductGroupSummary::a($json['product-group-summaries'] ?? null), $json['start-date'] ?? null, $json['total-amount'] ?? null, $json['total-change-amount'] ?? null, $json['total-sales-vat-amount'] ?? null, $json['total-vat-amount'] ?? null, VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cash-drawer-openings'], Summary::o($j['discounts']), Summary::o($j['goods']), Summary::o($j['grand-total-amount']), Summary::o($j['grand-total-returns']), Summary::o($j['grand-total-sales']), $j['id'], Summary::o($j['losses']), Summary::o($j['receipt-copies']), Summary::o($j['return-receipts']), Summary::o($j['sales-receipts']), Summary::o($j['services']), $j['total-sales-amount'], Summary::o($j['training-receipts']), static::e(Report\Type::from(...), $j['type']), Summary::o($j['cash-deposits'] ?? null), Summary::o($j['cash-withdrawals'] ?? null), Summary::o($j['credit-returns'] ?? null), Summary::o($j['credit-sales'] ?? null), $j['end-date'] ?? null, GratuitySummary::a($j['gratuity-summaries'] ?? null), $j['incoming-cash-amount'] ?? null, Payment::a($j['incoming-petty-cash'] ?? null), Summary::o($j['liabilities'] ?? null), Summary::o($j['open-tabs'] ?? null), $j['outgoing-cash-amount'] ?? null, Payment::a($j['outgoing-petty-cash'] ?? null), PaymentBatchSummary::a($j['payment-batch-summaries'] ?? null), PaymentSaleSummary::a($j['payment-sale-summaries'] ?? null), Payment::a($j['payments'] ?? null), PaymentSummary::a($j['petty-cash-deposits'] ?? null), Payment::a($j['petty-cash-mismatch'] ?? null), PaymentSummary::a($j['petty-cash-withdrawals'] ?? null), ProductGroupSummary::a($j['product-group-summaries'] ?? null), $j['start-date'] ?? null, $j['total-amount'] ?? null, $j['total-change-amount'] ?? null, $j['total-sales-vat-amount'] ?? null, $j['total-vat-amount'] ?? null, VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6770,8 +6770,8 @@ namespace Onslip360\API {
 			public array|null|Nil $vatSummaries = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_Summary::o($json['cash-deposits'] ?? null), $json['cash-drawer-openings'] ?? null, Partial_Summary::o($json['cash-withdrawals'] ?? null), Partial_Summary::o($json['credit-returns'] ?? null), Partial_Summary::o($json['credit-sales'] ?? null), Partial_Summary::o($json['discounts'] ?? null), $json['end-date'] ?? null, Partial_Summary::o($json['goods'] ?? null), Partial_Summary::o($json['grand-total-amount'] ?? null), Partial_Summary::o($json['grand-total-returns'] ?? null), Partial_Summary::o($json['grand-total-sales'] ?? null), Partial_GratuitySummary::a($json['gratuity-summaries'] ?? null), $json['id'] ?? null, $json['incoming-cash-amount'] ?? null, Partial_Payment::a($json['incoming-petty-cash'] ?? null), Partial_Summary::o($json['liabilities'] ?? null), Partial_Summary::o($json['losses'] ?? null), Partial_Summary::o($json['open-tabs'] ?? null), $json['outgoing-cash-amount'] ?? null, Partial_Payment::a($json['outgoing-petty-cash'] ?? null), Partial_PaymentBatchSummary::a($json['payment-batch-summaries'] ?? null), Partial_PaymentSaleSummary::a($json['payment-sale-summaries'] ?? null), Partial_Payment::a($json['payments'] ?? null), Partial_PaymentSummary::a($json['petty-cash-deposits'] ?? null), Partial_Payment::a($json['petty-cash-mismatch'] ?? null), Partial_PaymentSummary::a($json['petty-cash-withdrawals'] ?? null), Partial_ProductGroupSummary::a($json['product-group-summaries'] ?? null), Partial_Summary::o($json['receipt-copies'] ?? null), Partial_Summary::o($json['return-receipts'] ?? null), Partial_Summary::o($json['sales-receipts'] ?? null), Partial_Summary::o($json['services'] ?? null), $json['start-date'] ?? null, $json['total-amount'] ?? null, $json['total-change-amount'] ?? null, $json['total-sales-amount'] ?? null, $json['total-sales-vat-amount'] ?? null, $json['total-vat-amount'] ?? null, Partial_Summary::o($json['training-receipts'] ?? null), static::e(Report\Type::from(...), $json['type'] ?? null), Partial_VATSummary::a($json['vat-summaries'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_Summary::o($j['cash-deposits'] ?? null), $j['cash-drawer-openings'] ?? null, Partial_Summary::o($j['cash-withdrawals'] ?? null), Partial_Summary::o($j['credit-returns'] ?? null), Partial_Summary::o($j['credit-sales'] ?? null), Partial_Summary::o($j['discounts'] ?? null), $j['end-date'] ?? null, Partial_Summary::o($j['goods'] ?? null), Partial_Summary::o($j['grand-total-amount'] ?? null), Partial_Summary::o($j['grand-total-returns'] ?? null), Partial_Summary::o($j['grand-total-sales'] ?? null), Partial_GratuitySummary::a($j['gratuity-summaries'] ?? null), $j['id'] ?? null, $j['incoming-cash-amount'] ?? null, Partial_Payment::a($j['incoming-petty-cash'] ?? null), Partial_Summary::o($j['liabilities'] ?? null), Partial_Summary::o($j['losses'] ?? null), Partial_Summary::o($j['open-tabs'] ?? null), $j['outgoing-cash-amount'] ?? null, Partial_Payment::a($j['outgoing-petty-cash'] ?? null), Partial_PaymentBatchSummary::a($j['payment-batch-summaries'] ?? null), Partial_PaymentSaleSummary::a($j['payment-sale-summaries'] ?? null), Partial_Payment::a($j['payments'] ?? null), Partial_PaymentSummary::a($j['petty-cash-deposits'] ?? null), Partial_Payment::a($j['petty-cash-mismatch'] ?? null), Partial_PaymentSummary::a($j['petty-cash-withdrawals'] ?? null), Partial_ProductGroupSummary::a($j['product-group-summaries'] ?? null), Partial_Summary::o($j['receipt-copies'] ?? null), Partial_Summary::o($j['return-receipts'] ?? null), Partial_Summary::o($j['sales-receipts'] ?? null), Partial_Summary::o($j['services'] ?? null), $j['start-date'] ?? null, $j['total-amount'] ?? null, $j['total-change-amount'] ?? null, $j['total-sales-amount'] ?? null, $j['total-sales-vat-amount'] ?? null, $j['total-vat-amount'] ?? null, Partial_Summary::o($j['training-receipts'] ?? null), static::e(Report\Type::from(...), $j['type'] ?? null), Partial_VATSummary::a($j['vat-summaries'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6798,8 +6798,8 @@ namespace Onslip360\API {
 			public ZReportActionParams|null $zReport = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['formats'], static::e(ReportAction\Template::from(...), $json['template']), $json['from'] ?? null, $json['from-expression'] ?? null, $json['locale'] ?? null, SalesReportActionParams::o($json['sales'] ?? null), ShiftsReportActionParams::o($json['shifts'] ?? null), StockBalancesReportActionParams::o($json['stock-balances'] ?? null), $json['to'] ?? null, $json['to-expression'] ?? null, VouchersReportActionParams::o($json['vouchers'] ?? null), ZReportActionParams::o($json['z-report'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['formats'], static::e(ReportAction\Template::from(...), $j['template']), $j['from'] ?? null, $j['from-expression'] ?? null, $j['locale'] ?? null, SalesReportActionParams::o($j['sales'] ?? null), ShiftsReportActionParams::o($j['shifts'] ?? null), StockBalancesReportActionParams::o($j['stock-balances'] ?? null), $j['to'] ?? null, $j['to-expression'] ?? null, VouchersReportActionParams::o($j['vouchers'] ?? null), ZReportActionParams::o($j['z-report'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6826,8 +6826,8 @@ namespace Onslip360\API {
 			public Partial_ZReportActionParams|null|Nil $zReport = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['formats'] ?? null, $json['from'] ?? null, $json['from-expression'] ?? null, $json['locale'] ?? null, Partial_SalesReportActionParams::o($json['sales'] ?? null), Partial_ShiftsReportActionParams::o($json['shifts'] ?? null), Partial_StockBalancesReportActionParams::o($json['stock-balances'] ?? null), static::e(ReportAction\Template::from(...), $json['template'] ?? null), $json['to'] ?? null, $json['to-expression'] ?? null, Partial_VouchersReportActionParams::o($json['vouchers'] ?? null), Partial_ZReportActionParams::o($json['z-report'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['formats'] ?? null, $j['from'] ?? null, $j['from-expression'] ?? null, $j['locale'] ?? null, Partial_SalesReportActionParams::o($j['sales'] ?? null), Partial_ShiftsReportActionParams::o($j['shifts'] ?? null), Partial_StockBalancesReportActionParams::o($j['stock-balances'] ?? null), static::e(ReportAction\Template::from(...), $j['template'] ?? null), $j['to'] ?? null, $j['to-expression'] ?? null, Partial_VouchersReportActionParams::o($j['vouchers'] ?? null), Partial_ZReportActionParams::o($j['z-report'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6840,8 +6840,8 @@ namespace Onslip360\API {
 			public ReportDefinition $reportDefinition,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ReportDefinition::o($json['report-definition']) ];
+		protected static function _fromJson(array $j): array {
+			return [ ReportDefinition::o($j['report-definition']) ];
 		}
 
 		protected function _toJson(): array {
@@ -6854,8 +6854,8 @@ namespace Onslip360\API {
 			public Partial_ReportDefinition|null $reportDefinition = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_ReportDefinition::o($json['report-definition'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_ReportDefinition::o($j['report-definition'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6869,8 +6869,8 @@ namespace Onslip360\API {
 			public string $reportUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ReportModel::o($json['model']), $json['report-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ ReportModel::o($j['model']), $j['report-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -6884,8 +6884,8 @@ namespace Onslip360\API {
 			public string|null $reportUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_ReportModel::o($json['model'] ?? null), $json['report-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_ReportModel::o($j['model'] ?? null), $j['report-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6904,8 +6904,8 @@ namespace Onslip360\API {
 			public string|null $description = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ReportAction::o($json['action']), $json['api-uri'], $json['hawk-id'], $json['hawk-key'], $json['name'], $json['realm'], $json['description'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ ReportAction::o($j['action']), $j['api-uri'], $j['hawk-id'], $j['hawk-key'], $j['name'], $j['realm'], $j['description'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6924,8 +6924,8 @@ namespace Onslip360\API {
 			public string|null $realm = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_ReportAction::o($json['action'] ?? null), $json['api-uri'] ?? null, $json['description'] ?? null, $json['hawk-id'] ?? null, $json['hawk-key'] ?? null, $json['name'] ?? null, $json['realm'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_ReportAction::o($j['action'] ?? null), $j['api-uri'] ?? null, $j['description'] ?? null, $j['hawk-id'] ?? null, $j['hawk-key'] ?? null, $j['name'] ?? null, $j['realm'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -6945,8 +6945,8 @@ namespace Onslip360\API {
 			public array $requiredFeatures,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias-prefix'], static::e(CompanyFeature\Flag::from(...), $json['available-features']), MerchantConfig::o($json['merchant-config']), static::e(CompanyFeature\Flag::from(...), $json['required-features']) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias-prefix'], static::e(CompanyFeature\Flag::from(...), $j['available-features']), MerchantConfig::o($j['merchant-config']), static::e(CompanyFeature\Flag::from(...), $j['required-features']) ];
 		}
 
 		protected function _toJson(): array {
@@ -6966,8 +6966,8 @@ namespace Onslip360\API {
 			public array|null $requiredFeatures = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias-prefix'] ?? null, static::e(CompanyFeature\Flag::from(...), $json['available-features'] ?? null), Partial_MerchantConfig::o($json['merchant-config'] ?? null), static::e(CompanyFeature\Flag::from(...), $json['required-features'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias-prefix'] ?? null, static::e(CompanyFeature\Flag::from(...), $j['available-features'] ?? null), Partial_MerchantConfig::o($j['merchant-config'] ?? null), static::e(CompanyFeature\Flag::from(...), $j['required-features'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -6993,8 +6993,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['location'], $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['location'], $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7015,8 +7015,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7042,8 +7042,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['location'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['location'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7073,8 +7073,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['height'], $json['location'], $json['name'], ResourceMapItem::a($json['resource-map-items']), $json['width'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['height'], $j['location'], $j['name'], ResourceMapItem::a($j['resource-map-items']), $j['width'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7099,8 +7099,8 @@ namespace Onslip360\API {
 			public int|null $width = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['height'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['name'] ?? null, Partial_ResourceMapItem::a($json['resource-map-items'] ?? null), $json['tags'] ?? null, $json['width'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['height'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['name'] ?? null, Partial_ResourceMapItem::a($j['resource-map-items'] ?? null), $j['tags'] ?? null, $j['width'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7130,8 +7130,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['height'], $json['id'], $json['location'], $json['name'], ResourceMapItem::a($json['resource-map-items']), $json['updated'], $json['width'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['height'], $j['id'], $j['location'], $j['name'], ResourceMapItem::a($j['resource-map-items']), $j['updated'], $j['width'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7150,8 +7150,8 @@ namespace Onslip360\API {
 			public int|null $resource = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['height'], static::e(ResourceMapItem\Shape::from(...), $json['shape']), static::e(ResourceMapItem\Type::from(...), $json['type']), $json['width'], $json['x'], $json['y'], $json['resource'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['height'], static::e(ResourceMapItem\Shape::from(...), $j['shape']), static::e(ResourceMapItem\Type::from(...), $j['type']), $j['width'], $j['x'], $j['y'], $j['resource'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7170,8 +7170,8 @@ namespace Onslip360\API {
 			public int|null $y = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['height'] ?? null, $json['resource'] ?? null, static::e(ResourceMapItem\Shape::from(...), $json['shape'] ?? null), static::e(ResourceMapItem\Type::from(...), $json['type'] ?? null), $json['width'] ?? null, $json['x'] ?? null, $json['y'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['height'] ?? null, $j['resource'] ?? null, static::e(ResourceMapItem\Shape::from(...), $j['shape'] ?? null), static::e(ResourceMapItem\Type::from(...), $j['type'] ?? null), $j['width'] ?? null, $j['x'] ?? null, $j['y'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7188,8 +7188,8 @@ namespace Onslip360\API {
 			public int $turnoverLevel,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['level'], $json['transaction-level'], $json['transactions'], $json['turnover'], $json['turnover-level'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['level'], $j['transaction-level'], $j['transactions'], $j['turnover'], $j['turnover-level'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7206,8 +7206,8 @@ namespace Onslip360\API {
 			public int|null $turnoverLevel = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['level'] ?? null, $json['transaction-level'] ?? null, $json['transactions'] ?? null, $json['turnover'] ?? null, $json['turnover-level'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['level'] ?? null, $j['transaction-level'] ?? null, $j['transactions'] ?? null, $j['turnover'] ?? null, $j['turnover-level'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7234,8 +7234,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7257,8 +7257,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7285,8 +7285,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['labels'] ?? null, static::e(Permission::from(...), $json['permissions'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['labels'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7305,8 +7305,8 @@ namespace Onslip360\API {
 			public array|null $locations = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['clients'] ?? null, $json['include-credit'] ?? null, $json['locations'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['clients'] ?? null, $j['include-credit'] ?? null, $j['locations'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7325,8 +7325,8 @@ namespace Onslip360\API {
 			public array|null|Nil $locations = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['clients'] ?? null, $json['include-credit'] ?? null, $json['locations'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['clients'] ?? null, $j['include-credit'] ?? null, $j['locations'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7339,8 +7339,8 @@ namespace Onslip360\API {
 			public SendEmailRequest $emailRequest,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ SendEmailRequest::o($json['email-request']) ];
+		protected static function _fromJson(array $j): array {
+			return [ SendEmailRequest::o($j['email-request']) ];
 		}
 
 		protected function _toJson(): array {
@@ -7353,8 +7353,8 @@ namespace Onslip360\API {
 			public Partial_SendEmailRequest|null $emailRequest = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_SendEmailRequest::o($json['email-request'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_SendEmailRequest::o($j['email-request'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -7375,8 +7375,8 @@ namespace Onslip360\API {
 			public WelcomeEmailParams|null $welcomeEmail = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(SendEmailRequest\Template::from(...), $json['template']), CustomerFeedbackParams::o($json['customer-feedback'] ?? null), InitWeiqIntegrationParams::o($json['init-weiq-integration'] ?? null), $json['locale'] ?? null, NewAccountLoginDetailsParams::o($json['new-account-login-details'] ?? null), PasswordResetChallengeParams::o($json['password-reset-challenge'] ?? null), ReportCoverParams::o($json['report-cover'] ?? null), RestrictedVersionWarningParams::o($json['restricted-version-warning'] ?? null), WelcomeEmailParams::o($json['welcome-email'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(SendEmailRequest\Template::from(...), $j['template']), CustomerFeedbackParams::o($j['customer-feedback'] ?? null), InitWeiqIntegrationParams::o($j['init-weiq-integration'] ?? null), $j['locale'] ?? null, NewAccountLoginDetailsParams::o($j['new-account-login-details'] ?? null), PasswordResetChallengeParams::o($j['password-reset-challenge'] ?? null), ReportCoverParams::o($j['report-cover'] ?? null), RestrictedVersionWarningParams::o($j['restricted-version-warning'] ?? null), WelcomeEmailParams::o($j['welcome-email'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -7397,8 +7397,8 @@ namespace Onslip360\API {
 			public Partial_WelcomeEmailParams|null|Nil $welcomeEmail = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_CustomerFeedbackParams::o($json['customer-feedback'] ?? null), Partial_InitWeiqIntegrationParams::o($json['init-weiq-integration'] ?? null), $json['locale'] ?? null, Partial_NewAccountLoginDetailsParams::o($json['new-account-login-details'] ?? null), Partial_PasswordResetChallengeParams::o($json['password-reset-challenge'] ?? null), Partial_ReportCoverParams::o($json['report-cover'] ?? null), Partial_RestrictedVersionWarningParams::o($json['restricted-version-warning'] ?? null), static::e(SendEmailRequest\Template::from(...), $json['template'] ?? null), Partial_WelcomeEmailParams::o($json['welcome-email'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_CustomerFeedbackParams::o($j['customer-feedback'] ?? null), Partial_InitWeiqIntegrationParams::o($j['init-weiq-integration'] ?? null), $j['locale'] ?? null, Partial_NewAccountLoginDetailsParams::o($j['new-account-login-details'] ?? null), Partial_PasswordResetChallengeParams::o($j['password-reset-challenge'] ?? null), Partial_ReportCoverParams::o($j['report-cover'] ?? null), Partial_RestrictedVersionWarningParams::o($j['restricted-version-warning'] ?? null), static::e(SendEmailRequest\Template::from(...), $j['template'] ?? null), Partial_WelcomeEmailParams::o($j['welcome-email'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -7412,8 +7412,8 @@ namespace Onslip360\API {
 			public string $url,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['partner-id'], $json['url'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['partner-id'], $j['url'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7427,8 +7427,8 @@ namespace Onslip360\API {
 			public string|null $url = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['partner-id'] ?? null, $json['url'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['partner-id'] ?? null, $j['url'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7442,8 +7442,8 @@ namespace Onslip360\API {
 			public string|null $code = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['message'], $json['code'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['message'], $j['code'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7457,8 +7457,8 @@ namespace Onslip360\API {
 			public string|null $message = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['code'] ?? null, $json['message'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['code'] ?? null, $j['message'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7471,8 +7471,8 @@ namespace Onslip360\API {
 			public string $uri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7485,8 +7485,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7518,8 +7518,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ ShiftHistory::a($json['history']), $json['identity-number'], $json['name'], $json['start-date'], static::e(Shift\Status::from(...), $json['status']), $json['user'], $json['created'] ?? null, $json['deleted'] ?? null, $json['end-date'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ ShiftHistory::a($j['history']), $j['identity-number'], $j['name'], $j['start-date'], static::e(Shift\Status::from(...), $j['status']), $j['user'], $j['created'] ?? null, $j['deleted'] ?? null, $j['end-date'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7546,8 +7546,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['end-date'] ?? null, Partial_ShiftHistory::a($json['history'] ?? null), $json['identity-number'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['start-date'] ?? null, static::e(Shift\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['end-date'] ?? null, Partial_ShiftHistory::a($j['history'] ?? null), $j['identity-number'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['start-date'] ?? null, static::e(Shift\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7579,8 +7579,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], ShiftHistory::a($json['history']), $json['id'], $json['identity-number'], $json['name'], $json['start-date'], static::e(Shift\Status::from(...), $json['status']), $json['updated'], $json['user'], $json['deleted'] ?? null, $json['end-date'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], ShiftHistory::a($j['history']), $j['id'], $j['identity-number'], $j['name'], $j['start-date'], static::e(Shift\Status::from(...), $j['status']), $j['updated'], $j['user'], $j['deleted'] ?? null, $j['end-date'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7596,8 +7596,8 @@ namespace Onslip360\API {
 			public string|null $endDate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['start-date'], $json['updated'], $json['updated-by'], $json['end-date'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['start-date'], $j['updated'], $j['updated-by'], $j['end-date'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7613,8 +7613,8 @@ namespace Onslip360\API {
 			public int|null $updatedBy = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['end-date'] ?? null, $json['start-date'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['end-date'] ?? null, $j['start-date'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7628,8 +7628,8 @@ namespace Onslip360\API {
 			public string $startDate,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['end-date'], $json['start-date'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['end-date'], $j['start-date'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7643,8 +7643,8 @@ namespace Onslip360\API {
 			public string|null $startDate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['end-date'] ?? null, $json['start-date'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['end-date'] ?? null, $j['start-date'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7662,8 +7662,8 @@ namespace Onslip360\API {
 			public array|null $users = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['locations'] ?? null, $json['users'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['locations'] ?? null, $j['users'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7681,8 +7681,8 @@ namespace Onslip360\API {
 			public array|null|Nil $users = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['locations'] ?? null, $json['users'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['locations'] ?? null, $j['users'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7706,8 +7706,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['tag'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['tag'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7726,8 +7726,8 @@ namespace Onslip360\API {
 			public string|null|Nil $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['tag'] ?? null, $json['tags'] ?? null, $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['tag'] ?? null, $j['tags'] ?? null, $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7751,8 +7751,8 @@ namespace Onslip360\API {
 			public string|null $uri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], $json['deleted'] ?? null, $json['tag'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], $j['deleted'] ?? null, $j['tag'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7765,8 +7765,8 @@ namespace Onslip360\API {
 			public string $wsUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['ws-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['ws-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7779,8 +7779,8 @@ namespace Onslip360\API {
 			public string|null $wsUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['ws-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['ws-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7811,8 +7811,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['balance'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['quantity'] ?? null, $json['remaining-percentage'] ?? null, $json['remaining-quantity'] ?? null, $json['required'] ?? null, $json['reserved'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['balance'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['quantity'] ?? null, $j['remaining-percentage'] ?? null, $j['remaining-quantity'] ?? null, $j['required'] ?? null, $j['reserved'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7834,8 +7834,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['labels'] ?? null, $json['quantity'] ?? null, $json['required'] ?? null, $json['reserved'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['labels'] ?? null, $j['quantity'] ?? null, $j['required'] ?? null, $j['reserved'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7866,8 +7866,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['location'], $json['updated'], $json['balance'] ?? null, $json['deleted'] ?? null, $json['labels'] ?? null, $json['quantity'] ?? null, $json['remaining-percentage'] ?? null, $json['remaining-quantity'] ?? null, $json['required'] ?? null, $json['reserved'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['location'], $j['updated'], $j['balance'] ?? null, $j['deleted'] ?? null, $j['labels'] ?? null, $j['quantity'] ?? null, $j['remaining-percentage'] ?? null, $j['remaining-quantity'] ?? null, $j['required'] ?? null, $j['reserved'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7882,8 +7882,8 @@ namespace Onslip360\API {
 			public float|null $reserved = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['forced'], $json['quantity'] ?? null, $json['reserved'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['forced'], $j['quantity'] ?? null, $j['reserved'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7898,8 +7898,8 @@ namespace Onslip360\API {
 			public float|null|Nil $reserved = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['forced'] ?? null, $json['quantity'] ?? null, $json['reserved'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['forced'] ?? null, $j['quantity'] ?? null, $j['reserved'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7915,8 +7915,8 @@ namespace Onslip360\API {
 			public array|null $locations = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['locations'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['locations'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7932,8 +7932,8 @@ namespace Onslip360\API {
 			public array|null|Nil $locations = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['locations'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['locations'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7947,8 +7947,8 @@ namespace Onslip360\API {
 			public int $count,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['count'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['count'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7962,8 +7962,8 @@ namespace Onslip360\API {
 			public int|null $count = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['count'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['count'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -7977,8 +7977,8 @@ namespace Onslip360\API {
 			public string $qrgUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cpc-uri'], $json['qrg-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cpc-uri'], $j['qrg-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -7992,8 +7992,8 @@ namespace Onslip360\API {
 			public string|null $qrgUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cpc-uri'] ?? null, $json['qrg-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cpc-uri'] ?? null, $j['qrg-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8007,8 +8007,8 @@ namespace Onslip360\API {
 			public string|null $errorMessage = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['error-code'] ?? null, $json['error-message'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['error-code'] ?? null, $j['error-message'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8022,8 +8022,8 @@ namespace Onslip360\API {
 			public string|null|Nil $errorMessage = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['error-code'] ?? null, $json['error-message'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['error-code'] ?? null, $j['error-message'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8036,8 +8036,8 @@ namespace Onslip360\API {
 			public int $paymentMethod,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payment-method'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payment-method'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8050,8 +8050,8 @@ namespace Onslip360\API {
 			public int|null $paymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8065,8 +8065,8 @@ namespace Onslip360\API {
 			public int $size,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['format'], $json['size'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['format'], $j['size'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8080,8 +8080,8 @@ namespace Onslip360\API {
 			public int|null $size = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['format'] ?? null, $json['size'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['format'] ?? null, $j['size'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8094,8 +8094,8 @@ namespace Onslip360\API {
 			public string $qr,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['qr'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['qr'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8108,8 +8108,8 @@ namespace Onslip360\API {
 			public string|null $qr = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['qr'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['qr'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8125,8 +8125,8 @@ namespace Onslip360\API {
 			public int $paymentMethod,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['message'], $json['payer-payment-reference'], $json['payment-method'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['message'], $j['payer-payment-reference'], $j['payment-method'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8142,8 +8142,8 @@ namespace Onslip360\API {
 			public int|null $paymentMethod = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['message'] ?? null, $json['payer-payment-reference'] ?? null, $json['payment-method'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['message'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8184,8 +8184,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['currency'], $json['payment-method'], $json['created'] ?? null, $json['created-date'] ?? null, $json['customer'] ?? null, $json['deleted'] ?? null, SwishError::a($json['errors'] ?? null), $json['id'] ?? null, $json['labels'] ?? null, $json['merchant'] ?? null, $json['message'] ?? null, $json['original-payment-reference'] ?? null, $json['paid-date'] ?? null, $json['payer-payment-reference'] ?? null, $json['payment-reference'] ?? null, $json['payment-reference-url'] ?? null, $json['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['currency'], $j['payment-method'], $j['created'] ?? null, $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8221,8 +8221,8 @@ namespace Onslip360\API {
 			public SwishTransaction\Type|null|Nil $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['created-date'] ?? null, $json['currency'] ?? null, $json['customer'] ?? null, $json['deleted'] ?? null, Partial_SwishError::a($json['errors'] ?? null), $json['labels'] ?? null, $json['merchant'] ?? null, $json['message'] ?? null, $json['original-payment-reference'] ?? null, $json['paid-date'] ?? null, $json['payer-payment-reference'] ?? null, $json['payment-method'] ?? null, $json['payment-reference'] ?? null, $json['payment-reference-url'] ?? null, $json['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['created-date'] ?? null, $j['currency'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, Partial_SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-method'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8263,8 +8263,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['created'], $json['currency'], $json['id'], $json['payment-method'], $json['updated'], $json['created-date'] ?? null, $json['customer'] ?? null, $json['deleted'] ?? null, SwishError::a($json['errors'] ?? null), $json['labels'] ?? null, $json['merchant'] ?? null, $json['message'] ?? null, $json['original-payment-reference'] ?? null, $json['paid-date'] ?? null, $json['payer-payment-reference'] ?? null, $json['payment-reference'] ?? null, $json['payment-reference-url'] ?? null, $json['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $json['status'] ?? null), $json['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['created'], $j['currency'], $j['id'], $j['payment-method'], $j['updated'], $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8284,8 +8284,8 @@ namespace Onslip360\API {
 			public string|null $transactionId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['currency-code'], static::e(SwishTransaction\Status::from(...), $json['status']), $json['swish-transaction'], $json['transaction-date'], static::e(SwishTransaction\Type::from(...), $json['type']), $json['customer'] ?? null, $json['transaction-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['currency-code'], static::e(SwishTransaction\Status::from(...), $j['status']), $j['swish-transaction'], $j['transaction-date'], static::e(SwishTransaction\Type::from(...), $j['type']), $j['customer'] ?? null, $j['transaction-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8305,8 +8305,8 @@ namespace Onslip360\API {
 			public SwishTransaction\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['currency-code'] ?? null, $json['customer'] ?? null, static::e(SwishTransaction\Status::from(...), $json['status'] ?? null), $json['swish-transaction'] ?? null, $json['transaction-date'] ?? null, $json['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['currency-code'] ?? null, $j['customer'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['swish-transaction'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8342,8 +8342,8 @@ namespace Onslip360\API {
 			public WEIQ|null $weiq = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['backoffice-uri'] ?? null, $json['control-unit-notification-recipient'] ?? null, $json['created'] ?? null, $json['customer-feedback-recipient'] ?? null, $json['default-client-version'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['receipt-uri'] ?? null, Sergel::o($json['sergel'] ?? null), $json['short-uri'] ?? null, SlippConfig::o($json['slipp'] ?? null), SwishConfig::o($json['swish'] ?? null), $json['tags'] ?? null, $json['unsubscribe-key'] ?? null, $json['unsubscribe-uri'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, VismaConfig::o($json['visma'] ?? null), VivaWalletConfig::o($json['viva-wallet'] ?? null), WEIQ::o($json['weiq'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['created'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8374,8 +8374,8 @@ namespace Onslip360\API {
 			public Partial_WEIQ|null|Nil $weiq = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['backoffice-uri'] ?? null, $json['control-unit-notification-recipient'] ?? null, $json['customer-feedback-recipient'] ?? null, $json['default-client-version'] ?? null, $json['deleted'] ?? null, $json['receipt-uri'] ?? null, Partial_Sergel::o($json['sergel'] ?? null), $json['short-uri'] ?? null, Partial_SlippConfig::o($json['slipp'] ?? null), Partial_SwishConfig::o($json['swish'] ?? null), $json['tags'] ?? null, $json['unsubscribe-key'] ?? null, $json['unsubscribe-uri'] ?? null, Partial_VismaConfig::o($json['visma'] ?? null), Partial_VivaWalletConfig::o($json['viva-wallet'] ?? null), Partial_WEIQ::o($json['weiq'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Partial_Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, Partial_SlippConfig::o($j['slipp'] ?? null), Partial_SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, Partial_VismaConfig::o($j['visma'] ?? null), Partial_VivaWalletConfig::o($j['viva-wallet'] ?? null), Partial_WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8411,8 +8411,8 @@ namespace Onslip360\API {
 			public WEIQ|null $weiq = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], $json['backoffice-uri'] ?? null, $json['control-unit-notification-recipient'] ?? null, $json['customer-feedback-recipient'] ?? null, $json['default-client-version'] ?? null, $json['deleted'] ?? null, $json['receipt-uri'] ?? null, Sergel::o($json['sergel'] ?? null), $json['short-uri'] ?? null, SlippConfig::o($json['slipp'] ?? null), SwishConfig::o($json['swish'] ?? null), $json['tags'] ?? null, $json['unsubscribe-key'] ?? null, $json['unsubscribe-uri'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, VismaConfig::o($json['visma'] ?? null), VivaWalletConfig::o($json['viva-wallet'] ?? null), WEIQ::o($json['weiq'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8427,8 +8427,8 @@ namespace Onslip360\API {
 			public VivaWalletConfig|null $vivaWallet = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['backoffice-uri'], SlippConfig::o($json['slipp'] ?? null), VivaWalletConfig::o($json['viva-wallet'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['backoffice-uri'], SlippConfig::o($j['slipp'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8443,8 +8443,8 @@ namespace Onslip360\API {
 			public Partial_VivaWalletConfig|null|Nil $vivaWallet = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['backoffice-uri'] ?? null, Partial_SlippConfig::o($json['slipp'] ?? null), Partial_VivaWalletConfig::o($json['viva-wallet'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['backoffice-uri'] ?? null, Partial_SlippConfig::o($j['slipp'] ?? null), Partial_VivaWalletConfig::o($j['viva-wallet'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8480,8 +8480,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['client'] ?? null, $json['closed'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['id'] ?? null, Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['name'] ?? null, $json['order'] ?? null, Payment::a($json['original-payments'] ?? null), $json['printouts'] ?? null, $json['tab-locked-by'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['id'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8512,8 +8512,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['client'] ?? null, $json['closed'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, Partial_Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['name'] ?? null, $json['order'] ?? null, Partial_Payment::a($json['original-payments'] ?? null), $json['printouts'] ?? null, $json['tab-locked-by'] ?? null, $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, Partial_Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Partial_Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8549,8 +8549,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['updated'], $json['client'] ?? null, $json['closed'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, Item::a($json['items'] ?? null), $json['labels'] ?? null, $json['name'] ?? null, $json['order'] ?? null, Payment::a($json['original-payments'] ?? null), $json['printouts'] ?? null, $json['tab-locked-by'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['updated'], $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8573,8 +8573,8 @@ namespace Onslip360\API {
 			public array|null $schedules = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['button-map'], File::o($json['banner'] ?? null), $json['customer-message'] ?? null, $json['last-order'] ?? null, File::o($json['logo'] ?? null), $json['order-times'] ?? null, $json['schedules'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['button-map'], File::o($j['banner'] ?? null), $j['customer-message'] ?? null, $j['last-order'] ?? null, File::o($j['logo'] ?? null), $j['order-times'] ?? null, $j['schedules'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8597,8 +8597,8 @@ namespace Onslip360\API {
 			public array|null|Nil $schedules = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_File::o($json['banner'] ?? null), $json['button-map'] ?? null, $json['customer-message'] ?? null, $json['last-order'] ?? null, Partial_File::o($json['logo'] ?? null), $json['order-times'] ?? null, $json['schedules'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_File::o($j['banner'] ?? null), $j['button-map'] ?? null, $j['customer-message'] ?? null, $j['last-order'] ?? null, Partial_File::o($j['logo'] ?? null), $j['order-times'] ?? null, $j['schedules'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8614,8 +8614,8 @@ namespace Onslip360\API {
 			public bool $open,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['active'], $json['configured'], $json['enabled'], $json['open'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['active'], $j['configured'], $j['enabled'], $j['open'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8631,8 +8631,8 @@ namespace Onslip360\API {
 			public bool|null $open = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['active'] ?? null, $json['configured'] ?? null, $json['enabled'] ?? null, $json['open'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['active'] ?? null, $j['configured'] ?? null, $j['enabled'] ?? null, $j['open'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8647,8 +8647,8 @@ namespace Onslip360\API {
 			public string $keyId,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company-alias'], $json['hmac'], $json['key-id'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company-alias'], $j['hmac'], $j['key-id'] ];
 		}
 
 		protected function _toJson(): array {
@@ -8663,8 +8663,8 @@ namespace Onslip360\API {
 			public string|null $keyId = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company-alias'] ?? null, $json['hmac'] ?? null, $json['key-id'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company-alias'] ?? null, $j['hmac'] ?? null, $j['key-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8701,8 +8701,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], AccountConfig::o($json['account-config'] ?? null), $json['client-user-agent'] ?? null, $json['client-version'] ?? null, CloudControlUnit::o($json['cloud-control-unit'] ?? null), TillConfig::o($json['config'] ?? null), $json['control-unit-id'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['device-id'] ?? null, $json['device-key'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['logical-device-id'] ?? null, $json['tags'] ?? null, static::e(Till\Type::from(...), $json['type'] ?? null), $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], AccountConfig::o($j['account-config'] ?? null), $j['client-user-agent'] ?? null, $j['client-version'] ?? null, CloudControlUnit::o($j['cloud-control-unit'] ?? null), TillConfig::o($j['config'] ?? null), $j['control-unit-id'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['device-id'] ?? null, $j['device-key'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['logical-device-id'] ?? null, $j['tags'] ?? null, static::e(Till\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8734,8 +8734,8 @@ namespace Onslip360\API {
 			public Till\Type|null|Nil $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_AccountConfig::o($json['account-config'] ?? null), $json['client-user-agent'] ?? null, $json['client-version'] ?? null, Partial_CloudControlUnit::o($json['cloud-control-unit'] ?? null), Partial_TillConfig::o($json['config'] ?? null), $json['control-unit-id'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['device-id'] ?? null, $json['device-key'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['logical-device-id'] ?? null, $json['name'] ?? null, $json['tags'] ?? null, static::e(Till\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_AccountConfig::o($j['account-config'] ?? null), $j['client-user-agent'] ?? null, $j['client-version'] ?? null, Partial_CloudControlUnit::o($j['cloud-control-unit'] ?? null), Partial_TillConfig::o($j['config'] ?? null), $j['control-unit-id'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['device-id'] ?? null, $j['device-key'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['logical-device-id'] ?? null, $j['name'] ?? null, $j['tags'] ?? null, static::e(Till\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8772,8 +8772,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['name'], $json['updated'], AccountConfig::o($json['account-config'] ?? null), $json['client-user-agent'] ?? null, $json['client-version'] ?? null, CloudControlUnit::o($json['cloud-control-unit'] ?? null), TillConfig::o($json['config'] ?? null), $json['control-unit-id'] ?? null, $json['deleted'] ?? null, $json['description'] ?? null, $json['device-id'] ?? null, $json['device-key'] ?? null, $json['labels'] ?? null, $json['location'] ?? null, $json['logical-device-id'] ?? null, $json['tags'] ?? null, static::e(Till\Type::from(...), $json['type'] ?? null), $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['name'], $j['updated'], AccountConfig::o($j['account-config'] ?? null), $j['client-user-agent'] ?? null, $j['client-version'] ?? null, CloudControlUnit::o($j['cloud-control-unit'] ?? null), TillConfig::o($j['config'] ?? null), $j['control-unit-id'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['device-id'] ?? null, $j['device-key'] ?? null, $j['labels'] ?? null, $j['location'] ?? null, $j['logical-device-id'] ?? null, $j['tags'] ?? null, static::e(Till\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8792,8 +8792,8 @@ namespace Onslip360\API {
 			public array|null $peripheralBindings = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['auto-close-batch-schedules'] ?? null, $json['button-map'] ?? null, PeripheralBinding::a($json['peripheral-bindings'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['auto-close-batch-schedules'] ?? null, $j['button-map'] ?? null, PeripheralBinding::a($j['peripheral-bindings'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8812,8 +8812,8 @@ namespace Onslip360\API {
 			public array|null|Nil $peripheralBindings = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['auto-close-batch-schedules'] ?? null, $json['button-map'] ?? null, Partial_PeripheralBinding::a($json['peripheral-bindings'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['auto-close-batch-schedules'] ?? null, $j['button-map'] ?? null, Partial_PeripheralBinding::a($j['peripheral-bindings'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -8827,8 +8827,8 @@ namespace Onslip360\API {
 			public string|null $description = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], $json['description'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], $j['description'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8842,8 +8842,8 @@ namespace Onslip360\API {
 			public string|null $name = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['description'] ?? null, $json['name'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['description'] ?? null, $j['name'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8878,8 +8878,8 @@ namespace Onslip360\API {
 			public bool|null $zReportPending = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['batch-is-open'], $json['current-batch-id'], Summary::o($json['grand-total-amount']), Summary::o($json['grand-total-returns']), Summary::o($json['grand-total-sales']), $json['normal-receipt-counter'], $json['profo-receipt-counter'], $json['training-receipt-counter'], $json['x-report-counter'], $json['z-report-counter'], $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['z-report-pending'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['batch-is-open'], $j['current-batch-id'], Summary::o($j['grand-total-amount']), Summary::o($j['grand-total-returns']), Summary::o($j['grand-total-sales']), $j['normal-receipt-counter'], $j['profo-receipt-counter'], $j['training-receipt-counter'], $j['x-report-counter'], $j['z-report-counter'], $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['z-report-pending'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8909,8 +8909,8 @@ namespace Onslip360\API {
 			public bool|null|Nil $zReportPending = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['batch-is-open'] ?? null, $json['current-batch-id'] ?? null, $json['deleted'] ?? null, Partial_Summary::o($json['grand-total-amount'] ?? null), Partial_Summary::o($json['grand-total-returns'] ?? null), Partial_Summary::o($json['grand-total-sales'] ?? null), $json['labels'] ?? null, $json['normal-receipt-counter'] ?? null, $json['profo-receipt-counter'] ?? null, $json['tags'] ?? null, $json['training-receipt-counter'] ?? null, $json['x-report-counter'] ?? null, $json['z-report-counter'] ?? null, $json['z-report-pending'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['batch-is-open'] ?? null, $j['current-batch-id'] ?? null, $j['deleted'] ?? null, Partial_Summary::o($j['grand-total-amount'] ?? null), Partial_Summary::o($j['grand-total-returns'] ?? null), Partial_Summary::o($j['grand-total-sales'] ?? null), $j['labels'] ?? null, $j['normal-receipt-counter'] ?? null, $j['profo-receipt-counter'] ?? null, $j['tags'] ?? null, $j['training-receipt-counter'] ?? null, $j['x-report-counter'] ?? null, $j['z-report-counter'] ?? null, $j['z-report-pending'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8945,8 +8945,8 @@ namespace Onslip360\API {
 			public bool|null $zReportPending = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['batch-is-open'], $json['created'], $json['current-batch-id'], Summary::o($json['grand-total-amount']), Summary::o($json['grand-total-returns']), Summary::o($json['grand-total-sales']), $json['id'], $json['normal-receipt-counter'], $json['profo-receipt-counter'], $json['training-receipt-counter'], $json['updated'], $json['x-report-counter'], $json['z-report-counter'], $json['deleted'] ?? null, $json['labels'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['z-report-pending'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['batch-is-open'], $j['created'], $j['current-batch-id'], Summary::o($j['grand-total-amount']), Summary::o($j['grand-total-returns']), Summary::o($j['grand-total-sales']), $j['id'], $j['normal-receipt-counter'], $j['profo-receipt-counter'], $j['training-receipt-counter'], $j['updated'], $j['x-report-counter'], $j['z-report-counter'], $j['deleted'] ?? null, $j['labels'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['z-report-pending'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8963,8 +8963,8 @@ namespace Onslip360\API {
 			public string|null $deleted = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['till'], static::e(Till\Type::from(...), $json['type']), $json['activated'] ?? null, $json['deleted'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['till'], static::e(Till\Type::from(...), $j['type']), $j['activated'] ?? null, $j['deleted'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -8981,8 +8981,8 @@ namespace Onslip360\API {
 			public Till\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['activated'] ?? null, $json['created'] ?? null, $json['deleted'] ?? null, $json['till'] ?? null, static::e(Till\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['activated'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['till'] ?? null, static::e(Till\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9001,8 +9001,8 @@ namespace Onslip360\API {
 			public float $vatAmount,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cb-amount'], $json['extra-amount'], $json['purchase-amount'], $json['purchase-count'], $json['refund-amount'], $json['refund-count'], $json['vat-amount'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cb-amount'], $j['extra-amount'], $j['purchase-amount'], $j['purchase-count'], $j['refund-amount'], $j['refund-count'], $j['vat-amount'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9021,8 +9021,8 @@ namespace Onslip360\API {
 			public float|null $vatAmount = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['cb-amount'] ?? null, $json['extra-amount'] ?? null, $json['purchase-amount'] ?? null, $json['purchase-count'] ?? null, $json['refund-amount'] ?? null, $json['refund-count'] ?? null, $json['vat-amount'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['cb-amount'] ?? null, $j['extra-amount'] ?? null, $j['purchase-amount'] ?? null, $j['purchase-count'] ?? null, $j['refund-amount'] ?? null, $j['refund-count'] ?? null, $j['vat-amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9036,8 +9036,8 @@ namespace Onslip360\API {
 			public TransactionSummary $summary,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], TransactionSummary::o($json['summary']) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], TransactionSummary::o($j['summary']) ];
 		}
 
 		protected function _toJson(): array {
@@ -9051,8 +9051,8 @@ namespace Onslip360\API {
 			public Partial_TransactionSummary|null $summary = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'] ?? null, Partial_TransactionSummary::o($json['summary'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'] ?? null, Partial_TransactionSummary::o($j['summary'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9084,8 +9084,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ TriggerAction::o($json['action']), static::e(Trigger\Type::from(...), $json['type']), $json['created'] ?? null, $json['deleted'] ?? null, $json['end-date'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, QueryTrigger::o($json['query'] ?? null), $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ TriggerAction::o($j['action']), static::e(Trigger\Type::from(...), $j['type']), $j['created'] ?? null, $j['deleted'] ?? null, $j['end-date'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, QueryTrigger::o($j['query'] ?? null), $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9111,8 +9111,8 @@ namespace Onslip360\API {
 			public Trigger\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_TriggerAction::o($json['action'] ?? null), $json['deleted'] ?? null, $json['end-date'] ?? null, $json['labels'] ?? null, Partial_QueryTrigger::o($json['query'] ?? null), $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, static::e(Trigger\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_TriggerAction::o($j['action'] ?? null), $j['deleted'] ?? null, $j['end-date'] ?? null, $j['labels'] ?? null, Partial_QueryTrigger::o($j['query'] ?? null), $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, static::e(Trigger\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9144,8 +9144,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ TriggerAction::o($json['action']), $json['created'], $json['id'], static::e(Trigger\Type::from(...), $json['type']), $json['updated'], $json['user'], $json['deleted'] ?? null, $json['end-date'] ?? null, $json['labels'] ?? null, QueryTrigger::o($json['query'] ?? null), $json['schedules'] ?? null, $json['start-date'] ?? null, $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ TriggerAction::o($j['action']), $j['created'], $j['id'], static::e(Trigger\Type::from(...), $j['type']), $j['updated'], $j['user'], $j['deleted'] ?? null, $j['end-date'] ?? null, $j['labels'] ?? null, QueryTrigger::o($j['query'] ?? null), $j['schedules'] ?? null, $j['start-date'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9168,8 +9168,8 @@ namespace Onslip360\API {
 			public WebhookAction|null $webhook = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['name'], static::e(TriggerAction\Type::from(...), $json['type']), $json['description'] ?? null, DigitalReceiptAction::o($json['digital-receipt-action'] ?? null), DMCampaignAction::o($json['dm-campaign'] ?? null), ERPAction::o($json['erp-integration'] ?? null), static::e(TriggerAction\LogLevel::from(...), $json['log-level'] ?? null), $json['notification-uri'] ?? null, ReportAction::o($json['report'] ?? null), SendEmailAction::o($json['send-email-action'] ?? null), WebhookAction::o($json['webhook'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['name'], static::e(TriggerAction\Type::from(...), $j['type']), $j['description'] ?? null, DigitalReceiptAction::o($j['digital-receipt-action'] ?? null), DMCampaignAction::o($j['dm-campaign'] ?? null), ERPAction::o($j['erp-integration'] ?? null), static::e(TriggerAction\LogLevel::from(...), $j['log-level'] ?? null), $j['notification-uri'] ?? null, ReportAction::o($j['report'] ?? null), SendEmailAction::o($j['send-email-action'] ?? null), WebhookAction::o($j['webhook'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9192,8 +9192,8 @@ namespace Onslip360\API {
 			public Partial_WebhookAction|null|Nil $webhook = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['description'] ?? null, Partial_DigitalReceiptAction::o($json['digital-receipt-action'] ?? null), Partial_DMCampaignAction::o($json['dm-campaign'] ?? null), Partial_ERPAction::o($json['erp-integration'] ?? null), static::e(TriggerAction\LogLevel::from(...), $json['log-level'] ?? null), $json['name'] ?? null, $json['notification-uri'] ?? null, Partial_ReportAction::o($json['report'] ?? null), Partial_SendEmailAction::o($json['send-email-action'] ?? null), static::e(TriggerAction\Type::from(...), $json['type'] ?? null), Partial_WebhookAction::o($json['webhook'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['description'] ?? null, Partial_DigitalReceiptAction::o($j['digital-receipt-action'] ?? null), Partial_DMCampaignAction::o($j['dm-campaign'] ?? null), Partial_ERPAction::o($j['erp-integration'] ?? null), static::e(TriggerAction\LogLevel::from(...), $j['log-level'] ?? null), $j['name'] ?? null, $j['notification-uri'] ?? null, Partial_ReportAction::o($j['report'] ?? null), Partial_SendEmailAction::o($j['send-email-action'] ?? null), static::e(TriggerAction\Type::from(...), $j['type'] ?? null), Partial_WebhookAction::o($j['webhook'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9227,8 +9227,8 @@ namespace Onslip360\API {
 			public int|null $user = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['description'], static::e(TriggerAction\LogLevel::from(...), $json['log-level']), $json['retry-count'], TriggerAction::o($json['trigger-action']), static::e(TriggerEvent\Status::from(...), $json['trigger-status']), $json['created'] ?? null, $json['deleted'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, FileArchive::o($json['result'] ?? null), ServerError::o($json['server-error'] ?? null), $json['status-message'] ?? null, $json['tags'] ?? null, $json['trigger'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null, $json['user'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['description'], static::e(TriggerAction\LogLevel::from(...), $j['log-level']), $j['retry-count'], TriggerAction::o($j['trigger-action']), static::e(TriggerEvent\Status::from(...), $j['trigger-status']), $j['created'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, FileArchive::o($j['result'] ?? null), ServerError::o($j['server-error'] ?? null), $j['status-message'] ?? null, $j['tags'] ?? null, $j['trigger'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['user'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9256,8 +9256,8 @@ namespace Onslip360\API {
 			public TriggerEvent\Status|null $triggerStatus = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['deleted'] ?? null, $json['description'] ?? null, $json['labels'] ?? null, static::e(TriggerAction\LogLevel::from(...), $json['log-level'] ?? null), Partial_FileArchive::o($json['result'] ?? null), $json['retry-count'] ?? null, Partial_ServerError::o($json['server-error'] ?? null), $json['status-message'] ?? null, $json['tags'] ?? null, $json['trigger'] ?? null, Partial_TriggerAction::o($json['trigger-action'] ?? null), static::e(TriggerEvent\Status::from(...), $json['trigger-status'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['deleted'] ?? null, $j['description'] ?? null, $j['labels'] ?? null, static::e(TriggerAction\LogLevel::from(...), $j['log-level'] ?? null), Partial_FileArchive::o($j['result'] ?? null), $j['retry-count'] ?? null, Partial_ServerError::o($j['server-error'] ?? null), $j['status-message'] ?? null, $j['tags'] ?? null, $j['trigger'] ?? null, Partial_TriggerAction::o($j['trigger-action'] ?? null), static::e(TriggerEvent\Status::from(...), $j['trigger-status'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9291,8 +9291,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['description'], $json['id'], static::e(TriggerAction\LogLevel::from(...), $json['log-level']), $json['retry-count'], TriggerAction::o($json['trigger-action']), static::e(TriggerEvent\Status::from(...), $json['trigger-status']), $json['updated'], $json['user'], $json['deleted'] ?? null, $json['labels'] ?? null, FileArchive::o($json['result'] ?? null), ServerError::o($json['server-error'] ?? null), $json['status-message'] ?? null, $json['tags'] ?? null, $json['trigger'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['description'], $j['id'], static::e(TriggerAction\LogLevel::from(...), $j['log-level']), $j['retry-count'], TriggerAction::o($j['trigger-action']), static::e(TriggerEvent\Status::from(...), $j['trigger-status']), $j['updated'], $j['user'], $j['deleted'] ?? null, $j['labels'] ?? null, FileArchive::o($j['result'] ?? null), ServerError::o($j['server-error'] ?? null), $j['status-message'] ?? null, $j['tags'] ?? null, $j['trigger'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9317,8 +9317,8 @@ namespace Onslip360\API {
 			public VoucherTransaction|null $voucherTransaction = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ static::e(UsageEntry\Type::from(...), $json['type']), $json['inventory-adjustment'] ?? null, $json['location'] ?? null, PasswordReset::o($json['password-reset'] ?? null), PasswordResetChallenge::o($json['password-reset-challenge'] ?? null), $json['product'] ?? null, $json['product-group'] ?? null, ShiftHistoryExport::o($json['shift-history'] ?? null), StockBalanceTransaction::o($json['stock-balance-transaction'] ?? null), $json['tab'] ?? null, $json['user'] ?? null, $json['voucher'] ?? null, VoucherTransaction::o($json['voucher-transaction'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ static::e(UsageEntry\Type::from(...), $j['type']), $j['inventory-adjustment'] ?? null, $j['location'] ?? null, PasswordReset::o($j['password-reset'] ?? null), PasswordResetChallenge::o($j['password-reset-challenge'] ?? null), $j['product'] ?? null, $j['product-group'] ?? null, ShiftHistoryExport::o($j['shift-history'] ?? null), StockBalanceTransaction::o($j['stock-balance-transaction'] ?? null), $j['tab'] ?? null, $j['user'] ?? null, $j['voucher'] ?? null, VoucherTransaction::o($j['voucher-transaction'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9343,8 +9343,8 @@ namespace Onslip360\API {
 			public Partial_VoucherTransaction|null|Nil $voucherTransaction = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['inventory-adjustment'] ?? null, $json['location'] ?? null, Partial_PasswordReset::o($json['password-reset'] ?? null), Partial_PasswordResetChallenge::o($json['password-reset-challenge'] ?? null), $json['product'] ?? null, $json['product-group'] ?? null, Partial_ShiftHistoryExport::o($json['shift-history'] ?? null), Partial_StockBalanceTransaction::o($json['stock-balance-transaction'] ?? null), $json['tab'] ?? null, static::e(UsageEntry\Type::from(...), $json['type'] ?? null), $json['user'] ?? null, $json['voucher'] ?? null, Partial_VoucherTransaction::o($json['voucher-transaction'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['inventory-adjustment'] ?? null, $j['location'] ?? null, Partial_PasswordReset::o($j['password-reset'] ?? null), Partial_PasswordResetChallenge::o($j['password-reset-challenge'] ?? null), $j['product'] ?? null, $j['product-group'] ?? null, Partial_ShiftHistoryExport::o($j['shift-history'] ?? null), Partial_StockBalanceTransaction::o($j['stock-balance-transaction'] ?? null), $j['tab'] ?? null, static::e(UsageEntry\Type::from(...), $j['type'] ?? null), $j['user'] ?? null, $j['voucher'] ?? null, Partial_VoucherTransaction::o($j['voucher-transaction'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9379,8 +9379,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['email'], $json['name'], $json['password'], $json['pin'], $json['created'] ?? null, $json['deleted'] ?? null, $json['demon'] ?? null, $json['id'] ?? null, $json['identity-number'] ?? null, $json['labels'] ?? null, $json['roles'] ?? null, static::e(User\SystemRole::from(...), $json['system-roles'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['email'], $j['name'], $j['password'], $j['pin'], $j['created'] ?? null, $j['deleted'] ?? null, $j['demon'] ?? null, $j['id'] ?? null, $j['identity-number'] ?? null, $j['labels'] ?? null, $j['roles'] ?? null, static::e(User\SystemRole::from(...), $j['system-roles'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9410,8 +9410,8 @@ namespace Onslip360\API {
 			public array|null|Nil $tags = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, $json['deleted'] ?? null, $json['demon'] ?? null, $json['email'] ?? null, $json['identity-number'] ?? null, $json['labels'] ?? null, $json['name'] ?? null, $json['password'] ?? null, $json['pin'] ?? null, $json['roles'] ?? null, static::e(User\SystemRole::from(...), $json['system-roles'] ?? null), $json['tags'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['deleted'] ?? null, $j['demon'] ?? null, $j['email'] ?? null, $j['identity-number'] ?? null, $j['labels'] ?? null, $j['name'] ?? null, $j['password'] ?? null, $j['pin'] ?? null, $j['roles'] ?? null, static::e(User\SystemRole::from(...), $j['system-roles'] ?? null), $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9446,8 +9446,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['created'], $json['email'], $json['id'], $json['name'], $json['updated'], $json['deleted'] ?? null, $json['demon'] ?? null, $json['identity-number'] ?? null, $json['labels'] ?? null, $json['password'] ?? null, $json['pin'] ?? null, $json['roles'] ?? null, static::e(User\SystemRole::from(...), $json['system-roles'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['created'], $j['email'], $j['id'], $j['name'], $j['updated'], $j['deleted'] ?? null, $j['demon'] ?? null, $j['identity-number'] ?? null, $j['labels'] ?? null, $j['password'] ?? null, $j['pin'] ?? null, $j['roles'] ?? null, static::e(User\SystemRole::from(...), $j['system-roles'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9464,8 +9464,8 @@ namespace Onslip360\API {
 			public string $pin,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'], $json['email'], $json['name'], $json['password'], $json['pin'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['email'], $j['name'], $j['password'], $j['pin'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9482,8 +9482,8 @@ namespace Onslip360\API {
 			public string|null $pin = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['alias'] ?? null, $json['email'] ?? null, $json['name'] ?? null, $json['password'] ?? null, $json['pin'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['email'] ?? null, $j['name'] ?? null, $j['password'] ?? null, $j['pin'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9499,8 +9499,8 @@ namespace Onslip360\API {
 			public float $vatRate,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['gross-amount'], $json['net-amount'], $json['vat-amount'], $json['vat-rate'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['gross-amount'], $j['net-amount'], $j['vat-amount'], $j['vat-rate'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9516,8 +9516,8 @@ namespace Onslip360\API {
 			public float|null $vatRate = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['gross-amount'] ?? null, $json['net-amount'] ?? null, $json['vat-amount'] ?? null, $json['vat-rate'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['gross-amount'] ?? null, $j['net-amount'] ?? null, $j['vat-amount'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9535,8 +9535,8 @@ namespace Onslip360\API {
 			public int|null $port = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'], $json['device-name'], $json['device-type'], $json['service-hint'], $json['service-type'], $json['port'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'], $j['device-name'], $j['device-type'], $j['service-hint'], $j['service-type'], $j['port'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9554,8 +9554,8 @@ namespace Onslip360\API {
 			public string|null $serviceType = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['address'] ?? null, $json['device-name'] ?? null, $json['device-type'] ?? null, $json['port'] ?? null, $json['service-hint'] ?? null, $json['service-type'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['address'] ?? null, $j['device-name'] ?? null, $j['device-type'] ?? null, $j['port'] ?? null, $j['service-hint'] ?? null, $j['service-type'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9569,8 +9569,8 @@ namespace Onslip360\API {
 			public string $redirectUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['authorization-code'], $json['redirect-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['authorization-code'], $j['redirect-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9584,8 +9584,8 @@ namespace Onslip360\API {
 			public string|null $redirectUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['authorization-code'] ?? null, $json['redirect-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['authorization-code'] ?? null, $j['redirect-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9599,8 +9599,8 @@ namespace Onslip360\API {
 			public string $authUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['api-uri'], $json['auth-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['api-uri'], $j['auth-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9614,8 +9614,8 @@ namespace Onslip360\API {
 			public string|null $authUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['api-uri'] ?? null, $json['auth-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['api-uri'] ?? null, $j['auth-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9629,8 +9629,8 @@ namespace Onslip360\API {
 			public string $clientSecret,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['client-id'], $json['client-secret'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['client-id'], $j['client-secret'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9644,8 +9644,8 @@ namespace Onslip360\API {
 			public string|null $clientSecret = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['client-id'] ?? null, $json['client-secret'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['client-id'] ?? null, $j['client-secret'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9676,8 +9676,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['identifiers'], static::e(Voucher\Type::from(...), $json['type']), CouponVoucher::o($json['coupon'] ?? null), $json['created'] ?? null, $json['customer'] ?? null, $json['deleted'] ?? null, $json['expires'] ?? null, $json['id'] ?? null, $json['labels'] ?? null, PaymentVoucher::o($json['payment'] ?? null), $json['tags'] ?? null, $json['updated'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['identifiers'], static::e(Voucher\Type::from(...), $j['type']), CouponVoucher::o($j['coupon'] ?? null), $j['created'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, $j['expires'] ?? null, $j['id'] ?? null, $j['labels'] ?? null, PaymentVoucher::o($j['payment'] ?? null), $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9703,8 +9703,8 @@ namespace Onslip360\API {
 			public Voucher\Type|null $type = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ Partial_CouponVoucher::o($json['coupon'] ?? null), $json['customer'] ?? null, $json['deleted'] ?? null, $json['expires'] ?? null, $json['identifiers'] ?? null, $json['labels'] ?? null, Partial_PaymentVoucher::o($json['payment'] ?? null), $json['tags'] ?? null, static::e(Voucher\Type::from(...), $json['type'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ Partial_CouponVoucher::o($j['coupon'] ?? null), $j['customer'] ?? null, $j['deleted'] ?? null, $j['expires'] ?? null, $j['identifiers'] ?? null, $j['labels'] ?? null, Partial_PaymentVoucher::o($j['payment'] ?? null), $j['tags'] ?? null, static::e(Voucher\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9735,8 +9735,8 @@ namespace Onslip360\API {
 			public int|null $updatedFrom = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['created'], $json['id'], $json['identifiers'], static::e(Voucher\Type::from(...), $json['type']), $json['updated'], CouponVoucher::o($json['coupon'] ?? null), $json['customer'] ?? null, $json['deleted'] ?? null, $json['expires'] ?? null, $json['labels'] ?? null, PaymentVoucher::o($json['payment'] ?? null), $json['tags'] ?? null, $json['updated-by'] ?? null, $json['updated-from'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['created'], $j['id'], $j['identifiers'], static::e(Voucher\Type::from(...), $j['type']), $j['updated'], CouponVoucher::o($j['coupon'] ?? null), $j['customer'] ?? null, $j['deleted'] ?? null, $j['expires'] ?? null, $j['labels'] ?? null, PaymentVoucher::o($j['payment'] ?? null), $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9751,8 +9751,8 @@ namespace Onslip360\API {
 			public float|null $quantity = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['expiration'] ?? null, $json['quantity'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['expiration'] ?? null, $j['quantity'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9767,8 +9767,8 @@ namespace Onslip360\API {
 			public float|null|Nil $quantity = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['expiration'] ?? null, $json['quantity'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['expiration'] ?? null, $j['quantity'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9784,8 +9784,8 @@ namespace Onslip360\API {
 			public bool|null $vouchers = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['page-break-items'], $json['show-empty'], $json['coupon-vouchers'] ?? null, $json['vouchers'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['page-break-items'], $j['show-empty'], $j['coupon-vouchers'] ?? null, $j['vouchers'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9801,8 +9801,8 @@ namespace Onslip360\API {
 			public bool|null|Nil $vouchers = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['coupon-vouchers'] ?? null, $json['page-break-items'] ?? null, $json['show-empty'] ?? null, $json['vouchers'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['coupon-vouchers'] ?? null, $j['page-break-items'] ?? null, $j['show-empty'] ?? null, $j['vouchers'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9816,8 +9816,8 @@ namespace Onslip360\API {
 			public string $setupNotificationUri,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['base-uri'], $json['setup-notification-uri'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['base-uri'], $j['setup-notification-uri'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9831,8 +9831,8 @@ namespace Onslip360\API {
 			public string|null $setupNotificationUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['base-uri'] ?? null, $json['setup-notification-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['base-uri'] ?? null, $j['setup-notification-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9847,8 +9847,8 @@ namespace Onslip360\API {
 			public string $paymentReference,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'], $json['currency'], $json['payment-reference'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'], $j['currency'], $j['payment-reference'] ];
 		}
 
 		protected function _toJson(): array {
@@ -9863,8 +9863,8 @@ namespace Onslip360\API {
 			public string|null $paymentReference = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['amount'] ?? null, $json['currency'] ?? null, $json['payment-reference'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['amount'] ?? null, $j['currency'] ?? null, $j['payment-reference'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9879,8 +9879,8 @@ namespace Onslip360\API {
 			public int|null $accessToken = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['content-type'], $json['endpoint-uri'], $json['access-token'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['content-type'], $j['endpoint-uri'], $j['access-token'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9895,8 +9895,8 @@ namespace Onslip360\API {
 			public string|null $endpointUri = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token'] ?? null, $json['content-type'] ?? null, $json['endpoint-uri'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token'] ?? null, $j['content-type'] ?? null, $j['endpoint-uri'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9913,8 +9913,8 @@ namespace Onslip360\API {
 			public DataObjectOperation|null $dataObject = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company-alias'], $json['service-endpoint-uri'], $json['trigger'], $json['user-alias'], DataObjectOperation::o($json['data-object'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company-alias'], $j['service-endpoint-uri'], $j['trigger'], $j['user-alias'], DataObjectOperation::o($j['data-object'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -9931,8 +9931,8 @@ namespace Onslip360\API {
 			public string|null $userAlias = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['company-alias'] ?? null, Partial_DataObjectOperation::o($json['data-object'] ?? null), $json['service-endpoint-uri'] ?? null, $json['trigger'] ?? null, $json['user-alias'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['company-alias'] ?? null, Partial_DataObjectOperation::o($j['data-object'] ?? null), $j['service-endpoint-uri'] ?? null, $j['trigger'] ?? null, $j['user-alias'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -9944,7 +9944,7 @@ namespace Onslip360\API {
 		function __construct(
 		) {}
 
-		protected static function _fromJson(array $json): array {
+		protected static function _fromJson(array $j): array {
 			return [  ];
 		}
 
@@ -9957,7 +9957,7 @@ namespace Onslip360\API {
 		function __construct(
 		) {}
 
-		protected static function _fromJson(array $json): array {
+		protected static function _fromJson(array $j): array {
 			return [  ];
 		}
 
@@ -9979,8 +9979,8 @@ namespace Onslip360\API {
 			public array|null $records = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['merge-sie-verifications'], $json['sum-all'], $json['sum-gratuity'], $json['sum-locations'], $json['sum-tills'], Stored_Record::a($json['records'] ?? null) ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['merge-sie-verifications'], $j['sum-all'], $j['sum-gratuity'], $j['sum-locations'], $j['sum-tills'], Stored_Record::a($j['records'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
@@ -10001,8 +10001,8 @@ namespace Onslip360\API {
 			public bool|null $sumTills = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['merge-sie-verifications'] ?? null, Partial_Record::a($json['records'] ?? null), $json['sum-all'] ?? null, $json['sum-gratuity'] ?? null, $json['sum-locations'] ?? null, $json['sum-tills'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['merge-sie-verifications'] ?? null, Partial_Record::a($j['records'] ?? null), $j['sum-all'] ?? null, $j['sum-gratuity'] ?? null, $j['sum-locations'] ?? null, $j['sum-tills'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -10015,8 +10015,8 @@ namespace Onslip360\API {
 			public string $accessToken,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token'] ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token'] ];
 		}
 
 		protected function _toJson(): array {
@@ -10029,8 +10029,8 @@ namespace Onslip360\API {
 			public string|null $accessToken = null,
 		) {}
 
-		protected static function _fromJson(array $json): array {
-			return [ $json['access-token'] ?? null ];
+		protected static function _fromJson(array $j): array {
+			return [ $j['access-token'] ?? null ];
 		}
 
 		protected function _toJson(): array {
@@ -10078,7 +10078,7 @@ namespace Onslip360 {
 		}
 
 		function addCompany(API\Company $company): API\Stored_Company {
-			return API\Stored_Company::fromJson($this->request('POST', url('companies/', ), $company));
+			return API\Stored_Company::fromJson($this->request('POST', url('companies/'), $company));
 		}
 
 		function addCustomer(API\Customer $customer): API\Stored_Customer {
@@ -10094,7 +10094,7 @@ namespace Onslip360 {
 		}
 
 		function addDigitalReceiptRecipient(API\DigitalReceiptRecipient $digitalReceiptRecipient): API\Stored_DigitalReceiptRecipient {
-			return API\Stored_DigitalReceiptRecipient::fromJson($this->request('POST', url('digital-receipt-recipients/', ), $digitalReceiptRecipient));
+			return API\Stored_DigitalReceiptRecipient::fromJson($this->request('POST', url('digital-receipt-recipients/'), $digitalReceiptRecipient));
 		}
 
 		function addEventStream(API\EventStream $eventStream): API\Stored_EventStream {
@@ -10134,7 +10134,7 @@ namespace Onslip360 {
 		}
 
 		function addPrivPortToken(API\PrivPortToken $privPortToken): API\Stored_PrivPortToken {
-			return API\Stored_PrivPortToken::fromJson($this->request('POST', url('priv-port-tokens/', ), $privPortToken));
+			return API\Stored_PrivPortToken::fromJson($this->request('POST', url('priv-port-tokens/'), $privPortToken));
 		}
 
 		function addProduct(API\Product $product): API\Stored_Product {
@@ -10170,7 +10170,7 @@ namespace Onslip360 {
 		}
 
 		function addShortURI(API\ShortURI $shortURI): API\Stored_ShortURI {
-			return API\Stored_ShortURI::fromJson($this->request('POST', url('short-uris/', ), $shortURI));
+			return API\Stored_ShortURI::fromJson($this->request('POST', url('short-uris/'), $shortURI));
 		}
 
 		function addSwishTransaction(API\SwishTransaction $swishTransaction): API\Stored_SwishTransaction {
@@ -10222,15 +10222,15 @@ namespace Onslip360 {
 		}
 
 		function checkServerEcho(API\EchoMessage $echoMessage): API\EchoMessage {
-			return API\EchoMessage::fromJson($this->request('POST', url('health/echo', ), $echoMessage));
+			return API\EchoMessage::fromJson($this->request('POST', url('health/echo'), $echoMessage));
 		}
 
 		function checkServerLiveness(): void {
-			($this->request('GET', url('health/alive', ), null));
+			($this->request('GET', url('health/alive'), null));
 		}
 
 		function checkServerReadiness(): void {
-			($this->request('GET', url('health/ready', ), null));
+			($this->request('GET', url('health/ready'), null));
 		}
 
 		function createReport(int $user, API\TriggerAction $triggerAction): API\Stored_TriggerEvent {
@@ -10461,7 +10461,7 @@ namespace Onslip360 {
 		}
 
 		function getSystemConfig(): API\Stored_SystemConfig {
-			return API\Stored_SystemConfig::fromJson($this->request('GET', url('system-config', ), null));
+			return API\Stored_SystemConfig::fromJson($this->request('GET', url('system-config'), null));
 		}
 
 		function getTab(int $id): API\Stored_Tab {
@@ -10637,7 +10637,7 @@ namespace Onslip360 {
 		}
 
 		function inspectSystemConfig(API\InspectionRequest $report): void {
-			($this->request('REPORT', url('system-config', ), $report));
+			($this->request('REPORT', url('system-config'), $report));
 		}
 
 		function inspectTab(int $id, API\InspectionRequest $report): API\Stored_DataObjectReport {
@@ -10714,14 +10714,14 @@ namespace Onslip360 {
 		 * @return API\Stored_Company[]
 		*/
 		function listCompanies(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_Company::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('companies/', ), null));
+			return API\Stored_Company::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('companies/'), null));
 		}
 
 		/**
 		 * @return API\Stored_CompanySummary[]
 		*/
 		function listCompanySummaries(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_CompanySummary::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('company-summaries/', ), null));
+			return API\Stored_CompanySummary::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('company-summaries/'), null));
 		}
 
 		/**
@@ -10742,7 +10742,7 @@ namespace Onslip360 {
 		 * @return API\Stored_DigitalReceiptRecipient[]
 		*/
 		function listDigitalReceiptRecipients(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_DigitalReceiptRecipient::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('digital-receipt-recipients/', ), null));
+			return API\Stored_DigitalReceiptRecipient::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('digital-receipt-recipients/'), null));
 		}
 
 		/**
@@ -10791,7 +10791,7 @@ namespace Onslip360 {
 		 * @return API\Stored_MQRecordSchedule[]
 		*/
 		function listMQRecordSchedules(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_MQRecordSchedule::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('mq-record-schedules', ), null));
+			return API\Stored_MQRecordSchedule::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('mq-record-schedules'), null));
 		}
 
 		/**
@@ -10833,7 +10833,7 @@ namespace Onslip360 {
 		 * @return API\Stored_PrivPortToken[]
 		*/
 		function listPrivPortTokens(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_PrivPortToken::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('priv-port-tokens/', ), null));
+			return API\Stored_PrivPortToken::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('priv-port-tokens/'), null));
 		}
 
 		/**
@@ -10896,7 +10896,7 @@ namespace Onslip360 {
 		 * @return API\Stored_ShortURI[]
 		*/
 		function listShortURIs(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
-			return API\Stored_ShortURI::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('short-uris/', ), null));
+			return API\Stored_ShortURI::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('short-uris/'), null));
 		}
 
 		/**
@@ -10956,7 +10956,7 @@ namespace Onslip360 {
 		}
 
 		function passwordResetChallenge(API\PasswordResetChallengeRequest $challenge): void {
-			($this->request('POST', url('password-reset-challenge', ), $challenge));
+			($this->request('POST', url('password-reset-challenge'), $challenge));
 		}
 
 		function pinReset(API\PinResetRequest $pin): void {
@@ -11116,7 +11116,7 @@ namespace Onslip360 {
 		}
 
 		function putSystemConfig(API\SystemConfig $config): API\Stored_SystemConfig {
-			return API\Stored_SystemConfig::fromJson($this->request('PUT', url('system-config', ), $config));
+			return API\Stored_SystemConfig::fromJson($this->request('PUT', url('system-config'), $config));
 		}
 
 		function putTab(int $id, API\Tab $tab): API\Stored_Tab {
@@ -11164,7 +11164,7 @@ namespace Onslip360 {
 		}
 
 		function registerCompany(API\CompanyRegistration $registration): void {
-			($this->request('POST', url('companies/register', ), $registration));
+			($this->request('POST', url('companies/register'), $registration));
 		}
 
 		function removeAccessToken(int $user, int $id): void {
@@ -11308,7 +11308,7 @@ namespace Onslip360 {
 		}
 
 		function removeSystemConfig(): void {
-			($this->request('DELETE', url('system-config', ), null));
+			($this->request('DELETE', url('system-config'), null));
 		}
 
 		function removeTab(int $id): void {
@@ -11356,7 +11356,7 @@ namespace Onslip360 {
 		}
 
 		function sendEmail(API\SendEmailRequest $sendEmail): API\Stored_TriggerEvent {
-			return API\Stored_TriggerEvent::fromJson($this->request('POST', url('send-email', ), $sendEmail));
+			return API\Stored_TriggerEvent::fromJson($this->request('POST', url('send-email'), $sendEmail));
 		}
 
 		function signReceipt(int $id, API\Record $record): API\Stored_Record {
@@ -11540,7 +11540,7 @@ namespace Onslip360 {
 		}
 
 		function updateSystemConfig(API\SystemConfig $config): API\Stored_SystemConfig {
-			return API\Stored_SystemConfig::fromJson($this->request('PATCH', url('system-config', ), $config));
+			return API\Stored_SystemConfig::fromJson($this->request('PATCH', url('system-config'), $config));
 		}
 
 		function updateTab(int $id, API\Partial_Tab $tab): API\Stored_Tab {
