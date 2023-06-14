@@ -63,6 +63,17 @@ function url(string $pattern, string|int ...$arguments): string {
 	}, str_split($pattern)));
 }
 
+/**
+ * @return string[]
+ */
+function oauthPKCE(): array {
+	$e = fn ($s) => rtrim(strtr(base64_encode($s), '+/', '-_'), '=');
+	$v = $e(random_bytes(32));
+	$c = $e(hash('sha256', $v, binary: true));
+
+	return [ $c, $v ];
+}
+
 enum Nil {
 	case nil;
 }
@@ -192,7 +203,7 @@ class RequestException extends \Exception {
 	}
 
 	function __toString() {
-		$code = $this->data?->code ?? 'no code';
+		$code = $this->error?->code ?? 'no code';
 
 		return __CLASS__ . ": Status {$this->code} [{$code}]: {$this->message}\n";
 	}
@@ -368,18 +379,12 @@ abstract class AbstractAPI {
 		});
 	}
 
-	/**
-	 * @param ProgressHandler|callable<float, int, int>|null $metadata;
-	 */
 	function onProgress(ProgressHandler|callable|null $progress): static {
 		return $this->_extend(function (self $that) use ($progress) {
 			$that->progress = $progress;
 		});
 	}
 
-	/**
-	 * @param ResponseMetadataHandler|callable<int, array<string, string>>|null $metadata;
-	 */
 	function onResponseMetadata(ResponseMetadataHandler|callable|null $metadata): static {
 		return $this->_extend(function (self $that) use ($metadata) {
 			$that->metadata = $metadata;
@@ -392,9 +397,6 @@ abstract class AbstractAPI {
 		});
 	}
 
-	/**
-	 * @param callable<self> $fn
-	 */
 	private function _extend(callable $fn): static {
 		$that = clone($this);
 		$fn($that);

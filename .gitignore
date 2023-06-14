@@ -1,4 +1,7 @@
+/.phpdoc
 /auth.json
 /composer.lock
+/docs
 /onslip-360-php-sdk
+/phpDocumentor.phar
 /vendor

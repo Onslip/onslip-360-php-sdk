@@ -296,6 +296,18 @@ namespace Onslip360\API\EventStream {
 	}
 }
 
+namespace Onslip360\API\Integration {
+	enum Confinement: string {
+		case AUTHORIZATION = 'authorization';
+		case LOCATION = 'location';
+		case USER = 'user';
+	}
+
+	enum Type: string {
+		case OAUTH = 'oauth';
+	}
+}
+
 namespace Onslip360\API\InventoryAdjustment {
 	enum Type: string {
 		case INCOMING = 'incoming';
@@ -397,6 +409,10 @@ namespace Onslip360\API {
 		case TERMINATE_COMPANY = 'terminate-company';
 		case SHOW_COMPANY_CONFIG = 'show-company-config';
 		case EDIT_COMPANY_CONFIG = 'edit-company-config';
+		case SHOW_INTEGRATIONS = 'show-integrations';
+		case EDIT_INTEGRATIONS = 'edit-integrations';
+		case USE_INTEGRATIONS = 'use-integrations';
+		case ADMIN_INTEGRATIONS = 'admin-integrations';
 		case SHOW_LABELS = 'show-labels';
 		case EDIT_LABELS = 'edit-labels';
 		case SHOW_RECORDS = 'show-records';
@@ -675,6 +691,8 @@ namespace Onslip360\API\UsageEntry {
 		case CASHIER_LOGIN_ONLINE = 'cashier-login-online';
 		case CASHIER_LOGIN_OFFLINE = 'cashier-login-offline';
 		case CASHIER_LOGOUT = 'cashier-logout';
+		case CASHIER_LOCK = 'cashier-lock';
+		case CASHIER_UNLOCK = 'cashier-unlock';
 		case TAB_SUSPEND = 'tab-suspend';
 		case TAB_RESUME = 'tab-resume';
 		case TAB_CLOSE = 'tab-close';
@@ -1029,6 +1047,78 @@ namespace Onslip360\API {
 
 		protected function _toJson(): array {
 			return [ 'trigger' => $this->trigger, 'trigger-action' => $this->triggerAction, 'trigger-etag' => $this->triggerEtag, 'trigger-event' => $this->triggerEvent, 'trigger-status' => $this->triggerStatus, 'trigger-time' => $this->triggerTime, 'user-alias' => $this->userAlias ];
+		}
+	}
+
+	class AuthorizeIntegrationRequest extends Onslip360Object {
+		/**
+		 * @param Permission[]|null $permissions
+		*/
+		function __construct(
+			public string $oauthCodeChallenge,
+			public string $oauthRedirectUri,
+			public int|null $location = null,
+			public string|null $name = null,
+			public array|null $permissions = null,
+			public bool|null $returnScope = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['oauth-code-challenge'], $j['oauth-redirect-uri'], $j['location'] ?? null, $j['name'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['return-scope'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'oauth-code-challenge' => $this->oauthCodeChallenge, 'oauth-redirect-uri' => $this->oauthRedirectUri, 'location' => $this->location, 'name' => $this->name, 'permissions' => $this->permissions, 'return-scope' => $this->returnScope ];
+		}
+	}
+
+	class Partial_AuthorizeIntegrationRequest extends Onslip360Object {
+		/**
+		 * @param Permission[]|null|Nil $permissions
+		*/
+		function __construct(
+			public int|null|Nil $location = null,
+			public string|null|Nil $name = null,
+			public string|null $oauthCodeChallenge = null,
+			public string|null $oauthRedirectUri = null,
+			public array|null|Nil $permissions = null,
+			public bool|null|Nil $returnScope = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['location'] ?? null, $j['name'] ?? null, $j['oauth-code-challenge'] ?? null, $j['oauth-redirect-uri'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['return-scope'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'location' => $this->location, 'name' => $this->name, 'oauth-code-challenge' => $this->oauthCodeChallenge, 'oauth-redirect-uri' => $this->oauthRedirectUri, 'permissions' => $this->permissions, 'return-scope' => $this->returnScope ];
+		}
+	}
+
+	class AuthorizeIntegrationResponse extends Onslip360Object {
+		function __construct(
+			public string $code,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['code'] ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'code' => $this->code ];
+		}
+	}
+
+	class Partial_AuthorizeIntegrationResponse extends Onslip360Object {
+		function __construct(
+			public string|null $code = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['code'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'code' => $this->code ];
 		}
 	}
 
@@ -2092,6 +2182,7 @@ namespace Onslip360\API {
 			public Company\RegistrationType|null $registrationType = null,
 			public int|null $reseller = null,
 			public ResellerParams|null $resellerParams = null,
+			public int|null $salesBreakpointHour = null,
 			public string|null $secondaryLocale = null,
 			public array|null $tags = null,
 			public string|null $terminated = null,
@@ -2104,11 +2195,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['address'], $j['alias'], $j['name'], $j['org-number'], $j['phone-number'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['created'] ?? null, $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['id'] ?? null, $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
+			return [ $j['address'], $j['alias'], $j['name'], $j['org-number'], $j['phone-number'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['created'] ?? null, $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['id'] ?? null, $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['sales-breakpoint-hour'] ?? null, $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'address' => $this->address, 'alias' => $this->alias, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'business-category' => $this->businessCategory, 'created' => $this->created, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'id' => $this->id, 'locale' => $this->locale, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'web-address' => $this->webAddress ];
+			return [ 'address' => $this->address, 'alias' => $this->alias, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'business-category' => $this->businessCategory, 'created' => $this->created, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'id' => $this->id, 'locale' => $this->locale, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'sales-breakpoint-hour' => $this->salesBreakpointHour, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'web-address' => $this->webAddress ];
 		}
 	}
 
@@ -2132,6 +2223,7 @@ namespace Onslip360\API {
 			public Company\RegistrationType|null|Nil $registrationType = null,
 			public int|null|Nil $reseller = null,
 			public Partial_ResellerParams|null|Nil $resellerParams = null,
+			public int|null|Nil $salesBreakpointHour = null,
 			public string|null|Nil $secondaryLocale = null,
 			public array|null|Nil $tags = null,
 			public string|null|Nil $terminated = null,
@@ -2141,11 +2233,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['address'] ?? null, $j['alias'] ?? null, static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, Partial_CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, $j['name'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, Partial_ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
+			return [ $j['address'] ?? null, $j['alias'] ?? null, static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, Partial_CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, $j['name'] ?? null, $j['org-number'] ?? null, $j['phone-number'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, Partial_ResellerParams::o($j['reseller-params'] ?? null), $j['sales-breakpoint-hour'] ?? null, $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'address' => $this->address, 'alias' => $this->alias, 'business-category' => $this->businessCategory, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'locale' => $this->locale, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'web-address' => $this->webAddress ];
+			return [ 'address' => $this->address, 'alias' => $this->alias, 'business-category' => $this->businessCategory, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'locale' => $this->locale, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'sales-breakpoint-hour' => $this->salesBreakpointHour, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'web-address' => $this->webAddress ];
 		}
 	}
 
@@ -2172,6 +2264,7 @@ namespace Onslip360\API {
 			public Company\RegistrationType|null $registrationType = null,
 			public int|null $reseller = null,
 			public ResellerParams|null $resellerParams = null,
+			public int|null $salesBreakpointHour = null,
 			public string|null $secondaryLocale = null,
 			public array|null $tags = null,
 			public string|null $terminated = null,
@@ -2183,11 +2276,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['address'], $j['alias'], $j['created'], $j['id'], $j['name'], $j['org-number'], $j['phone-number'], $j['updated'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
+			return [ $j['address'], $j['alias'], $j['created'], $j['id'], $j['name'], $j['org-number'], $j['phone-number'], $j['updated'], static::e(Company\Category::from(...), $j['business-category'] ?? null), $j['currency'] ?? null, $j['deleted'] ?? null, $j['derivation-base-key'] ?? null, $j['email'] ?? null, CompanyFeature::o($j['feature'] ?? null), $j['locale'] ?? null, static::e(Company\RegistrationType::from(...), $j['registration-type'] ?? null), $j['reseller'] ?? null, ResellerParams::o($j['reseller-params'] ?? null), $j['sales-breakpoint-hour'] ?? null, $j['secondary-locale'] ?? null, $j['tags'] ?? null, $j['terminated'] ?? null, $j['time-zone'] ?? null, static::e(Company\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['web-address'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'address' => $this->address, 'alias' => $this->alias, 'created' => $this->created, 'id' => $this->id, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'updated' => $this->updated, 'business-category' => $this->businessCategory, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'locale' => $this->locale, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'web-address' => $this->webAddress ];
+			return [ 'address' => $this->address, 'alias' => $this->alias, 'created' => $this->created, 'id' => $this->id, 'name' => $this->name, 'org-number' => $this->orgNumber, 'phone-number' => $this->phoneNumber, 'updated' => $this->updated, 'business-category' => $this->businessCategory, 'currency' => $this->currency, 'deleted' => $this->deleted, 'derivation-base-key' => $this->derivationBaseKey, 'email' => $this->email, 'feature' => $this->feature, 'locale' => $this->locale, 'registration-type' => $this->registrationType, 'reseller' => $this->reseller, 'reseller-params' => $this->resellerParams, 'sales-breakpoint-hour' => $this->salesBreakpointHour, 'secondary-locale' => $this->secondaryLocale, 'tags' => $this->tags, 'terminated' => $this->terminated, 'time-zone' => $this->timeZone, 'type' => $this->type, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'web-address' => $this->webAddress ];
 		}
 	}
 
@@ -3798,6 +3891,142 @@ namespace Onslip360\API {
 		}
 	}
 
+	class GlobalIntegration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[] $confinements
+		 * @param CompanyFeature\Flag[] $features
+		 * @param string[] $oauthRedirectUris
+		 * @param Permission[] $permissions
+		 * @param string[][]|null $descriptionT9N
+		 * @param int[]|null $labels
+		 * @param string[][]|null $nameT9N
+		 * @param string[]|null $tags
+		*/
+		function __construct(
+			public string $alias,
+			public string $author,
+			public array $confinements,
+			public string $email,
+			public array $features,
+			public string $name,
+			public array $oauthRedirectUris,
+			public array $permissions,
+			public bool $published,
+			public string $publisher,
+			public Integration\Type $type,
+			public string $webAddress,
+			public string|null $created = null,
+			public string|null $deleted = null,
+			public string|null $description = null,
+			public array|null $descriptionT9N = null,
+			public File|null $icon = null,
+			public int|null $id = null,
+			public array|null $labels = null,
+			public array|null $nameT9N = null,
+			public array|null $tags = null,
+			public string|null $updated = null,
+			public int|null $updatedBy = null,
+			public int|null $updatedFrom = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['author'], static::e(Integration\Confinement::from(...), $j['confinements']), $j['email'], static::e(CompanyFeature\Flag::from(...), $j['features']), $j['name'], $j['oauth-redirect-uris'], static::e(Permission::from(...), $j['permissions']), $j['published'], $j['publisher'], static::e(Integration\Type::from(...), $j['type']), $j['web-address'], $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, File::o($j['icon'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['name-t9n'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'email' => $this->email, 'features' => $this->features, 'name' => $this->name, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'published' => $this->published, 'publisher' => $this->publisher, 'type' => $this->type, 'web-address' => $this->webAddress, 'created' => $this->created, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'icon' => $this->icon, 'id' => $this->id, 'labels' => $this->labels, 'name-t9n' => $this->nameT9N, 'tags' => $this->tags, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+		}
+	}
+
+	class Partial_GlobalIntegration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[]|null $confinements
+		 * @param string[][]|null|Nil $descriptionT9N
+		 * @param CompanyFeature\Flag[]|null $features
+		 * @param int[]|null|Nil $labels
+		 * @param string[][]|null|Nil $nameT9N
+		 * @param string[]|null $oauthRedirectUris
+		 * @param Permission[]|null $permissions
+		 * @param string[]|null|Nil $tags
+		*/
+		function __construct(
+			public string|null $alias = null,
+			public string|null $author = null,
+			public array|null $confinements = null,
+			public string|null|Nil $deleted = null,
+			public string|null|Nil $description = null,
+			public array|null|Nil $descriptionT9N = null,
+			public string|null $email = null,
+			public array|null $features = null,
+			public Partial_File|null|Nil $icon = null,
+			public array|null|Nil $labels = null,
+			public string|null $name = null,
+			public array|null|Nil $nameT9N = null,
+			public array|null $oauthRedirectUris = null,
+			public array|null $permissions = null,
+			public bool|null $published = null,
+			public string|null $publisher = null,
+			public array|null|Nil $tags = null,
+			public Integration\Type|null $type = null,
+			public string|null $webAddress = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['author'] ?? null, static::e(Integration\Confinement::from(...), $j['confinements'] ?? null), $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['email'] ?? null, static::e(CompanyFeature\Flag::from(...), $j['features'] ?? null), Partial_File::o($j['icon'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['name-t9n'] ?? null, $j['oauth-redirect-uris'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['published'] ?? null, $j['publisher'] ?? null, $j['tags'] ?? null, static::e(Integration\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'email' => $this->email, 'features' => $this->features, 'icon' => $this->icon, 'labels' => $this->labels, 'name' => $this->name, 'name-t9n' => $this->nameT9N, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'published' => $this->published, 'publisher' => $this->publisher, 'tags' => $this->tags, 'type' => $this->type, 'web-address' => $this->webAddress ];
+		}
+	}
+
+	class Stored_GlobalIntegration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[] $confinements
+		 * @param CompanyFeature\Flag[] $features
+		 * @param string[] $oauthRedirectUris
+		 * @param Permission[] $permissions
+		 * @param string[][]|null $descriptionT9N
+		 * @param int[]|null $labels
+		 * @param string[][]|null $nameT9N
+		 * @param string[]|null $tags
+		*/
+		function __construct(
+			public string $alias,
+			public string $author,
+			public array $confinements,
+			public string $created,
+			public string $email,
+			public array $features,
+			public int $id,
+			public string $name,
+			public array $oauthRedirectUris,
+			public array $permissions,
+			public bool $published,
+			public string $publisher,
+			public Integration\Type $type,
+			public string $updated,
+			public string $webAddress,
+			public string|null $deleted = null,
+			public string|null $description = null,
+			public array|null $descriptionT9N = null,
+			public File|null $icon = null,
+			public array|null $labels = null,
+			public array|null $nameT9N = null,
+			public array|null $tags = null,
+			public int|null $updatedBy = null,
+			public int|null $updatedFrom = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['author'], static::e(Integration\Confinement::from(...), $j['confinements']), $j['created'], $j['email'], static::e(CompanyFeature\Flag::from(...), $j['features']), $j['id'], $j['name'], $j['oauth-redirect-uris'], static::e(Permission::from(...), $j['permissions']), $j['published'], $j['publisher'], static::e(Integration\Type::from(...), $j['type']), $j['updated'], $j['web-address'], $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, File::o($j['icon'] ?? null), $j['labels'] ?? null, $j['name-t9n'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'created' => $this->created, 'email' => $this->email, 'features' => $this->features, 'id' => $this->id, 'name' => $this->name, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'published' => $this->published, 'publisher' => $this->publisher, 'type' => $this->type, 'updated' => $this->updated, 'web-address' => $this->webAddress, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'icon' => $this->icon, 'labels' => $this->labels, 'name-t9n' => $this->nameT9N, 'tags' => $this->tags, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+		}
+	}
+
 	class GratuitySummary extends Onslip360Object {
 		function __construct(
 			public float $amount,
@@ -3893,6 +4122,136 @@ namespace Onslip360\API {
 
 		protected function _toJson(): array {
 			return [ 'type' => $this->type ];
+		}
+	}
+
+	class Integration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[] $confinements
+		 * @param CompanyFeature\Flag[] $features
+		 * @param string[] $oauthRedirectUris
+		 * @param Permission[] $permissions
+		 * @param string[][]|null $descriptionT9N
+		 * @param int[]|null $labels
+		 * @param string[][]|null $nameT9N
+		 * @param string[]|null $tags
+		*/
+		function __construct(
+			public string $alias,
+			public string $author,
+			public array $confinements,
+			public string $email,
+			public array $features,
+			public string $name,
+			public array $oauthRedirectUris,
+			public array $permissions,
+			public Integration\Type $type,
+			public string $webAddress,
+			public string|null $created = null,
+			public string|null $deleted = null,
+			public string|null $description = null,
+			public array|null $descriptionT9N = null,
+			public File|null $icon = null,
+			public int|null $id = null,
+			public array|null $labels = null,
+			public array|null $nameT9N = null,
+			public array|null $tags = null,
+			public string|null $updated = null,
+			public int|null $updatedBy = null,
+			public int|null $updatedFrom = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['author'], static::e(Integration\Confinement::from(...), $j['confinements']), $j['email'], static::e(CompanyFeature\Flag::from(...), $j['features']), $j['name'], $j['oauth-redirect-uris'], static::e(Permission::from(...), $j['permissions']), static::e(Integration\Type::from(...), $j['type']), $j['web-address'], $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, File::o($j['icon'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['name-t9n'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'email' => $this->email, 'features' => $this->features, 'name' => $this->name, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'type' => $this->type, 'web-address' => $this->webAddress, 'created' => $this->created, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'icon' => $this->icon, 'id' => $this->id, 'labels' => $this->labels, 'name-t9n' => $this->nameT9N, 'tags' => $this->tags, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+		}
+	}
+
+	class Partial_Integration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[]|null $confinements
+		 * @param string[][]|null|Nil $descriptionT9N
+		 * @param CompanyFeature\Flag[]|null $features
+		 * @param int[]|null|Nil $labels
+		 * @param string[][]|null|Nil $nameT9N
+		 * @param string[]|null $oauthRedirectUris
+		 * @param Permission[]|null $permissions
+		 * @param string[]|null|Nil $tags
+		*/
+		function __construct(
+			public string|null $alias = null,
+			public string|null $author = null,
+			public array|null $confinements = null,
+			public string|null|Nil $deleted = null,
+			public string|null|Nil $description = null,
+			public array|null|Nil $descriptionT9N = null,
+			public string|null $email = null,
+			public array|null $features = null,
+			public Partial_File|null|Nil $icon = null,
+			public array|null|Nil $labels = null,
+			public string|null $name = null,
+			public array|null|Nil $nameT9N = null,
+			public array|null $oauthRedirectUris = null,
+			public array|null $permissions = null,
+			public array|null|Nil $tags = null,
+			public Integration\Type|null $type = null,
+			public string|null $webAddress = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'] ?? null, $j['author'] ?? null, static::e(Integration\Confinement::from(...), $j['confinements'] ?? null), $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, $j['email'] ?? null, static::e(CompanyFeature\Flag::from(...), $j['features'] ?? null), Partial_File::o($j['icon'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['name-t9n'] ?? null, $j['oauth-redirect-uris'] ?? null, static::e(Permission::from(...), $j['permissions'] ?? null), $j['tags'] ?? null, static::e(Integration\Type::from(...), $j['type'] ?? null), $j['web-address'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'email' => $this->email, 'features' => $this->features, 'icon' => $this->icon, 'labels' => $this->labels, 'name' => $this->name, 'name-t9n' => $this->nameT9N, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'tags' => $this->tags, 'type' => $this->type, 'web-address' => $this->webAddress ];
+		}
+	}
+
+	class Stored_Integration extends Onslip360Object {
+		/**
+		 * @param Integration\Confinement[] $confinements
+		 * @param CompanyFeature\Flag[] $features
+		 * @param string[] $oauthRedirectUris
+		 * @param Permission[] $permissions
+		 * @param string[][]|null $descriptionT9N
+		 * @param int[]|null $labels
+		 * @param string[][]|null $nameT9N
+		 * @param string[]|null $tags
+		*/
+		function __construct(
+			public string $alias,
+			public string $author,
+			public array $confinements,
+			public string $created,
+			public string $email,
+			public array $features,
+			public int $id,
+			public string $name,
+			public array $oauthRedirectUris,
+			public array $permissions,
+			public Integration\Type $type,
+			public string $updated,
+			public string $webAddress,
+			public string|null $deleted = null,
+			public string|null $description = null,
+			public array|null $descriptionT9N = null,
+			public File|null $icon = null,
+			public array|null $labels = null,
+			public array|null $nameT9N = null,
+			public array|null $tags = null,
+			public int|null $updatedBy = null,
+			public int|null $updatedFrom = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['alias'], $j['author'], static::e(Integration\Confinement::from(...), $j['confinements']), $j['created'], $j['email'], static::e(CompanyFeature\Flag::from(...), $j['features']), $j['id'], $j['name'], $j['oauth-redirect-uris'], static::e(Permission::from(...), $j['permissions']), static::e(Integration\Type::from(...), $j['type']), $j['updated'], $j['web-address'], $j['deleted'] ?? null, $j['description'] ?? null, $j['description-t9n'] ?? null, File::o($j['icon'] ?? null), $j['labels'] ?? null, $j['name-t9n'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'alias' => $this->alias, 'author' => $this->author, 'confinements' => $this->confinements, 'created' => $this->created, 'email' => $this->email, 'features' => $this->features, 'id' => $this->id, 'name' => $this->name, 'oauth-redirect-uris' => $this->oauthRedirectUris, 'permissions' => $this->permissions, 'type' => $this->type, 'updated' => $this->updated, 'web-address' => $this->webAddress, 'deleted' => $this->deleted, 'description' => $this->description, 'description-t9n' => $this->descriptionT9N, 'icon' => $this->icon, 'labels' => $this->labels, 'name-t9n' => $this->nameT9N, 'tags' => $this->tags, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
 		}
 	}
 
@@ -4817,6 +5176,80 @@ namespace Onslip360\API {
 
 		protected function _toJson(): array {
 			return [ 'password' => $this->password, 'pin' => $this->pin ];
+		}
+	}
+
+	class OAuthAccessTokenResponse extends Onslip360Object {
+		function __construct(
+			public string $access_token,
+			public string $algorithm,
+			public string $secret,
+			public string $token_type,
+			public int|null $location = null,
+			public string|null $scope = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['access_token'], $j['algorithm'], $j['secret'], $j['token_type'], $j['location'] ?? null, $j['scope'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'access_token' => $this->access_token, 'algorithm' => $this->algorithm, 'secret' => $this->secret, 'token_type' => $this->token_type, 'location' => $this->location, 'scope' => $this->scope ];
+		}
+	}
+
+	class Partial_OAuthAccessTokenResponse extends Onslip360Object {
+		function __construct(
+			public string|null $access_token = null,
+			public string|null $algorithm = null,
+			public int|null|Nil $location = null,
+			public string|null|Nil $scope = null,
+			public string|null $secret = null,
+			public string|null $token_type = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['access_token'] ?? null, $j['algorithm'] ?? null, $j['location'] ?? null, $j['scope'] ?? null, $j['secret'] ?? null, $j['token_type'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'access_token' => $this->access_token, 'algorithm' => $this->algorithm, 'location' => $this->location, 'scope' => $this->scope, 'secret' => $this->secret, 'token_type' => $this->token_type ];
+		}
+	}
+
+	class OAuthAuthorizationCodeRequest extends Onslip360Object {
+		function __construct(
+			public string $client_id,
+			public string $code,
+			public string $code_verifier,
+			public string $grant_type,
+			public string $redirect_uri,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['client_id'], $j['code'], $j['code_verifier'], $j['grant_type'], $j['redirect_uri'] ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'client_id' => $this->client_id, 'code' => $this->code, 'code_verifier' => $this->code_verifier, 'grant_type' => $this->grant_type, 'redirect_uri' => $this->redirect_uri ];
+		}
+	}
+
+	class Partial_OAuthAuthorizationCodeRequest extends Onslip360Object {
+		function __construct(
+			public string|null $client_id = null,
+			public string|null $code = null,
+			public string|null $code_verifier = null,
+			public string|null $grant_type = null,
+			public string|null $redirect_uri = null,
+		) {}
+
+		protected static function _fromJson(array $j): array {
+			return [ $j['client_id'] ?? null, $j['code'] ?? null, $j['code_verifier'] ?? null, $j['grant_type'] ?? null, $j['redirect_uri'] ?? null ];
+		}
+
+		protected function _toJson(): array {
+			return [ 'client_id' => $this->client_id, 'code' => $this->code, 'code_verifier' => $this->code_verifier, 'grant_type' => $this->grant_type, 'redirect_uri' => $this->redirect_uri ];
 		}
 	}
 
@@ -6095,6 +6528,7 @@ namespace Onslip360\API {
 		/**
 		 * @param int[]|null $labels
 		 * @param int[]|null $modifiers
+		 * @param Peripheral\PeripheralFunction[]|null $secondaryKitchenPrinters
 		 * @param string[]|null $tags
 		*/
 		function __construct(
@@ -6110,6 +6544,7 @@ namespace Onslip360\API {
 			public Peripheral\PeripheralFunction|null $kitchenPrinter = null,
 			public array|null $labels = null,
 			public array|null $modifiers = null,
+			public array|null $secondaryKitchenPrinters = null,
 			public array|null $tags = null,
 			public bool|null $undiscountable = null,
 			public string|null $updated = null,
@@ -6119,11 +6554,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, $j['id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
+			return [ $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, $j['id'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['secondary-kitchen-printers'] ?? null), $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'name' => $this->name, 'type' => $this->type, 'vat-rate' => $this->vatRate, 'account' => $this->account, 'alert' => $this->alert, 'created' => $this->created, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'id' => $this->id, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'tags' => $this->tags, 'undiscountable' => $this->undiscountable, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'vat-account' => $this->vatAccount ];
+			return [ 'name' => $this->name, 'type' => $this->type, 'vat-rate' => $this->vatRate, 'account' => $this->account, 'alert' => $this->alert, 'created' => $this->created, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'id' => $this->id, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'secondary-kitchen-printers' => $this->secondaryKitchenPrinters, 'tags' => $this->tags, 'undiscountable' => $this->undiscountable, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'vat-account' => $this->vatAccount ];
 		}
 	}
 
@@ -6131,6 +6566,7 @@ namespace Onslip360\API {
 		/**
 		 * @param int[]|null|Nil $labels
 		 * @param int[]|null|Nil $modifiers
+		 * @param Peripheral\PeripheralFunction[]|null|Nil $secondaryKitchenPrinters
 		 * @param string[]|null|Nil $tags
 		*/
 		function __construct(
@@ -6142,6 +6578,7 @@ namespace Onslip360\API {
 			public array|null|Nil $labels = null,
 			public array|null|Nil $modifiers = null,
 			public string|null $name = null,
+			public array|null|Nil $secondaryKitchenPrinters = null,
 			public array|null|Nil $tags = null,
 			public ProductGroup\Type|null $type = null,
 			public bool|null|Nil $undiscountable = null,
@@ -6150,11 +6587,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['name'] ?? null, $j['tags'] ?? null, static::e(ProductGroup\Type::from(...), $j['type'] ?? null), $j['undiscountable'] ?? null, $j['vat-account'] ?? null, $j['vat-rate'] ?? null ];
+			return [ $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['name'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['secondary-kitchen-printers'] ?? null), $j['tags'] ?? null, static::e(ProductGroup\Type::from(...), $j['type'] ?? null), $j['undiscountable'] ?? null, $j['vat-account'] ?? null, $j['vat-rate'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'account' => $this->account, 'alert' => $this->alert, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'name' => $this->name, 'tags' => $this->tags, 'type' => $this->type, 'undiscountable' => $this->undiscountable, 'vat-account' => $this->vatAccount, 'vat-rate' => $this->vatRate ];
+			return [ 'account' => $this->account, 'alert' => $this->alert, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'name' => $this->name, 'secondary-kitchen-printers' => $this->secondaryKitchenPrinters, 'tags' => $this->tags, 'type' => $this->type, 'undiscountable' => $this->undiscountable, 'vat-account' => $this->vatAccount, 'vat-rate' => $this->vatRate ];
 		}
 	}
 
@@ -6162,6 +6599,7 @@ namespace Onslip360\API {
 		/**
 		 * @param int[]|null $labels
 		 * @param int[]|null $modifiers
+		 * @param Peripheral\PeripheralFunction[]|null $secondaryKitchenPrinters
 		 * @param string[]|null $tags
 		*/
 		function __construct(
@@ -6178,6 +6616,7 @@ namespace Onslip360\API {
 			public Peripheral\PeripheralFunction|null $kitchenPrinter = null,
 			public array|null $labels = null,
 			public array|null $modifiers = null,
+			public array|null $secondaryKitchenPrinters = null,
 			public array|null $tags = null,
 			public bool|null $undiscountable = null,
 			public int|null $updatedBy = null,
@@ -6186,11 +6625,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['created'], $j['id'], $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['updated'], $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
+			return [ $j['created'], $j['id'], $j['name'], static::e(ProductGroup\Type::from(...), $j['type']), $j['updated'], $j['vat-rate'], $j['account'] ?? null, $j['alert'] ?? null, $j['deleted'] ?? null, $j['discount-account'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['labels'] ?? null, $j['modifiers'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['secondary-kitchen-printers'] ?? null), $j['tags'] ?? null, $j['undiscountable'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, $j['vat-account'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'created' => $this->created, 'id' => $this->id, 'name' => $this->name, 'type' => $this->type, 'updated' => $this->updated, 'vat-rate' => $this->vatRate, 'account' => $this->account, 'alert' => $this->alert, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'tags' => $this->tags, 'undiscountable' => $this->undiscountable, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'vat-account' => $this->vatAccount ];
+			return [ 'created' => $this->created, 'id' => $this->id, 'name' => $this->name, 'type' => $this->type, 'updated' => $this->updated, 'vat-rate' => $this->vatRate, 'account' => $this->account, 'alert' => $this->alert, 'deleted' => $this->deleted, 'discount-account' => $this->discountAccount, 'kitchen-printer' => $this->kitchenPrinter, 'labels' => $this->labels, 'modifiers' => $this->modifiers, 'secondary-kitchen-printers' => $this->secondaryKitchenPrinters, 'tags' => $this->tags, 'undiscountable' => $this->undiscountable, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'vat-account' => $this->vatAccount ];
 		}
 	}
 
@@ -8466,6 +8905,7 @@ namespace Onslip360\API {
 			public string|null $created = null,
 			public string|null $deleted = null,
 			public string|null $description = null,
+			public bool|null $frozen = null,
 			public int|null $id = null,
 			public array|null $items = null,
 			public array|null $labels = null,
@@ -8481,11 +8921,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['id'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['created'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['frozen'] ?? null, $j['id'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'client' => $this->client, 'closed' => $this->closed, 'created' => $this->created, 'deleted' => $this->deleted, 'description' => $this->description, 'id' => $this->id, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+			return [ 'client' => $this->client, 'closed' => $this->closed, 'created' => $this->created, 'deleted' => $this->deleted, 'description' => $this->description, 'frozen' => $this->frozen, 'id' => $this->id, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
 		}
 	}
 
@@ -8502,6 +8942,7 @@ namespace Onslip360\API {
 			public string|null|Nil $closed = null,
 			public string|null|Nil $deleted = null,
 			public string|null|Nil $description = null,
+			public bool|null|Nil $frozen = null,
 			public array|null|Nil $items = null,
 			public array|null|Nil $labels = null,
 			public string|null|Nil $name = null,
@@ -8513,11 +8954,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, Partial_Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Partial_Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null ];
+			return [ $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['frozen'] ?? null, Partial_Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Partial_Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'client' => $this->client, 'closed' => $this->closed, 'deleted' => $this->deleted, 'description' => $this->description, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags ];
+			return [ 'client' => $this->client, 'closed' => $this->closed, 'deleted' => $this->deleted, 'description' => $this->description, 'frozen' => $this->frozen, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags ];
 		}
 	}
 
@@ -8537,6 +8978,7 @@ namespace Onslip360\API {
 			public string|null $closed = null,
 			public string|null $deleted = null,
 			public string|null $description = null,
+			public bool|null $frozen = null,
 			public array|null $items = null,
 			public array|null $labels = null,
 			public string|null $name = null,
@@ -8550,11 +8992,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['created'], $j['id'], $j['updated'], $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+			return [ $j['created'], $j['id'], $j['updated'], $j['client'] ?? null, $j['closed'] ?? null, $j['deleted'] ?? null, $j['description'] ?? null, $j['frozen'] ?? null, Item::a($j['items'] ?? null), $j['labels'] ?? null, $j['name'] ?? null, $j['order'] ?? null, Payment::a($j['original-payments'] ?? null), $j['printouts'] ?? null, $j['tab-locked-by'] ?? null, $j['tags'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'created' => $this->created, 'id' => $this->id, 'updated' => $this->updated, 'client' => $this->client, 'closed' => $this->closed, 'deleted' => $this->deleted, 'description' => $this->description, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+			return [ 'created' => $this->created, 'id' => $this->id, 'updated' => $this->updated, 'client' => $this->client, 'closed' => $this->closed, 'deleted' => $this->deleted, 'description' => $this->description, 'frozen' => $this->frozen, 'items' => $this->items, 'labels' => $this->labels, 'name' => $this->name, 'order' => $this->order, 'original-payments' => $this->originalPayments, 'printouts' => $this->printouts, 'tab-locked-by' => $this->tabLockedBy, 'tags' => $this->tags, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
 		}
 	}
 
@@ -10101,6 +10543,14 @@ namespace Onslip360 {
 			return API\Stored_EventStream::fromJson($this->request('POST', url('~$/event-streams', $this->realm()), $eventStream));
 		}
 
+		function addGlobalIntegration(API\GlobalIntegration $globalIntegration): API\Stored_GlobalIntegration {
+			return API\Stored_GlobalIntegration::fromJson($this->request('POST', url('global-integrations/'), $globalIntegration));
+		}
+
+		function addIntegration(API\Integration $integration): API\Stored_Integration {
+			return API\Stored_Integration::fromJson($this->request('POST', url('~$/integrations/', $this->realm()), $integration));
+		}
+
 		function addInventoryAdjustment(API\InventoryAdjustment $inventoryAdjustment): API\Stored_InventoryAdjustment {
 			return API\Stored_InventoryAdjustment::fromJson($this->request('POST', url('~$/inventory-adjustments/', $this->realm()), $inventoryAdjustment));
 		}
@@ -10205,6 +10655,10 @@ namespace Onslip360 {
 			return API\Stored_StockBalance::fromJson($this->request('POST', url('~$/locations/$/stock-balances/$', $this->realm(), $location, $id), $stockBalanceTransaction));
 		}
 
+		function authorizeIntegration(int $id, API\AuthorizeIntegrationRequest $request): API\AuthorizeIntegrationResponse {
+			return API\AuthorizeIntegrationResponse::fromJson($this->request('POST', url('~$/integrations/$', $this->realm(), $id), $request));
+		}
+
 		function cancelDMCampaign(int $id): void {
 			($this->request('POST', url('~$/dm-campaigns/$/cancel', $this->realm(), $id), null));
 		}
@@ -10259,6 +10713,14 @@ namespace Onslip360 {
 
 		function downloadClientInfoLocationTakeOutConfigLogo(): API\DataStream {
 			return API\DataStream::fromJson($this->request('GET', url('~$:location:take-out-config:logo', $this->realm()), null));
+		}
+
+		function downloadGlobalIntegrationIcon(int $id): API\DataStream {
+			return API\DataStream::fromJson($this->request('GET', url('global-integrations/$:icon', $id), null));
+		}
+
+		function downloadIntegrationIcon(int $id): API\DataStream {
+			return API\DataStream::fromJson($this->request('GET', url('~$/integrations/$:icon', $this->realm(), $id), null));
 		}
 
 		function downloadLocationCustomerScreenLogo(int $id): API\DataStream {
@@ -10370,6 +10832,14 @@ namespace Onslip360 {
 
 		function getEventStream(string $id): API\Stored_EventStream {
 			return API\Stored_EventStream::fromJson($this->request('GET', url('~$/event-streams/$', $this->realm(), $id), null));
+		}
+
+		function getGlobalIntegration(int $id): API\Stored_GlobalIntegration {
+			return API\Stored_GlobalIntegration::fromJson($this->request('GET', url('global-integrations/$', $id), null));
+		}
+
+		function getIntegration(int $id): API\Stored_Integration {
+			return API\Stored_Integration::fromJson($this->request('GET', url('~$/integrations/$', $this->realm(), $id), null));
 		}
 
 		function getInventoryAdjustment(int $id): API\Stored_InventoryAdjustment {
@@ -10550,6 +11020,14 @@ namespace Onslip360 {
 
 		function inspectDigitalReceiptRecipient(int $id, API\InspectionRequest $report): API\Stored_DataObjectReport {
 			return API\Stored_DataObjectReport::fromJson($this->request('REPORT', url('digital-receipt-recipients/$', $id), $report));
+		}
+
+		function inspectGlobalIntegration(int $id, API\InspectionRequest $report): API\Stored_DataObjectReport {
+			return API\Stored_DataObjectReport::fromJson($this->request('REPORT', url('global-integrations/$', $id), $report));
+		}
+
+		function inspectIntegration(int $id, API\InspectionRequest $report): API\Stored_DataObjectReport {
+			return API\Stored_DataObjectReport::fromJson($this->request('REPORT', url('~$/integrations/$', $this->realm(), $id), $report));
 		}
 
 		function inspectInventoryAdjustment(int $id, API\InspectionRequest $report): API\Stored_DataObjectReport {
@@ -10757,6 +11235,20 @@ namespace Onslip360 {
 		*/
 		function listEventStreams(): array {
 			return API\Stored_EventStream::fromJsonArray($this->request('GET', url('~$/event-streams', $this->realm()), null));
+		}
+
+		/**
+		 * @return API\Stored_GlobalIntegration[]
+		*/
+		function listGlobalIntegrations(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
+			return API\Stored_GlobalIntegration::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('global-integrations/'), null));
+		}
+
+		/**
+		 * @return API\Stored_Integration[]
+		*/
+		function listIntegrations(string|null $query = null, string|null $sortField = null, int|null $offset = null, int|null $count = null, bool|null $deleted = null, string|null $queryLocale = null): array {
+			return API\Stored_Integration::fromJsonArray($this->qp('q', $query)->qp('s', $sortField)->qp('o', $offset)->qp('c', $count)->qp('d', $deleted)->qp('ql', $queryLocale)->request('GET', url('~$/integrations/', $this->realm()), null));
 		}
 
 		/**
@@ -11031,6 +11523,14 @@ namespace Onslip360 {
 			return API\Stored_EventStream::fromJson($this->request('PUT', url('~$/event-streams/$', $this->realm(), $id), $eventStream));
 		}
 
+		function putGlobalIntegration(int $id, API\GlobalIntegration $globalIntegration): API\Stored_GlobalIntegration {
+			return API\Stored_GlobalIntegration::fromJson($this->request('PUT', url('global-integrations/$', $id), $globalIntegration));
+		}
+
+		function putIntegration(int $id, API\Integration $integration): API\Stored_Integration {
+			return API\Stored_Integration::fromJson($this->request('PUT', url('~$/integrations/$', $this->realm(), $id), $integration));
+		}
+
 		function putInventoryAdjustment(int $id, API\InventoryAdjustment $inventoryAdjustment): API\Stored_InventoryAdjustment {
 			return API\Stored_InventoryAdjustment::fromJson($this->request('PUT', url('~$/inventory-adjustments/$', $this->realm(), $id), $inventoryAdjustment));
 		}
@@ -11223,6 +11723,14 @@ namespace Onslip360 {
 			($this->request('DELETE', url('~$/event-streams/$', $this->realm(), $id), null));
 		}
 
+		function removeGlobalIntegration(int $id): void {
+			($this->request('DELETE', url('global-integrations/$', $id), null));
+		}
+
+		function removeIntegration(int $id): void {
+			($this->request('DELETE', url('~$/integrations/$', $this->realm(), $id), null));
+		}
+
 		function removeInventoryAdjustment(int $id): void {
 			($this->request('DELETE', url('~$/inventory-adjustments/$', $this->realm(), $id), null));
 		}
@@ -11339,6 +11847,10 @@ namespace Onslip360 {
 			($this->request('DELETE', url('~$/vouchers/$', $this->realm(), $id), null));
 		}
 
+		function requestOAuthAccessToken(API\OAuthAuthorizationCodeRequest $request): API\OAuthAccessTokenResponse {
+			return API\OAuthAccessTokenResponse::fromJson($this->request('POST', url('oauth-token'), $request));
+		}
+
 		function requestSwishTransaction(API\SwishTransaction $swishTransaction): API\Stored_SwishTransaction {
 			return API\Stored_SwishTransaction::fromJson($this->request('POST', url('~$/swish/transactions/sale', $this->realm()), $swishTransaction));
 		}
@@ -11369,6 +11881,14 @@ namespace Onslip360 {
 
 		function terminateCompany(API\TerminateCompanyRequest $terminateCompanyRequest): void {
 			($this->request('POST', url('~$/company/terminate', $this->realm()), $terminateCompanyRequest));
+		}
+
+		function unlinkGlobalIntegrationIcon(int $id): void {
+			($this->request('DELETE', url('global-integrations/$:icon', $id), null));
+		}
+
+		function unlinkIntegrationIcon(int $id): void {
+			($this->request('DELETE', url('~$/integrations/$:icon', $this->realm(), $id), null));
 		}
 
 		function unlinkLocationCustomerScreenLogo(int $id): void {
@@ -11453,6 +11973,14 @@ namespace Onslip360 {
 
 		function updateEventStream(string $id, API\EventStream $eventStream): API\Stored_EventStream {
 			return API\Stored_EventStream::fromJson($this->request('PATCH', url('~$/event-streams/$', $this->realm(), $id), $eventStream));
+		}
+
+		function updateGlobalIntegration(int $id, API\Partial_GlobalIntegration $globalIntegration): API\Stored_GlobalIntegration {
+			return API\Stored_GlobalIntegration::fromJson($this->request('PATCH', url('global-integrations/$', $id), $globalIntegration));
+		}
+
+		function updateIntegration(int $id, API\Partial_Integration $integration): API\Stored_Integration {
+			return API\Stored_Integration::fromJson($this->request('PATCH', url('~$/integrations/$', $this->realm(), $id), $integration));
 		}
 
 		function updateInventoryAdjustment(int $id, API\Partial_InventoryAdjustment $inventoryAdjustment): API\Stored_InventoryAdjustment {
@@ -11573,6 +12101,14 @@ namespace Onslip360 {
 
 		function updateVoucherBalance(int $id, API\VoucherTransaction $voucherTransaction): API\Metadata {
 			return API\Metadata::fromJson($this->request('POST', url('~$/vouchers/$', $this->realm(), $id), $voucherTransaction));
+		}
+
+		function uploadGlobalIntegrationIcon(int $id, API\DataStream $dataStream): void {
+			($this->request('PUT', url('global-integrations/$:icon', $id), $dataStream));
+		}
+
+		function uploadIntegrationIcon(int $id, API\DataStream $dataStream): void {
+			($this->request('PUT', url('~$/integrations/$:icon', $this->realm(), $id), $dataStream));
 		}
 
 		function uploadLocationCustomerScreenLogo(int $id, API\DataStream $dataStream): void {

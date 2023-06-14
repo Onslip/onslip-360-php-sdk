@@ -1,6 +1,6 @@
 {
 	"name": "onslip/onslip-360-api",
-	"version": "0.2.0",
+	"version": "1.29.4",
 	"description": "Onslip 360 PHP SDK",
 	"keywords": [
 		"onslip",
@@ -24,5 +24,8 @@
 			"Hawk.php",
 			"API.php"
 		]
+	},
+	"require-dev": {
+		"saggre/phpdocumentor-markdown": "^0.1.3"
 	}
 }

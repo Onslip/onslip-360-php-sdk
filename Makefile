@@ -1,19 +1,33 @@
 VERSION		= $(shell node -p 'require("./composer.json").version')
+PHPDOCARGS	= -f API.php -f Hawk.php -f Onslip360.php --visibility public --defaultpackagename SDK --title onslip/onslip-360-api --quiet
 
-all:		build
+all:		build docs
 
-prepare:
-
-build:
+prepare:	phpDocumentor.phar
 	composer install
+
+build:		prepare
+	composer validate
+
+docs:	build
+	rm -rf docs
+	./phpDocumentor.phar $(PHPDOCARGS) -t docs/html/
+	./phpDocumentor.phar $(PHPDOCARGS) -t docs/md/ --template vendor/saggre/phpdocumentor-markdown/themes/markdown/
+	echo "PHP Global Class." > docs/md/classes/JsonSerializable.md
+	echo "PHP Global Class." > docs/md/classes/Exception.md
+
+phpDocumentor.phar:
+	curl -OLs https://phpdoc.org/phpDocumentor.phar
+	chmod +x $@
 
 test:
 	composer validate
 
 clean:
-	rm -rf vendor
+	rm -rf docs vendor
 
 distclean:	clean
+	rm -rf .phpdoc phpDocumentor.phar
 
 publish:	clean build test pristine
 	rm -rf onslip-360-php-sdk && git clone git@github.com:Onslip/onslip-360-php-sdk.git
@@ -23,4 +37,4 @@ publish:	clean build test pristine
 pristine:
 	@[[ -z "$$(git status --porcelain .)" ]] || (git status .; false)
 
-.PHONY:		all prepare build clean distclean publish
+.PHONY:		all prepare build docs clean distclean publish
