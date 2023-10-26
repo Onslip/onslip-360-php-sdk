@@ -434,7 +434,7 @@ abstract class AbstractAPI {
 			$itemsLeft = min($count, $total - $offset) - count($result);
 
 			while ($itemsLeft > 0) {
-				$qp['c'] = min($itemsLeft, 500);
+				$qp['c'] = $itemsLeft;
 				$qp['o'] = $offset + count($result);
 
 				if (isset($this->progress)) {
@@ -444,7 +444,7 @@ abstract class AbstractAPI {
 				[, $newData] = $this->sendRequest('GET', $path, $qp, null);
 
 				array_push($result, ...$newData);
-				$itemsLeft -= count($newData);
+				$itemsLeft = count($newData) ? $itemsLeft - count($newData) : 0;
 			}
 
 			if (isset($this->progress)) {

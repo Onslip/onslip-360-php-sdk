@@ -11,8 +11,8 @@ build:		prepare
 
 docs:	build
 	rm -rf docs
-	./phpDocumentor.phar $(PHPDOCARGS) -t docs/html/
-	./phpDocumentor.phar $(PHPDOCARGS) -t docs/md/ --template vendor/saggre/phpdocumentor-markdown/themes/markdown/
+	./phpDocumentor.phar run $(PHPDOCARGS) -t docs/html/
+	./phpDocumentor.phar run $(PHPDOCARGS) -t docs/md/ --template vendor/saggre/phpdocumentor-markdown/themes/markdown/
 	echo "PHP Global Class." > docs/md/classes/JsonSerializable.md
 	echo "PHP Global Class." > docs/md/classes/Exception.md
 
