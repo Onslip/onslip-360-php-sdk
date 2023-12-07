@@ -4,7 +4,7 @@ PHPDOCARGS	= -f API.php -f Hawk.php -f Onslip360.php --visibility public --defau
 all:		build docs
 
 prepare:	phpDocumentor.phar
-	composer install
+	composer update && composer install
 
 build:		prepare
 	composer validate
