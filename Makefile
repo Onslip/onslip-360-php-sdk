@@ -11,13 +11,13 @@ build:		prepare
 
 docs:	build
 	rm -rf docs
-	./phpDocumentor.phar run $(PHPDOCARGS) -t docs/html/
-	./phpDocumentor.phar run $(PHPDOCARGS) -t docs/md/ --template vendor/saggre/phpdocumentor-markdown/themes/markdown/
+	./phpDocumentor.phar $(PHPDOCARGS) -t docs/html/
+	./phpDocumentor.phar $(PHPDOCARGS) -t docs/md/ --template vendor/saggre/phpdocumentor-markdown/themes/markdown/
 	echo "PHP Global Class." > docs/md/classes/JsonSerializable.md
 	echo "PHP Global Class." > docs/md/classes/Exception.md
 
 phpDocumentor.phar:
-	curl -OLs https://phpdoc.org/phpDocumentor.phar
+	curl -OLs https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.5.0/phpDocumentor.phar
 	chmod +x $@
 
 test:

@@ -5,6 +5,7 @@ namespace Onslip360\API\AccessToken {
 		case HAWK_KEY = 'hawk-key';
 		case ACCESS_TOKEN = 'access-token';
 		case PKCS12 = 'pkcs12';
+		case __ = '--';
 	}
 }
 
@@ -13,6 +14,7 @@ namespace Onslip360\API\Batch {
 		case OPEN = 'open';
 		case CLOSE = 'close';
 		case CHANGE = 'change';
+		case __ = '--';
 	}
 }
 
@@ -25,11 +27,13 @@ namespace Onslip360\API\ButtonMapItem {
 		case DISPLAY_NEXT_PAGE = 'display-next-page';
 		case ADD_TAB_DISCOUNT = 'add-tab-discount';
 		case OPEN_URI = 'open-uri';
+		case __ = '--';
 	}
 
 	enum DiscountType: string {
 		case PERCENTAGE = 'percentage';
 		case FIXED_AMOUNT = 'fixed-amount';
+		case __ = '--';
 	}
 }
 
@@ -37,6 +41,7 @@ namespace Onslip360\API\ButtonMap {
 	enum Theme: string {
 		case CLASSIC = 'classic';
 		case MODERN = 'modern';
+		case __ = '--';
 	}
 
 	enum Type: string {
@@ -45,6 +50,7 @@ namespace Onslip360\API\ButtonMap {
 		case PHONE_BUTTONS = 'phone-buttons';
 		case MENU = 'menu';
 		case MENU_SECTION = 'menu-section';
+		case __ = '--';
 	}
 }
 
@@ -56,6 +62,7 @@ namespace Onslip360\API\Campaign {
 		case CHEAPEST_FREE = 'cheapest-free';
 		case TAB_PERCENTAGE = 'tab-percentage';
 		case TAB_FIXED_AMOUNT = 'tab-fixed-amount';
+		case __ = '--';
 	}
 }
 
@@ -79,6 +86,7 @@ namespace Onslip360\API\CardMetadata {
 		case NETWORK_ERROR = 'network-error';
 		case INVALID_CARD = 'invalid-card';
 		case MISMATCH = 'mismatch';
+		case __ = '--';
 	}
 
 	enum TransactionType: string {
@@ -88,6 +96,7 @@ namespace Onslip360\API\CardMetadata {
 		case PURCHASE_REVERSAL = 'purchase-reversal';
 		case REFUND = 'refund';
 		case REFUND_REVERSAL = 'refund-reversal';
+		case __ = '--';
 	}
 }
 
@@ -95,6 +104,7 @@ namespace Onslip360\API\CardReceiptMetadata {
 	enum CardAccount: string {
 		case DEBIT = 'debit';
 		case CREDIT = 'credit';
+		case __ = '--';
 	}
 
 	enum EntryMode: string {
@@ -102,6 +112,7 @@ namespace Onslip360\API\CardReceiptMetadata {
 		case MAGSTRIPE = 'magstripe';
 		case MANUAL = 'manual';
 		case CONTACTLESS = 'contactless';
+		case __ = '--';
 	}
 
 	enum VerificationMethod: string {
@@ -113,6 +124,7 @@ namespace Onslip360\API\CardReceiptMetadata {
 		case CVM_NOT_REQUIRED = 'cvm-not-required';
 		case CVM_NOT_PERFORMED = 'cvm-not-performed';
 		case CVM_FAILED = 'cvm-failed';
+		case __ = '--';
 	}
 }
 
@@ -120,6 +132,7 @@ namespace Onslip360\API\CardTransaction {
 	enum Type: string {
 		case CARD_RECEIPT = 'card-receipt';
 		case CARD_BATCH_SUMMARY = 'card-batch-summary';
+		case __ = '--';
 	}
 }
 
@@ -127,6 +140,7 @@ namespace Onslip360\API\CashDrawer {
 	enum Type: string {
 		case OPEN = 'open';
 		case CLOSE = 'close';
+		case __ = '--';
 	}
 }
 
@@ -134,6 +148,7 @@ namespace Onslip360\API\Cert {
 	enum Type: string {
 		case CLIENT = 'client';
 		case USER = 'user';
+		case __ = '--';
 	}
 }
 
@@ -141,6 +156,7 @@ namespace Onslip360\API\CloudControlUnit {
 	enum Type: string {
 		case GREEN_GATE = 'green-gate';
 		case TAX_CLOUD = 'tax-cloud';
+		case __ = '--';
 	}
 }
 
@@ -179,6 +195,7 @@ namespace Onslip360\API\CompanyFeature {
 		case VERIFONE_TERMINALS = 'verifone-terminals';
 		case VIVA_WALLET_TERMINALS = 'viva-wallet-terminals';
 		case WISEPAY_TERMINALS = 'wisepay-terminals';
+		case __ = '--';
 	}
 }
 
@@ -203,6 +220,7 @@ namespace Onslip360\API\Company {
 		case RELIGIOUS_ORGANIZATIONS = 'religious-organizations';
 		case RESTAURANTS = 'restaurants';
 		case SHOPPING = 'shopping';
+		case __ = '--';
 	}
 
 	enum RegistrationType: string {
@@ -211,11 +229,13 @@ namespace Onslip360\API\Company {
 		case ANDROID_PHONE = 'android-phone';
 		case IOS_TABLET = 'ios-tablet';
 		case IOS_PHONE = 'ios-phone';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case MERCHANT = 'merchant';
 		case RESELLER = 'reseller';
+		case __ = '--';
 	}
 }
 
@@ -223,6 +243,7 @@ namespace Onslip360\API\CustomerFeedbackParams {
 	enum Mood: string {
 		case HAPPY = 'happy';
 		case SAD = 'sad';
+		case __ = '--';
 	}
 }
 
@@ -230,6 +251,7 @@ namespace Onslip360\API\Customer {
 	enum Type: string {
 		case INDIVIDUAL = 'individual';
 		case ORGANIZATION = 'organization';
+		case __ = '--';
 	}
 }
 
@@ -238,6 +260,7 @@ namespace Onslip360\API\DMCampaignRecipient {
 		case DELIVERED = 'delivered';
 		case FAILED = 'failed';
 		case SENT = 'sent';
+		case __ = '--';
 	}
 }
 
@@ -246,10 +269,12 @@ namespace Onslip360\API\DMCampaign {
 		case STARTED = 'started';
 		case DONE = 'done';
 		case FAILED = 'failed';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case SMS = 'sms';
+		case __ = '--';
 	}
 }
 
@@ -258,12 +283,14 @@ namespace Onslip360\API\DataObjectOperation {
 		case CREATE = 'create';
 		case UPDATE = 'update';
 		case DELETE = 'delete';
+		case __ = '--';
 	}
 }
 
 namespace Onslip360\API\DataObjectReport {
 	enum Type: string {
 		case REVISIONS = 'revisions';
+		case __ = '--';
 	}
 }
 
@@ -272,11 +299,13 @@ namespace Onslip360\API\DigitalReceipt {
 		case DELIVERED = 'delivered';
 		case FAILED = 'failed';
 		case SENT = 'sent';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case RECEIPT = 'receipt';
 		case CARD_TRANSACTION = 'card-transaction';
+		case __ = '--';
 	}
 }
 
@@ -288,6 +317,7 @@ namespace Onslip360\API\ERPActivation {
 		case PLANDAY = 'planday';
 		case VISMA = 'visma';
 		case ZOINED = 'zoined';
+		case __ = '--';
 	}
 }
 
@@ -297,12 +327,14 @@ namespace Onslip360\API\ERPInvoiceDeliveryParams {
 		case EMAIL = 'email';
 		case MAIL = 'mail';
 		case EDI_INVOICE = 'edi-invoice';
+		case __ = '--';
 	}
 
 	enum Processing: string {
 		case MANUAL = 'manual';
 		case AUTOMATIC = 'automatic';
 		case FACTORING = 'factoring';
+		case __ = '--';
 	}
 }
 
@@ -313,6 +345,7 @@ namespace Onslip360\API\ERPInvoiceMetadata {
 		case OVERDUE = 'overdue';
 		case PAID = 'paid';
 		case CANCELLED = 'cancelled';
+		case __ = '--';
 	}
 }
 
@@ -320,6 +353,7 @@ namespace Onslip360\API\EventStream {
 	enum State: string {
 		case PENDING = 'pending';
 		case ACTIVE = 'active';
+		case __ = '--';
 	}
 }
 
@@ -328,10 +362,12 @@ namespace Onslip360\API\Integration {
 		case AUTHORIZATION = 'authorization';
 		case LOCATION = 'location';
 		case USER = 'user';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case OAUTH = 'oauth';
+		case __ = '--';
 	}
 }
 
@@ -340,12 +376,14 @@ namespace Onslip360\API\InventoryAdjustment {
 		case INCOMING = 'incoming';
 		case OUTGOING = 'outgoing';
 		case RECONCILIATION = 'reconciliation';
+		case __ = '--';
 	}
 }
 
 namespace Onslip360\API\KeySpecification {
 	enum Algorithm: string {
 		case RSA = 'rsa';
+		case __ = '--';
 	}
 }
 
@@ -356,6 +394,7 @@ namespace Onslip360\API\MQRecord {
 		case MANUAL_ACTION = 'manual-action';
 		case RETRY_TRIGGER_EVENT = 'retry-trigger-event';
 		case CANCEL_TRIGGER_EVENT = 'cancel-trigger-event';
+		case __ = '--';
 	}
 }
 
@@ -368,12 +407,14 @@ namespace Onslip360\API\Metadata {
 		case CURRENCY = 'currency';
 		case PRE_PAID = 'pre-paid';
 		case ERP_INVOICE = 'erp-invoice';
+		case __ = '--';
 	}
 }
 
 namespace Onslip360\API\OrderTicket {
 	enum Type: string {
 		case KITCHEN = 'kitchen';
+		case __ = '--';
 	}
 }
 
@@ -385,10 +426,12 @@ namespace Onslip360\API\Order {
 		case SHIPPED = 'shipped';
 		case FULFILLED = 'fulfilled';
 		case CANCELLED = 'cancelled';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case TAKE_OUT = 'take-out';
+		case __ = '--';
 	}
 }
 
@@ -402,6 +445,7 @@ namespace Onslip360\API\PaymentMethod {
 		case PAYMENT_VOUCHER = 'payment-voucher';
 		case SWISH = 'swish';
 		case WEIQ = 'weiq';
+		case __ = '--';
 	}
 }
 
@@ -419,6 +463,7 @@ namespace Onslip360\API\Peripheral {
 		case KITCHEN_PRINTER_5 = 'kitchen-printer-5';
 		case RECEIPT_PRINTER = 'receipt-printer';
 		case HOST2T = 'host2t';
+		case __ = '--';
 	}
 }
 
@@ -539,6 +584,7 @@ namespace Onslip360\API {
 		case USE_EVENT_STREAMS = 'use-event-streams';
 		case EDIT_EVENT_STREAMS = 'edit-event-streams';
 		case USE_WEIQ_PAYMENT_METHODS = 'use-weiq-payment-methods';
+		case __ = '--';
 	}
 }
 
@@ -550,6 +596,7 @@ namespace Onslip360\API\ProductEntry {
 		case PRODUCT_GROUP_CREATED = 'product-group-created';
 		case PRODUCT_GROUP_UPDATED = 'product-group-updated';
 		case PRODUCT_GROUP_DELETED = 'product-group-deleted';
+		case __ = '--';
 	}
 }
 
@@ -557,6 +604,7 @@ namespace Onslip360\API\ProductGroup {
 	enum SecondaryKitchenPrinterMode: string {
 		case INFORMATIVE = 'informative';
 		case ALWAYS = 'always';
+		case __ = '--';
 	}
 
 	enum Type: string {
@@ -567,6 +615,7 @@ namespace Onslip360\API\ProductGroup {
 		case CAMPAIGNS = 'campaigns';
 		case DISCOUNTS = 'discounts';
 		case DISCOUNT = 'discount';
+		case __ = '--';
 	}
 }
 
@@ -575,6 +624,7 @@ namespace Onslip360\API\ProductModifier {
 		case HEADING = 'heading';
 		case INLINE = 'inline';
 		case HIDDEN = 'hidden';
+		case __ = '--';
 	}
 
 	enum Type: string {
@@ -585,6 +635,7 @@ namespace Onslip360\API\ProductModifier {
 		case PRODUCTS = 'products';
 		case SINGLE_LABEL = 'single-label';
 		case MULTIPLE_LABELS = 'multiple-labels';
+		case __ = '--';
 	}
 }
 
@@ -593,6 +644,7 @@ namespace Onslip360\API\Product {
 		case COUPON = 'coupon';
 		case COUPON_VOUCHER = 'coupon-voucher';
 		case PAYMENT_VOUCHER = 'payment-voucher';
+		case __ = '--';
 	}
 }
 
@@ -601,6 +653,7 @@ namespace Onslip360\API\Receipt {
 		case SALE = 'sale';
 		case RETURN = 'return';
 		case CREDIT = 'credit';
+		case __ = '--';
 	}
 }
 
@@ -617,6 +670,7 @@ namespace Onslip360\API\Record {
 		case CARD_TRANSACTION = 'card-transaction';
 		case ORDER_TICKET = 'order-ticket';
 		case ENTERTAINMENT_BILL = 'entertainment-bill';
+		case __ = '--';
 	}
 }
 
@@ -628,6 +682,7 @@ namespace Onslip360\API\ReportAction {
 		case STOCK_BALANCES = 'stock-balances';
 		case VOUCHERS = 'vouchers';
 		case Z_REPORT = 'z-report';
+		case __ = '--';
 	}
 }
 
@@ -635,6 +690,7 @@ namespace Onslip360\API\Report {
 	enum Type: string {
 		case X_REPORT = 'x-report';
 		case Z_REPORT = 'z-report';
+		case __ = '--';
 	}
 }
 
@@ -642,10 +698,12 @@ namespace Onslip360\API\ResourceMapItem {
 	enum Shape: string {
 		case ELLIPSE = 'ellipse';
 		case RECTANGLE = 'rectangle';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case RESOURCE = 'resource';
+		case __ = '--';
 	}
 }
 
@@ -658,6 +716,7 @@ namespace Onslip360\API\SendEmailRequest {
 		case RESTRICTED_VERSION_WARNING = 'restricted-version-warning';
 		case WELCOME_EMAIL = 'welcome-email';
 		case REPORT_COVER = 'report-cover';
+		case __ = '--';
 	}
 }
 
@@ -665,6 +724,7 @@ namespace Onslip360\API\Shift {
 	enum Status: string {
 		case ACTIVE = 'active';
 		case FINISHED = 'finished';
+		case __ = '--';
 	}
 }
 
@@ -677,6 +737,7 @@ namespace Onslip360\API\StatusEvent {
 		case PAYMENTS = 'payments';
 		case SALES = 'sales';
 		case STOCK_BALANCES = 'stock-balances';
+		case __ = '--';
 	}
 }
 
@@ -688,11 +749,13 @@ namespace Onslip360\API\SwishTransaction {
 		case ERROR = 'error';
 		case VALIDATED = 'validated';
 		case DEBITED = 'debited';
+		case __ = '--';
 	}
 
 	enum Type: string {
 		case SALE = 'sale';
 		case REFUND = 'refund';
+		case __ = '--';
 	}
 }
 
@@ -701,6 +764,7 @@ namespace Onslip360\API\Till {
 		case TILL = 'till';
 		case ORDERING_DEVICE = 'ordering-device';
 		case EXTERNAL_JOURNAL = 'external-journal';
+		case __ = '--';
 	}
 }
 
@@ -711,6 +775,7 @@ namespace Onslip360\API\TriggerAction {
 		case RESULTS = 'results';
 		case PROGRESS = 'progress';
 		case ALL = 'all';
+		case __ = '--';
 	}
 
 	enum Type: string {
@@ -721,6 +786,7 @@ namespace Onslip360\API\TriggerAction {
 		case DIGITAL_RECEIPT = 'digital-receipt';
 		case DM_CAMPAIGN = 'dm-campaign';
 		case EMAIL = 'email';
+		case __ = '--';
 	}
 }
 
@@ -733,6 +799,7 @@ namespace Onslip360\API\TriggerEvent {
 		case DEFERRED_NOTIFICATION = 'deferred-notification';
 		case DONE = 'done';
 		case FAILED = 'failed';
+		case __ = '--';
 	}
 }
 
@@ -740,6 +807,7 @@ namespace Onslip360\API\Trigger {
 	enum Type: string {
 		case CRON = 'cron';
 		case QUERY = 'query';
+		case __ = '--';
 	}
 }
 
@@ -774,6 +842,7 @@ namespace Onslip360\API\UsageEntry {
 		case PASSWORD_RESET_CHALLENGE = 'password-reset-challenge';
 		case PASSWORD_RESET = 'password-reset';
 		case SHIFT_HISTORY = 'shift-history';
+		case __ = '--';
 	}
 }
 
@@ -783,6 +852,7 @@ namespace Onslip360\API\User {
 		case CASHIER = 'cashier';
 		case SERVICE = 'service';
 		case EMPLOYEE = 'employee';
+		case __ = '--';
 	}
 }
 
@@ -790,6 +860,7 @@ namespace Onslip360\API\Voucher {
 	enum Type: string {
 		case PAYMENT = 'payment';
 		case COUPON = 'coupon';
+		case __ = '--';
 	}
 }
 

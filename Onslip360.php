@@ -151,9 +151,13 @@ abstract class Onslip360Object implements JsonSerializable {
 	}
 
 	protected static function e(callable $c, mixed $v): mixed {
-		return is_null($v) ? null :
-			(is_array($v) ? array_map(fn ($v) => static::e($c, $v), $v) :
-				($v instanceof \BackedEnum ? $v : $c($v)));
+		try {
+			return is_null($v) ? null :
+				(is_array($v) ? array_map(fn ($v) => static::e($c, $v), $v) :
+					($v instanceof \BackedEnum ? $v : $c($v)));
+		} catch (ValueError) {
+			return $c('--'); // Unknown enum value becomes __
+		}
 	}
 }
 
