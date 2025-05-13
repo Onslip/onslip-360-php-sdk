@@ -194,6 +194,7 @@ namespace Onslip360\API\CompanyFeature {
 		case TAKE_OUT_ORDERS = 'take-out-orders';
 		case VERIFONE_TERMINALS = 'verifone-terminals';
 		case VIVA_WALLET_TERMINALS = 'viva-wallet-terminals';
+		case WESTPAY_TERMINALS = 'westpay-terminals';
 		case WISEPAY_TERMINALS = 'wisepay-terminals';
 		case __ = '--';
 	}
@@ -225,6 +226,7 @@ namespace Onslip360\API\Company {
 
 	enum RegistrationType: string {
 		case BACKOFFICE = 'backoffice';
+		case DEVELOPER = 'developer';
 		case ANDROID_TABLET = 'android-tablet';
 		case ANDROID_PHONE = 'android-phone';
 		case IOS_TABLET = 'ios-tablet';
@@ -383,6 +385,14 @@ namespace Onslip360\API\InventoryAdjustment {
 namespace Onslip360\API\KeySpecification {
 	enum Algorithm: string {
 		case RSA = 'rsa';
+		case __ = '--';
+	}
+}
+
+namespace Onslip360\API\KitchenPrinterConfig {
+	enum ItemOrder: string {
+		case NAME = 'name';
+		case TAB_POSITION = 'tab-position';
 		case __ = '--';
 	}
 }
@@ -744,6 +754,7 @@ namespace Onslip360\API\StatusEvent {
 namespace Onslip360\API\SwishTransaction {
 	enum Status: string {
 		case CREATED = 'created';
+		case CANCELLED = 'cancelled';
 		case PAID = 'paid';
 		case DECLINED = 'declined';
 		case ERROR = 'error';
@@ -1835,6 +1846,7 @@ namespace Onslip360\API {
 			public string|null $device = null,
 			public string|null $merchantId = null,
 			public string|null $requestId = null,
+			public string|null $serviceHint = null,
 			public CardMetadata\Status|null $status = null,
 			public string|null $statusCode = null,
 			public string|null $statusMessage = null,
@@ -1845,11 +1857,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['contact-support'], $j['customer-copy'], $j['end-date'], $j['merchant-copy'], $j['start-date'], $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], TransactionSummary::o($j['transaction-summary']), TransactionSummaryGroup::a($j['transaction-summary-groups']), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['device'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null ];
+			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['contact-support'], $j['customer-copy'], $j['end-date'], $j['merchant-copy'], $j['start-date'], $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], TransactionSummary::o($j['transaction-summary']), TransactionSummaryGroup::a($j['transaction-summary-groups']), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['device'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, $j['service-hint'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'end-date' => $this->endDate, 'merchant-copy' => $this->merchantCopy, 'start-date' => $this->startDate, 'terminal-id' => $this->terminalId, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-summary' => $this->transactionSummary, 'transaction-summary-groups' => $this->transactionSummaryGroups, 'transaction-type' => $this->transactionType, 'acquirers-transaction-summary' => $this->acquirersTransactionSummary, 'device' => $this->device, 'merchant-id' => $this->merchantId, 'request-id' => $this->requestId, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-name' => $this->terminalName, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transmission-id' => $this->transmissionId ];
+			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'end-date' => $this->endDate, 'merchant-copy' => $this->merchantCopy, 'start-date' => $this->startDate, 'terminal-id' => $this->terminalId, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-summary' => $this->transactionSummary, 'transaction-summary-groups' => $this->transactionSummaryGroups, 'transaction-type' => $this->transactionType, 'acquirers-transaction-summary' => $this->acquirersTransactionSummary, 'device' => $this->device, 'merchant-id' => $this->merchantId, 'request-id' => $this->requestId, 'service-hint' => $this->serviceHint, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-name' => $this->terminalName, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transmission-id' => $this->transmissionId ];
 		}
 	}
 
@@ -1869,6 +1881,7 @@ namespace Onslip360\API {
 			public bool|null $merchantCopy = null,
 			public string|null|Nil $merchantId = null,
 			public string|null|Nil $requestId = null,
+			public string|null|Nil $serviceHint = null,
 			public string|null $startDate = null,
 			public CardMetadata\Status|null|Nil $status = null,
 			public string|null|Nil $statusCode = null,
@@ -1886,11 +1899,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['acquirers-ref-no'] ?? null, Partial_TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, $j['contact-support'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, $j['end-date'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, $j['start-date'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, Partial_TransactionSummary::o($j['transaction-summary'] ?? null), Partial_TransactionSummaryGroup::a($j['transaction-summary-groups'] ?? null), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null ];
+			return [ $j['acquirers-ref-no'] ?? null, Partial_TransactionSummary::o($j['acquirers-transaction-summary'] ?? null), $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, $j['contact-support'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, $j['end-date'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['request-id'] ?? null, $j['service-hint'] ?? null, $j['start-date'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, Partial_TransactionSummary::o($j['transaction-summary'] ?? null), Partial_TransactionSummaryGroup::a($j['transaction-summary-groups'] ?? null), static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'acquirers-transaction-summary' => $this->acquirersTransactionSummary, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'device' => $this->device, 'end-date' => $this->endDate, 'merchant-copy' => $this->merchantCopy, 'merchant-id' => $this->merchantId, 'request-id' => $this->requestId, 'start-date' => $this->startDate, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-id' => $this->terminalId, 'terminal-name' => $this->terminalName, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transaction-summary' => $this->transactionSummary, 'transaction-summary-groups' => $this->transactionSummaryGroups, 'transaction-type' => $this->transactionType, 'transmission-id' => $this->transmissionId ];
+			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'acquirers-transaction-summary' => $this->acquirersTransactionSummary, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'device' => $this->device, 'end-date' => $this->endDate, 'merchant-copy' => $this->merchantCopy, 'merchant-id' => $this->merchantId, 'request-id' => $this->requestId, 'service-hint' => $this->serviceHint, 'start-date' => $this->startDate, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-id' => $this->terminalId, 'terminal-name' => $this->terminalName, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transaction-summary' => $this->transactionSummary, 'transaction-summary-groups' => $this->transactionSummaryGroups, 'transaction-type' => $this->transactionType, 'transmission-id' => $this->transmissionId ];
 		}
 	}
 
@@ -1936,6 +1949,7 @@ namespace Onslip360\API {
 			public string|null $psn = null,
 			public string|null $receiptLines = null,
 			public string|null $requestId = null,
+			public string|null $serviceHint = null,
 			public string|null $statusCode = null,
 			public string|null $statusMessage = null,
 			public string|null $terminalName = null,
@@ -1949,11 +1963,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['card-holder-signature'], $j['cashier-signature'], $j['contact-support'], $j['customer-copy'], static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode']), $j['merchant-copy'], static::e(CardMetadata\Status::from(...), $j['status']), $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method']), $j['ac'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['cb-amount'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['device'] ?? null, $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null ];
+			return [ $j['acquirers-ref-no'], $j['bank-agent-name'], $j['batch-id'], $j['card-holder-signature'], $j['cashier-signature'], $j['contact-support'], $j['customer-copy'], static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode']), $j['merchant-copy'], static::e(CardMetadata\Status::from(...), $j['status']), $j['terminal-id'], $j['transaction-date'], $j['transaction-id'], static::e(CardMetadata\TransactionType::from(...), $j['transaction-type']), static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method']), $j['ac'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['cb-amount'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['device'] ?? null, $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, $j['service-hint'] ?? null, $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-name'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'card-holder-signature' => $this->cardHolderSignature, 'cashier-signature' => $this->cashierSignature, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'entry-mode' => $this->entryMode, 'merchant-copy' => $this->merchantCopy, 'status' => $this->status, 'terminal-id' => $this->terminalId, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-type' => $this->transactionType, 'verification-method' => $this->verificationMethod, 'ac' => $this->ac, 'aid' => $this->aid, 'auth-approval-code' => $this->authApprovalCode, 'auth-channel' => $this->authChannel, 'auth-responder' => $this->authResponder, 'auth-response-code' => $this->authResponseCode, 'auth-summary' => $this->authSummary, 'card-account' => $this->cardAccount, 'card-app' => $this->cardApp, 'card-cna' => $this->cardCna, 'card-holder-id' => $this->cardHolderId, 'cb-amount' => $this->cbAmount, 'contactless-kernel-id' => $this->contactlessKernelId, 'currency-code' => $this->currencyCode, 'device' => $this->device, 'extra-amount' => $this->extraAmount, 'financial-institution' => $this->financialInstitution, 'ksn' => $this->ksn, 'merchant-id' => $this->merchantId, 'org-number' => $this->orgNumber, 'pan' => $this->pan, 'payment-code' => $this->paymentCode, 'psn' => $this->psn, 'receipt-lines' => $this->receiptLines, 'request-id' => $this->requestId, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-name' => $this->terminalName, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transmission-id' => $this->transmissionId, 'tsi' => $this->tsi, 'tvr' => $this->tvr, 'tx-amount' => $this->txAmount, 'vat-amount' => $this->vatAmount ];
+			return [ 'acquirers-ref-no' => $this->acquirersRefNo, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'card-holder-signature' => $this->cardHolderSignature, 'cashier-signature' => $this->cashierSignature, 'contact-support' => $this->contactSupport, 'customer-copy' => $this->customerCopy, 'entry-mode' => $this->entryMode, 'merchant-copy' => $this->merchantCopy, 'status' => $this->status, 'terminal-id' => $this->terminalId, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-type' => $this->transactionType, 'verification-method' => $this->verificationMethod, 'ac' => $this->ac, 'aid' => $this->aid, 'auth-approval-code' => $this->authApprovalCode, 'auth-channel' => $this->authChannel, 'auth-responder' => $this->authResponder, 'auth-response-code' => $this->authResponseCode, 'auth-summary' => $this->authSummary, 'card-account' => $this->cardAccount, 'card-app' => $this->cardApp, 'card-cna' => $this->cardCna, 'card-holder-id' => $this->cardHolderId, 'cb-amount' => $this->cbAmount, 'contactless-kernel-id' => $this->contactlessKernelId, 'currency-code' => $this->currencyCode, 'device' => $this->device, 'extra-amount' => $this->extraAmount, 'financial-institution' => $this->financialInstitution, 'ksn' => $this->ksn, 'merchant-id' => $this->merchantId, 'org-number' => $this->orgNumber, 'pan' => $this->pan, 'payment-code' => $this->paymentCode, 'psn' => $this->psn, 'receipt-lines' => $this->receiptLines, 'request-id' => $this->requestId, 'service-hint' => $this->serviceHint, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-name' => $this->terminalName, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transmission-id' => $this->transmissionId, 'tsi' => $this->tsi, 'tvr' => $this->tvr, 'tx-amount' => $this->txAmount, 'vat-amount' => $this->vatAmount ];
 		}
 	}
 
@@ -1993,6 +2007,7 @@ namespace Onslip360\API {
 			public string|null|Nil $psn = null,
 			public string|null|Nil $receiptLines = null,
 			public string|null|Nil $requestId = null,
+			public string|null|Nil $serviceHint = null,
 			public CardMetadata\Status|null $status = null,
 			public string|null|Nil $statusCode = null,
 			public string|null|Nil $statusMessage = null,
@@ -2012,11 +2027,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['ac'] ?? null, $j['acquirers-ref-no'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['card-holder-signature'] ?? null, $j['cashier-signature'] ?? null, $j['cb-amount'] ?? null, $j['contact-support'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode'] ?? null), $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null, static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method'] ?? null) ];
+			return [ $j['ac'] ?? null, $j['acquirers-ref-no'] ?? null, $j['aid'] ?? null, $j['auth-approval-code'] ?? null, $j['auth-channel'] ?? null, $j['auth-responder'] ?? null, $j['auth-response-code'] ?? null, $j['auth-summary'] ?? null, $j['bank-agent-name'] ?? null, $j['batch-id'] ?? null, static::e(CardReceiptMetadata\CardAccount::from(...), $j['card-account'] ?? null), $j['card-app'] ?? null, $j['card-cna'] ?? null, $j['card-holder-id'] ?? null, $j['card-holder-signature'] ?? null, $j['cashier-signature'] ?? null, $j['cb-amount'] ?? null, $j['contact-support'] ?? null, $j['contactless-kernel-id'] ?? null, $j['currency-code'] ?? null, $j['customer-copy'] ?? null, $j['device'] ?? null, static::e(CardReceiptMetadata\EntryMode::from(...), $j['entry-mode'] ?? null), $j['extra-amount'] ?? null, $j['financial-institution'] ?? null, $j['ksn'] ?? null, $j['merchant-copy'] ?? null, $j['merchant-id'] ?? null, $j['org-number'] ?? null, $j['pan'] ?? null, $j['payment-code'] ?? null, $j['psn'] ?? null, $j['receipt-lines'] ?? null, $j['request-id'] ?? null, $j['service-hint'] ?? null, static::e(CardMetadata\Status::from(...), $j['status'] ?? null), $j['status-code'] ?? null, $j['status-message'] ?? null, $j['terminal-id'] ?? null, $j['terminal-name'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, $j['transaction-reference'] ?? null, $j['transaction-result'] ?? null, static::e(CardMetadata\TransactionType::from(...), $j['transaction-type'] ?? null), $j['transmission-id'] ?? null, $j['tsi'] ?? null, $j['tvr'] ?? null, $j['tx-amount'] ?? null, $j['vat-amount'] ?? null, static::e(CardReceiptMetadata\VerificationMethod::from(...), $j['verification-method'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'ac' => $this->ac, 'acquirers-ref-no' => $this->acquirersRefNo, 'aid' => $this->aid, 'auth-approval-code' => $this->authApprovalCode, 'auth-channel' => $this->authChannel, 'auth-responder' => $this->authResponder, 'auth-response-code' => $this->authResponseCode, 'auth-summary' => $this->authSummary, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'card-account' => $this->cardAccount, 'card-app' => $this->cardApp, 'card-cna' => $this->cardCna, 'card-holder-id' => $this->cardHolderId, 'card-holder-signature' => $this->cardHolderSignature, 'cashier-signature' => $this->cashierSignature, 'cb-amount' => $this->cbAmount, 'contact-support' => $this->contactSupport, 'contactless-kernel-id' => $this->contactlessKernelId, 'currency-code' => $this->currencyCode, 'customer-copy' => $this->customerCopy, 'device' => $this->device, 'entry-mode' => $this->entryMode, 'extra-amount' => $this->extraAmount, 'financial-institution' => $this->financialInstitution, 'ksn' => $this->ksn, 'merchant-copy' => $this->merchantCopy, 'merchant-id' => $this->merchantId, 'org-number' => $this->orgNumber, 'pan' => $this->pan, 'payment-code' => $this->paymentCode, 'psn' => $this->psn, 'receipt-lines' => $this->receiptLines, 'request-id' => $this->requestId, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-id' => $this->terminalId, 'terminal-name' => $this->terminalName, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transaction-type' => $this->transactionType, 'transmission-id' => $this->transmissionId, 'tsi' => $this->tsi, 'tvr' => $this->tvr, 'tx-amount' => $this->txAmount, 'vat-amount' => $this->vatAmount, 'verification-method' => $this->verificationMethod ];
+			return [ 'ac' => $this->ac, 'acquirers-ref-no' => $this->acquirersRefNo, 'aid' => $this->aid, 'auth-approval-code' => $this->authApprovalCode, 'auth-channel' => $this->authChannel, 'auth-responder' => $this->authResponder, 'auth-response-code' => $this->authResponseCode, 'auth-summary' => $this->authSummary, 'bank-agent-name' => $this->bankAgentName, 'batch-id' => $this->batchId, 'card-account' => $this->cardAccount, 'card-app' => $this->cardApp, 'card-cna' => $this->cardCna, 'card-holder-id' => $this->cardHolderId, 'card-holder-signature' => $this->cardHolderSignature, 'cashier-signature' => $this->cashierSignature, 'cb-amount' => $this->cbAmount, 'contact-support' => $this->contactSupport, 'contactless-kernel-id' => $this->contactlessKernelId, 'currency-code' => $this->currencyCode, 'customer-copy' => $this->customerCopy, 'device' => $this->device, 'entry-mode' => $this->entryMode, 'extra-amount' => $this->extraAmount, 'financial-institution' => $this->financialInstitution, 'ksn' => $this->ksn, 'merchant-copy' => $this->merchantCopy, 'merchant-id' => $this->merchantId, 'org-number' => $this->orgNumber, 'pan' => $this->pan, 'payment-code' => $this->paymentCode, 'psn' => $this->psn, 'receipt-lines' => $this->receiptLines, 'request-id' => $this->requestId, 'service-hint' => $this->serviceHint, 'status' => $this->status, 'status-code' => $this->statusCode, 'status-message' => $this->statusMessage, 'terminal-id' => $this->terminalId, 'terminal-name' => $this->terminalName, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'transaction-reference' => $this->transactionReference, 'transaction-result' => $this->transactionResult, 'transaction-type' => $this->transactionType, 'transmission-id' => $this->transmissionId, 'tsi' => $this->tsi, 'tvr' => $this->tvr, 'tx-amount' => $this->txAmount, 'vat-amount' => $this->vatAmount, 'verification-method' => $this->verificationMethod ];
 		}
 	}
 
@@ -3033,31 +3048,37 @@ namespace Onslip360\API {
 		function __construct(
 			public string $message,
 			public CustomerFeedbackParams\Mood $mood,
+			public string|null $appVersion = null,
+			public string|null $buildInfo = null,
+			public string|null $deviceModel = null,
 			public int|null $till = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['message'], static::e(CustomerFeedbackParams\Mood::from(...), $j['mood']), $j['till'] ?? null ];
+			return [ $j['message'], static::e(CustomerFeedbackParams\Mood::from(...), $j['mood']), $j['app-version'] ?? null, $j['build-info'] ?? null, $j['device-model'] ?? null, $j['till'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'message' => $this->message, 'mood' => $this->mood, 'till' => $this->till ];
+			return [ 'message' => $this->message, 'mood' => $this->mood, 'app-version' => $this->appVersion, 'build-info' => $this->buildInfo, 'device-model' => $this->deviceModel, 'till' => $this->till ];
 		}
 	}
 
 	class Partial_CustomerFeedbackParams extends Onslip360Object {
 		function __construct(
+			public string|null|Nil $appVersion = null,
+			public string|null|Nil $buildInfo = null,
+			public string|null|Nil $deviceModel = null,
 			public string|null $message = null,
 			public CustomerFeedbackParams\Mood|null $mood = null,
 			public int|null|Nil $till = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['message'] ?? null, static::e(CustomerFeedbackParams\Mood::from(...), $j['mood'] ?? null), $j['till'] ?? null ];
+			return [ $j['app-version'] ?? null, $j['build-info'] ?? null, $j['device-model'] ?? null, $j['message'] ?? null, static::e(CustomerFeedbackParams\Mood::from(...), $j['mood'] ?? null), $j['till'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'message' => $this->message, 'mood' => $this->mood, 'till' => $this->till ];
+			return [ 'app-version' => $this->appVersion, 'build-info' => $this->buildInfo, 'device-model' => $this->deviceModel, 'message' => $this->message, 'mood' => $this->mood, 'till' => $this->till ];
 		}
 	}
 
@@ -5332,15 +5353,16 @@ namespace Onslip360\API {
 		 * @param int[]|null $sectionLabels
 		*/
 		function __construct(
+			public KitchenPrinterConfig\ItemOrder|null $itemOrder = null,
 			public array|null $sectionLabels = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['section-labels'] ?? null ];
+			return [ static::e(KitchenPrinterConfig\ItemOrder::from(...), $j['item-order'] ?? null), $j['section-labels'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'section-labels' => $this->sectionLabels ];
+			return [ 'item-order' => $this->itemOrder, 'section-labels' => $this->sectionLabels ];
 		}
 	}
 
@@ -5349,15 +5371,16 @@ namespace Onslip360\API {
 		 * @param int[]|null|Nil $sectionLabels
 		*/
 		function __construct(
+			public KitchenPrinterConfig\ItemOrder|null|Nil $itemOrder = null,
 			public array|null|Nil $sectionLabels = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['section-labels'] ?? null ];
+			return [ static::e(KitchenPrinterConfig\ItemOrder::from(...), $j['item-order'] ?? null), $j['section-labels'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'section-labels' => $this->sectionLabels ];
+			return [ 'item-order' => $this->itemOrder, 'section-labels' => $this->sectionLabels ];
 		}
 	}
 
@@ -6208,14 +6231,15 @@ namespace Onslip360\API {
 			public string $name,
 			public OrderTicket\Type $type,
 			public string|null $deliveryDate = null,
+			public Peripheral\PeripheralFunction|null $kitchenPrinter = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['id'], Item::a($j['items']), $j['name'], static::e(OrderTicket\Type::from(...), $j['type']), $j['delivery-date'] ?? null ];
+			return [ $j['id'], Item::a($j['items']), $j['name'], static::e(OrderTicket\Type::from(...), $j['type']), $j['delivery-date'] ?? null, static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'id' => $this->id, 'items' => $this->items, 'name' => $this->name, 'type' => $this->type, 'delivery-date' => $this->deliveryDate ];
+			return [ 'id' => $this->id, 'items' => $this->items, 'name' => $this->name, 'type' => $this->type, 'delivery-date' => $this->deliveryDate, 'kitchen-printer' => $this->kitchenPrinter ];
 		}
 	}
 
@@ -6227,16 +6251,17 @@ namespace Onslip360\API {
 			public string|null|Nil $deliveryDate = null,
 			public string|null $id = null,
 			public array|null $items = null,
+			public Peripheral\PeripheralFunction|null|Nil $kitchenPrinter = null,
 			public string|null $name = null,
 			public OrderTicket\Type|null $type = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['delivery-date'] ?? null, $j['id'] ?? null, Partial_Item::a($j['items'] ?? null), $j['name'] ?? null, static::e(OrderTicket\Type::from(...), $j['type'] ?? null) ];
+			return [ $j['delivery-date'] ?? null, $j['id'] ?? null, Partial_Item::a($j['items'] ?? null), static::e(Peripheral\PeripheralFunction::from(...), $j['kitchen-printer'] ?? null), $j['name'] ?? null, static::e(OrderTicket\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'delivery-date' => $this->deliveryDate, 'id' => $this->id, 'items' => $this->items, 'name' => $this->name, 'type' => $this->type ];
+			return [ 'delivery-date' => $this->deliveryDate, 'id' => $this->id, 'items' => $this->items, 'kitchen-printer' => $this->kitchenPrinter, 'name' => $this->name, 'type' => $this->type ];
 		}
 	}
 
@@ -9450,16 +9475,15 @@ namespace Onslip360\API {
 		function __construct(
 			public float $amount,
 			public string $message,
-			public string $payerPaymentReference,
 			public int $paymentMethod,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'], $j['message'], $j['payer-payment-reference'], $j['payment-method'] ];
+			return [ $j['amount'], $j['message'], $j['payment-method'] ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'message' => $this->message, 'payer-payment-reference' => $this->payerPaymentReference, 'payment-method' => $this->paymentMethod ];
+			return [ 'amount' => $this->amount, 'message' => $this->message, 'payment-method' => $this->paymentMethod ];
 		}
 	}
 
@@ -9467,16 +9491,15 @@ namespace Onslip360\API {
 		function __construct(
 			public float|null $amount = null,
 			public string|null $message = null,
-			public string|null $payerPaymentReference = null,
 			public int|null $paymentMethod = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'] ?? null, $j['message'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-method'] ?? null ];
+			return [ $j['amount'] ?? null, $j['message'] ?? null, $j['payment-method'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'message' => $this->message, 'payer-payment-reference' => $this->payerPaymentReference, 'payment-method' => $this->paymentMethod ];
+			return [ 'amount' => $this->amount, 'message' => $this->message, 'payment-method' => $this->paymentMethod ];
 		}
 	}
 
@@ -9501,12 +9524,12 @@ namespace Onslip360\API {
 			public string|null $message = null,
 			public string|null $originalPaymentReference = null,
 			public string|null $paidDate = null,
-			public string|null $payerPaymentReference = null,
 			public string|null $paymentReference = null,
 			public string|null $paymentReferenceUrl = null,
 			public string|null $paymentRequestToken = null,
 			public SwishTransaction\Status|null $status = null,
 			public array|null $tags = null,
+			public string|null $transactionId = null,
 			public SwishTransaction\Type|null $type = null,
 			public string|null $updated = null,
 			public int|null $updatedBy = null,
@@ -9514,11 +9537,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'], $j['currency'], $j['payment-method'], $j['created'] ?? null, $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+			return [ $j['amount'], $j['currency'], $j['payment-method'], $j['created'] ?? null, $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['id'] ?? null, $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'currency' => $this->currency, 'payment-method' => $this->paymentMethod, 'created' => $this->created, 'created-date' => $this->createdDate, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'id' => $this->id, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payer-payment-reference' => $this->payerPaymentReference, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'type' => $this->type, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+			return [ 'amount' => $this->amount, 'currency' => $this->currency, 'payment-method' => $this->paymentMethod, 'created' => $this->created, 'created-date' => $this->createdDate, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'id' => $this->id, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'transaction-id' => $this->transactionId, 'type' => $this->type, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
 		}
 	}
 
@@ -9540,22 +9563,22 @@ namespace Onslip360\API {
 			public string|null|Nil $message = null,
 			public string|null|Nil $originalPaymentReference = null,
 			public string|null|Nil $paidDate = null,
-			public string|null|Nil $payerPaymentReference = null,
 			public int|null $paymentMethod = null,
 			public string|null|Nil $paymentReference = null,
 			public string|null|Nil $paymentReferenceUrl = null,
 			public string|null|Nil $paymentRequestToken = null,
 			public SwishTransaction\Status|null|Nil $status = null,
 			public array|null|Nil $tags = null,
+			public string|null|Nil $transactionId = null,
 			public SwishTransaction\Type|null|Nil $type = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'] ?? null, $j['created-date'] ?? null, $j['currency'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, Partial_SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-method'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
+			return [ $j['amount'] ?? null, $j['created-date'] ?? null, $j['currency'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, Partial_SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payment-method'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'created-date' => $this->createdDate, 'currency' => $this->currency, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payer-payment-reference' => $this->payerPaymentReference, 'payment-method' => $this->paymentMethod, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'type' => $this->type ];
+			return [ 'amount' => $this->amount, 'created-date' => $this->createdDate, 'currency' => $this->currency, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payment-method' => $this->paymentMethod, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'transaction-id' => $this->transactionId, 'type' => $this->type ];
 		}
 	}
 
@@ -9581,23 +9604,23 @@ namespace Onslip360\API {
 			public string|null $message = null,
 			public string|null $originalPaymentReference = null,
 			public string|null $paidDate = null,
-			public string|null $payerPaymentReference = null,
 			public string|null $paymentReference = null,
 			public string|null $paymentReferenceUrl = null,
 			public string|null $paymentRequestToken = null,
 			public SwishTransaction\Status|null $status = null,
 			public array|null $tags = null,
+			public string|null $transactionId = null,
 			public SwishTransaction\Type|null $type = null,
 			public int|null $updatedBy = null,
 			public int|null $updatedFrom = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'], $j['created'], $j['currency'], $j['id'], $j['payment-method'], $j['updated'], $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payer-payment-reference'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
+			return [ $j['amount'], $j['created'], $j['currency'], $j['id'], $j['payment-method'], $j['updated'], $j['created-date'] ?? null, $j['customer'] ?? null, $j['deleted'] ?? null, SwishError::a($j['errors'] ?? null), $j['labels'] ?? null, $j['merchant'] ?? null, $j['message'] ?? null, $j['original-payment-reference'] ?? null, $j['paid-date'] ?? null, $j['payment-reference'] ?? null, $j['payment-reference-url'] ?? null, $j['payment-request-token'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['tags'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null), $j['updated-by'] ?? null, $j['updated-from'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'created' => $this->created, 'currency' => $this->currency, 'id' => $this->id, 'payment-method' => $this->paymentMethod, 'updated' => $this->updated, 'created-date' => $this->createdDate, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payer-payment-reference' => $this->payerPaymentReference, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'type' => $this->type, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
+			return [ 'amount' => $this->amount, 'created' => $this->created, 'currency' => $this->currency, 'id' => $this->id, 'payment-method' => $this->paymentMethod, 'updated' => $this->updated, 'created-date' => $this->createdDate, 'customer' => $this->customer, 'deleted' => $this->deleted, 'errors' => $this->errors, 'labels' => $this->labels, 'merchant' => $this->merchant, 'message' => $this->message, 'original-payment-reference' => $this->originalPaymentReference, 'paid-date' => $this->paidDate, 'payment-reference' => $this->paymentReference, 'payment-reference-url' => $this->paymentReferenceUrl, 'payment-request-token' => $this->paymentRequestToken, 'status' => $this->status, 'tags' => $this->tags, 'transaction-id' => $this->transactionId, 'type' => $this->type, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom ];
 		}
 	}
 
@@ -9610,15 +9633,16 @@ namespace Onslip360\API {
 			public string $transactionDate,
 			public SwishTransaction\Type $type,
 			public string|null $customer = null,
+			public string|null $paymentReference = null,
 			public string|null $transactionId = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'], $j['currency-code'], static::e(SwishTransaction\Status::from(...), $j['status']), $j['swish-transaction'], $j['transaction-date'], static::e(SwishTransaction\Type::from(...), $j['type']), $j['customer'] ?? null, $j['transaction-id'] ?? null ];
+			return [ $j['amount'], $j['currency-code'], static::e(SwishTransaction\Status::from(...), $j['status']), $j['swish-transaction'], $j['transaction-date'], static::e(SwishTransaction\Type::from(...), $j['type']), $j['customer'] ?? null, $j['payment-reference'] ?? null, $j['transaction-id'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'currency-code' => $this->currencyCode, 'status' => $this->status, 'swish-transaction' => $this->swishTransaction, 'transaction-date' => $this->transactionDate, 'type' => $this->type, 'customer' => $this->customer, 'transaction-id' => $this->transactionId ];
+			return [ 'amount' => $this->amount, 'currency-code' => $this->currencyCode, 'status' => $this->status, 'swish-transaction' => $this->swishTransaction, 'transaction-date' => $this->transactionDate, 'type' => $this->type, 'customer' => $this->customer, 'payment-reference' => $this->paymentReference, 'transaction-id' => $this->transactionId ];
 		}
 	}
 
@@ -9627,6 +9651,7 @@ namespace Onslip360\API {
 			public float|null $amount = null,
 			public string|null $currencyCode = null,
 			public string|null|Nil $customer = null,
+			public string|null|Nil $paymentReference = null,
 			public SwishTransaction\Status|null $status = null,
 			public int|null $swishTransaction = null,
 			public string|null $transactionDate = null,
@@ -9635,11 +9660,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['amount'] ?? null, $j['currency-code'] ?? null, $j['customer'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['swish-transaction'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
+			return [ $j['amount'] ?? null, $j['currency-code'] ?? null, $j['customer'] ?? null, $j['payment-reference'] ?? null, static::e(SwishTransaction\Status::from(...), $j['status'] ?? null), $j['swish-transaction'] ?? null, $j['transaction-date'] ?? null, $j['transaction-id'] ?? null, static::e(SwishTransaction\Type::from(...), $j['type'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'amount' => $this->amount, 'currency-code' => $this->currencyCode, 'customer' => $this->customer, 'status' => $this->status, 'swish-transaction' => $this->swishTransaction, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'type' => $this->type ];
+			return [ 'amount' => $this->amount, 'currency-code' => $this->currencyCode, 'customer' => $this->customer, 'payment-reference' => $this->paymentReference, 'status' => $this->status, 'swish-transaction' => $this->swishTransaction, 'transaction-date' => $this->transactionDate, 'transaction-id' => $this->transactionId, 'type' => $this->type ];
 		}
 	}
 
@@ -9648,6 +9673,7 @@ namespace Onslip360\API {
 		 * @param string[]|null $tags
 		*/
 		function __construct(
+			public bool|null $allowDeveloperRegistration = null,
 			public string|null $backofficeUri = null,
 			public string|null $controlUnitNotificationRecipient = null,
 			public string|null $created = null,
@@ -9672,11 +9698,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['created'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
+			return [ $j['allow-developer-registration'] ?? null, $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['created'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['id'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'created' => $this->created, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'id' => $this->id, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
+			return [ 'allow-developer-registration' => $this->allowDeveloperRegistration, 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'created' => $this->created, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'id' => $this->id, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'updated' => $this->updated, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
 		}
 	}
 
@@ -9685,6 +9711,7 @@ namespace Onslip360\API {
 		 * @param string[]|null|Nil $tags
 		*/
 		function __construct(
+			public bool|null|Nil $allowDeveloperRegistration = null,
 			public string|null|Nil $backofficeUri = null,
 			public string|null|Nil $controlUnitNotificationRecipient = null,
 			public string|null|Nil $customerFeedbackRecipient = null,
@@ -9704,11 +9731,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Partial_Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, Partial_SlippConfig::o($j['slipp'] ?? null), Partial_SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, Partial_VismaConfig::o($j['visma'] ?? null), Partial_VivaWalletConfig::o($j['viva-wallet'] ?? null), Partial_WEIQ::o($j['weiq'] ?? null) ];
+			return [ $j['allow-developer-registration'] ?? null, $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Partial_Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, Partial_SlippConfig::o($j['slipp'] ?? null), Partial_SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, Partial_VismaConfig::o($j['visma'] ?? null), Partial_VivaWalletConfig::o($j['viva-wallet'] ?? null), Partial_WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
+			return [ 'allow-developer-registration' => $this->allowDeveloperRegistration, 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
 		}
 	}
 
@@ -9720,6 +9747,7 @@ namespace Onslip360\API {
 			public string $created,
 			public int $id,
 			public string $updated,
+			public bool|null $allowDeveloperRegistration = null,
 			public string|null $backofficeUri = null,
 			public string|null $controlUnitNotificationRecipient = null,
 			public string|null $customerFeedbackRecipient = null,
@@ -9741,11 +9769,11 @@ namespace Onslip360\API {
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['created'], $j['id'], $j['updated'], $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
+			return [ $j['created'], $j['id'], $j['updated'], $j['allow-developer-registration'] ?? null, $j['backoffice-uri'] ?? null, $j['control-unit-notification-recipient'] ?? null, $j['customer-feedback-recipient'] ?? null, $j['default-client-version'] ?? null, $j['deleted'] ?? null, $j['receipt-uri'] ?? null, Sergel::o($j['sergel'] ?? null), $j['short-uri'] ?? null, SlippConfig::o($j['slipp'] ?? null), SwishConfig::o($j['swish'] ?? null), $j['tags'] ?? null, $j['unsubscribe-key'] ?? null, $j['unsubscribe-uri'] ?? null, $j['updated-by'] ?? null, $j['updated-from'] ?? null, VismaConfig::o($j['visma'] ?? null), VivaWalletConfig::o($j['viva-wallet'] ?? null), WEIQ::o($j['weiq'] ?? null) ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'created' => $this->created, 'id' => $this->id, 'updated' => $this->updated, 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
+			return [ 'created' => $this->created, 'id' => $this->id, 'updated' => $this->updated, 'allow-developer-registration' => $this->allowDeveloperRegistration, 'backoffice-uri' => $this->backofficeUri, 'control-unit-notification-recipient' => $this->controlUnitNotificationRecipient, 'customer-feedback-recipient' => $this->customerFeedbackRecipient, 'default-client-version' => $this->defaultClientVersion, 'deleted' => $this->deleted, 'receipt-uri' => $this->receiptUri, 'sergel' => $this->sergel, 'short-uri' => $this->shortUri, 'slipp' => $this->slipp, 'swish' => $this->swish, 'tags' => $this->tags, 'unsubscribe-key' => $this->unsubscribeKey, 'unsubscribe-uri' => $this->unsubscribeUri, 'updated-by' => $this->updatedBy, 'updated-from' => $this->updatedFrom, 'visma' => $this->visma, 'viva-wallet' => $this->vivaWallet, 'weiq' => $this->weiq ];
 		}
 	}
 
@@ -11348,15 +11376,17 @@ namespace Onslip360\API {
 			public bool $sumGratuity,
 			public bool $sumLocations,
 			public bool $sumTills,
+			public bool|null $includeRecords = null,
 			public array|null $records = null,
+			public bool|null $sumCostCenters = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['merge-sie-verifications'], $j['sum-all'], $j['sum-gratuity'], $j['sum-locations'], $j['sum-tills'], Stored_Record::a($j['records'] ?? null) ];
+			return [ $j['merge-sie-verifications'], $j['sum-all'], $j['sum-gratuity'], $j['sum-locations'], $j['sum-tills'], $j['include-records'] ?? null, Stored_Record::a($j['records'] ?? null), $j['sum-cost-centers'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'merge-sie-verifications' => $this->mergeSieVerifications, 'sum-all' => $this->sumAll, 'sum-gratuity' => $this->sumGratuity, 'sum-locations' => $this->sumLocations, 'sum-tills' => $this->sumTills, 'records' => $this->records ];
+			return [ 'merge-sie-verifications' => $this->mergeSieVerifications, 'sum-all' => $this->sumAll, 'sum-gratuity' => $this->sumGratuity, 'sum-locations' => $this->sumLocations, 'sum-tills' => $this->sumTills, 'include-records' => $this->includeRecords, 'records' => $this->records, 'sum-cost-centers' => $this->sumCostCenters ];
 		}
 	}
 
@@ -11365,20 +11395,22 @@ namespace Onslip360\API {
 		 * @param Partial_Record[]|null|Nil $records
 		*/
 		function __construct(
+			public bool|null|Nil $includeRecords = null,
 			public bool|null $mergeSieVerifications = null,
 			public array|null|Nil $records = null,
 			public bool|null $sumAll = null,
+			public bool|null|Nil $sumCostCenters = null,
 			public bool|null $sumGratuity = null,
 			public bool|null $sumLocations = null,
 			public bool|null $sumTills = null,
 		) {}
 
 		protected static function _fromJson(array $j): array {
-			return [ $j['merge-sie-verifications'] ?? null, Partial_Record::a($j['records'] ?? null), $j['sum-all'] ?? null, $j['sum-gratuity'] ?? null, $j['sum-locations'] ?? null, $j['sum-tills'] ?? null ];
+			return [ $j['include-records'] ?? null, $j['merge-sie-verifications'] ?? null, Partial_Record::a($j['records'] ?? null), $j['sum-all'] ?? null, $j['sum-cost-centers'] ?? null, $j['sum-gratuity'] ?? null, $j['sum-locations'] ?? null, $j['sum-tills'] ?? null ];
 		}
 
 		protected function _toJson(): array {
-			return [ 'merge-sie-verifications' => $this->mergeSieVerifications, 'records' => $this->records, 'sum-all' => $this->sumAll, 'sum-gratuity' => $this->sumGratuity, 'sum-locations' => $this->sumLocations, 'sum-tills' => $this->sumTills ];
+			return [ 'include-records' => $this->includeRecords, 'merge-sie-verifications' => $this->mergeSieVerifications, 'records' => $this->records, 'sum-all' => $this->sumAll, 'sum-cost-centers' => $this->sumCostCenters, 'sum-gratuity' => $this->sumGratuity, 'sum-locations' => $this->sumLocations, 'sum-tills' => $this->sumTills ];
 		}
 	}
 
@@ -11591,6 +11623,10 @@ namespace Onslip360 {
 
 		function cancelDMCampaign(int $id): void {
 			($this->request('POST', url('~$/dm-campaigns/$/cancel', $this->realm(), $id), null));
+		}
+
+		function cancelSwishTransaction(int $id): API\Stored_SwishTransaction {
+			return API\Stored_SwishTransaction::fromJson($this->request('POST', url('~$/swish/transactions/$/cancel', $this->realm(), $id), null));
 		}
 
 		function cancelTriggerEvent(int $user, int $id): void {

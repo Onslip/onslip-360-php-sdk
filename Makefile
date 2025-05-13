@@ -30,8 +30,9 @@ distclean:	clean
 	rm -rf .phpdoc phpDocumentor.phar
 
 publish:	clean build test pristine
+	echo $(VERSION) | grep -Fqv beta
 	rm -rf onslip-360-php-sdk && git clone git@github.com:Onslip/onslip-360-php-sdk.git
-	cp -a $$(git ls-files) onslip-360-php-sdk
+	cp -a .gitignore LICENSE Makefile *.json *.php onslip-360-php-sdk
 	cd onslip-360-php-sdk && git add -A && git commit -m "Version $(VERSION)" && git tag -s -m "Version $(VERSION)" $(VERSION) && git push --follow-tags
 
 pristine:
